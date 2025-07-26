@@ -35,26 +35,66 @@ jobs:
             Issue Title: ${{ github.event.issue.title }}
             Issue Body: ${{ github.event.issue.body }}
             
-            Please:
+            Please follow these steps EXACTLY:
             1. Read the context files in content/config/ (tone.md, best-practices.md, history.md)
             2. Generate a LinkedIn post draft that maintains narrative continuity with recent posts
             3. Create a new file in content/drafts/ with filename format: brief-descriptive-title.md (no date prefix)
             4. Include frontmatter with metadata (title, tags, priority, original_issue)
             5. Write the post content following LinkedIn best practices
             6. Create a new branch named 'post/issue-${{ github.event.issue.number }}'
-            7. Commit the draft and create a Pull Request
+            7. Commit the draft with message: "Add LinkedIn post draft from issue #${{ github.event.issue.number }}"
+            8. Push the branch to origin
+            9. Create a Pull Request using EXACTLY this command:
+               gh pr create --title "Add LinkedIn post: [brief title]" --body "Generated LinkedIn post from issue #${{ github.event.issue.number }}\n\nThis PR adds a draft post that:\n- [Brief summary]\n- Maintains narrative continuity with [reference]\n- Suggested posting time: [time]\n\nCloses #${{ github.event.issue.number }}"
             
-            The PR should:
-            - Reference the original issue (#${{ github.event.issue.number }})
-            - Include a brief explanation of narrative connections to previous posts
-            - Suggest optimal posting time based on content type
+            IMPORTANT: You MUST use the 'gh pr create' command shown above. Do NOT use any MCP tools for creating the PR.
           
-          allowed_tools: "Read,Write,Bash(git checkout -b *),Bash(git add *),Bash(git commit *),Bash(gh pr create *)"
+          allowed_tools: "Read,Write,Bash(git checkout -b *),Bash(git add *),Bash(git commit *),Bash(git push *),Bash(gh pr create *)"
+
+      - name: Verify PR Creation
+        if: success()
+        run: |
+          # Wait a moment for PR to be indexed
+          sleep 5
+          
+          # Check if PR was created for the branch
+          PR_URL=$(gh pr list --head "post/issue-${{ github.event.issue.number }}" --json url --jq '.[0].url' || echo "")
+          
+          if [ -z "$PR_URL" ]; then
+            echo "PR was not created by Claude. Creating it now..."
+            # Get the latest commit message
+            COMMIT_MSG=$(git log -1 --pretty=%B)
+            
+            # Create the PR
+            gh pr create \
+              --title "Add LinkedIn post from issue #${{ github.event.issue.number }}" \
+              --body "Generated LinkedIn post from issue #${{ github.event.issue.number }}
+              
+              This PR was automatically created after content generation.
+              
+              Please review the draft post for:
+              - Narrative continuity
+              - Brand voice consistency
+              - LinkedIn best practices
+              
+              Closes #${{ github.event.issue.number }}" \
+              --head "post/issue-${{ github.event.issue.number }}"
+            
+            PR_URL=$(gh pr list --head "post/issue-${{ github.event.issue.number }}" --json url --jq '.[0].url')
+          fi
+          
+          echo "PR_URL=$PR_URL" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Link PR to Issue
         if: success()
         run: |
           # Add comment to issue with link to PR
-          gh issue comment ${{ github.event.issue.number }} --body "🤖 Draft post has been generated! Review the PR to approve or request changes."
+          if [ -n "$PR_URL" ]; then
+            gh issue comment ${{ github.event.issue.number }} --body "🤖 Draft post has been generated! Review the PR: $PR_URL"
+          else
+            gh issue comment ${{ github.event.issue.number }} --body "🤖 Draft post has been generated but PR creation failed. Please check the workflow logs."
+          fi
         env:
           GH_TOKEN: ${{ github.token }}
