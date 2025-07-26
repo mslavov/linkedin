@@ -2,14 +2,12 @@ name: Generate LinkedIn Post
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [labeled]
 
 jobs:
   generate-post:
-    # Only run when issue has 'linkedin-post' or 'idea' label
-    if: |
-      (github.event.action == 'opened' && (contains(github.event.issue.labels.*.name, 'linkedin-post') || contains(github.event.issue.labels.*.name, 'idea'))) ||
-      (github.event.action == 'labeled' && (github.event.label.name == 'linkedin-post' || github.event.label.name == 'idea'))
+    # Only run when 'linkedin-post' or 'idea' label is added
+    if: github.event.label.name == 'linkedin-post' || github.event.label.name == 'idea'
     
     runs-on: ubuntu-latest
     permissions:
