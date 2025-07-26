@@ -5,10 +5,20 @@ on:
     types: [closed]
     paths:
       - "content/drafts/**/*.md"
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to process (e.g., 3)'
+        required: true
+        type: string
+      draft_filename:
+        description: 'Draft filename to schedule (optional, e.g., ai-eating-its-own-dogfood.md)'
+        required: false
+        type: string
 
 jobs:
   schedule-post:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -32,18 +42,36 @@ jobs:
           echo "Drafts folder:"
           ls -la content/drafts/ || echo "No drafts folder"
           
-          # Method 1: Check what files were added/modified in the merge commit
-          echo "=== Checking merge commit ==="
-          MERGE_SHA=${{ github.event.pull_request.merge_commit_sha }}
-          echo "Merge commit SHA: $MERGE_SHA"
+          # Determine PR number based on trigger type
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            PR_NUMBER="${{ github.event.inputs.pr_number }}"
+            echo "Manual trigger for PR #$PR_NUMBER"
+          else
+            PR_NUMBER="${{ github.event.pull_request.number }}"
+            echo "Automatic trigger for PR #$PR_NUMBER"
+          fi
           
-          # Get files from the merge commit
-          DRAFT_FILE=$(git diff-tree --no-commit-id --name-only -r $MERGE_SHA | grep "content/drafts/.*\.md" | head -1)
-          
-          if [ -z "$DRAFT_FILE" ]; then
-            echo "No draft file in merge commit. Checking PR files via API..."
-            # Method 2: Get files from PR API (most reliable)
-            DRAFT_FILE=$(gh api /repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files --jq '.[] | select(.filename | startswith("content/drafts/")) | select(.filename | endswith(".md")) | .filename' | head -1)
+          # If manual trigger with specific filename
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ -n "${{ github.event.inputs.draft_filename }}" ]; then
+            FILENAME="${{ github.event.inputs.draft_filename }}"
+            echo "Manual trigger with specific file: $FILENAME"
+            DRAFT_FILE="content/drafts/$FILENAME"
+          else
+            # Method 1: Check what files were added/modified in the merge commit
+            echo "=== Checking merge commit ==="
+            MERGE_SHA=${{ github.event.pull_request.merge_commit_sha }}
+            echo "Merge commit SHA: $MERGE_SHA"
+            
+            # Get files from the merge commit
+            if [ -n "$MERGE_SHA" ]; then
+              DRAFT_FILE=$(git diff-tree --no-commit-id --name-only -r $MERGE_SHA | grep "content/drafts/.*\.md" | head -1)
+            fi
+            
+            if [ -z "$DRAFT_FILE" ]; then
+              echo "No draft file in merge commit. Checking PR files via API..."
+              # Method 2: Get files from PR API (most reliable)
+              DRAFT_FILE=$(gh api /repos/${{ github.repository }}/pulls/$PR_NUMBER/files --jq '.[] | select(.filename | startswith("content/drafts/")) | select(.filename | endswith(".md")) | .filename' | head -1)
+            fi
           fi
           
           if [ -z "$DRAFT_FILE" ]; then
@@ -58,8 +86,7 @@ jobs:
           
           if [ -z "$DRAFT_FILE" ]; then
             echo "ERROR: No draft file found in the PR or drafts folder"
-            echo "PR Title: ${{ github.event.pull_request.title }}"
-            echo "PR Number: ${{ github.event.pull_request.number }}"
+            echo "PR Number: $PR_NUMBER"
             exit 1
           fi
           
@@ -115,8 +142,8 @@ jobs:
             
             New post details:
             - File: content/scheduled/${{ steps.move_draft.outputs.filename }}
-            - PR Number: ${{ github.event.pull_request.number }}
-            - PR Title: ${{ github.event.pull_request.title }}
+            - PR Number: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.pr_number || github.event.pull_request.number }}
+            - PR Title: ${{ github.event.pull_request.title || 'Manual trigger' }}
             
             Please:
             1. Read the current content/schedule.json file
@@ -178,11 +205,15 @@ jobs:
       - name: Handle scheduling failure
         if: failure()
         run: |
+          PR_NUM="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.pr_number || github.event.pull_request.number }}"
+          PR_TITLE="${{ github.event.pull_request.title || 'Manual trigger' }}"
+          
           gh issue create \
-            --title "Failed to schedule post from PR #${{ github.event.pull_request.number }}" \
-            --body "The scheduling workflow failed for PR #${{ github.event.pull_request.number }}.
+            --title "Failed to schedule post from PR #$PR_NUM" \
+            --body "The scheduling workflow failed for PR #$PR_NUM.
             
-            **PR Title**: ${{ github.event.pull_request.title }}
+            **PR Title**: $PR_TITLE
+            **Trigger Type**: ${{ github.event_name }}
             **Error**: Check the [workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.
             
             Please manually update the schedule or re-run the workflow." \
