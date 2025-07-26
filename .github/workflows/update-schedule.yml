@@ -29,19 +29,37 @@ jobs:
           echo "Current directory: $(pwd)"
           echo "Content structure:"
           ls -la content/
+          echo "Drafts folder:"
+          ls -la content/drafts/ || echo "No drafts folder"
           
-          # Get the merged draft file from PR
-          echo "Checking PR files..."
-          DRAFT_FILE=$(git diff --name-only HEAD~1 HEAD | grep "content/drafts/.*\.md" | head -1)
+          # Method 1: Check what files were added/modified in the merge commit
+          echo "=== Checking merge commit ==="
+          MERGE_SHA=${{ github.event.pull_request.merge_commit_sha }}
+          echo "Merge commit SHA: $MERGE_SHA"
+          
+          # Get files from the merge commit
+          DRAFT_FILE=$(git diff-tree --no-commit-id --name-only -r $MERGE_SHA | grep "content/drafts/.*\.md" | head -1)
           
           if [ -z "$DRAFT_FILE" ]; then
-            echo "No draft file found in git diff. Checking PR files via API..."
-            # Alternative: Get files from PR
-            DRAFT_FILE=$(gh pr view ${{ github.event.pull_request.number }} --json files --jq '.files[].path' | grep "content/drafts/.*\.md" | head -1)
+            echo "No draft file in merge commit. Checking PR files via API..."
+            # Method 2: Get files from PR API (most reliable)
+            DRAFT_FILE=$(gh api /repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files --jq '.[] | select(.filename | startswith("content/drafts/")) | select(.filename | endswith(".md")) | .filename' | head -1)
           fi
           
           if [ -z "$DRAFT_FILE" ]; then
-            echo "ERROR: No draft file found in the PR"
+            echo "No draft file found via API. Looking for any .md files in drafts folder..."
+            # Method 3: Find any markdown files in drafts folder
+            DRAFT_FILE=$(find content/drafts -name "*.md" -type f 2>/dev/null | head -1)
+            if [ -n "$DRAFT_FILE" ]; then
+              # Convert to relative path
+              DRAFT_FILE=$(echo "$DRAFT_FILE" | sed 's|^\./||')
+            fi
+          fi
+          
+          if [ -z "$DRAFT_FILE" ]; then
+            echo "ERROR: No draft file found in the PR or drafts folder"
+            echo "PR Title: ${{ github.event.pull_request.title }}"
+            echo "PR Number: ${{ github.event.pull_request.number }}"
             exit 1
           fi
           
@@ -50,20 +68,32 @@ jobs:
           # Extract just the filename
           FILENAME=$(basename "$DRAFT_FILE")
           
+          # Create scheduled directory if it doesn't exist
+          mkdir -p content/scheduled/
+          
           # Check if file exists in drafts folder
           if [ -f "$DRAFT_FILE" ]; then
             echo "File exists in drafts, moving to scheduled..."
-            # Create scheduled directory if it doesn't exist
-            mkdir -p content/scheduled/
-            # Move to scheduled folder
             mv "$DRAFT_FILE" "content/scheduled/$FILENAME"
+            echo "Successfully moved file"
           elif [ -f "content/scheduled/$FILENAME" ]; then
-            echo "File already exists in scheduled folder"
+            echo "File already exists in scheduled folder (may have been moved in a previous run)"
           else
-            echo "ERROR: File not found in either drafts or scheduled folders"
-            echo "Looking for file in repository..."
-            find content -name "$FILENAME" -type f
-            exit 1
+            echo "WARNING: File not found in expected location"
+            echo "Searching for file in repository..."
+            FOUND_FILE=$(find content -name "$FILENAME" -type f 2>/dev/null | head -1)
+            if [ -n "$FOUND_FILE" ]; then
+              echo "Found file at: $FOUND_FILE"
+              if [[ "$FOUND_FILE" == *"/scheduled/"* ]]; then
+                echo "File is already in scheduled folder"
+              else
+                echo "ERROR: File is in unexpected location: $FOUND_FILE"
+                exit 1
+              fi
+            else
+              echo "ERROR: File not found anywhere in content folder"
+              exit 1
+            fi
           fi
           
           # Set outputs for Claude scheduling
