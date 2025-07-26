@@ -150,18 +150,3 @@ jobs:
             You can view the schedule at: [content/schedule.json](https://github.com/${{ github.repository }}/blob/main/content/schedule.json)"
         env:
           GH_TOKEN: ${{ github.token }}
-
-      - name: Handle scheduling failure
-        if: failure()
-        run: |
-          gh issue create \
-            --title "Failed to schedule post from PR #${{ github.event.pull_request.number }}" \
-            --body "The scheduling workflow failed for PR #${{ github.event.pull_request.number }}.
-            
-            **PR Title**: ${{ github.event.pull_request.title }}
-            **Error**: Check the [workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.
-            
-            Please manually update the schedule or re-run the workflow." \
-            --label "bug"
-        env:
-          GH_TOKEN: ${{ github.token }}
