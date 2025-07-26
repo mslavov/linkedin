@@ -133,6 +133,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Update schedule with Claude
+        if: github.event_name != 'workflow_dispatch'
         uses: anthropics/claude-code-action@beta
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -168,6 +169,82 @@ jobs:
             - status: "scheduled"
           
           allowed_tools: "Read,Edit,Bash(git add *),Bash(git commit *)"
+
+      - name: Manual schedule update
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo "Manual trigger - updating schedule.json directly"
+          
+          # Read the post file to get metadata
+          POST_FILE="content/scheduled/${{ steps.move_draft.outputs.filename }}"
+          if [ ! -f "$POST_FILE" ]; then
+            echo "ERROR: Post file not found: $POST_FILE"
+            exit 1
+          fi
+          
+          # Extract metadata from frontmatter
+          TITLE=$(grep -m1 "^title:" "$POST_FILE" | sed 's/^title: *//')
+          PRIORITY=$(grep -m1 "^priority:" "$POST_FILE" | sed 's/^priority: *//' || echo "normal")
+          ORIGINAL_ISSUE=$(grep -m1 "^original_issue:" "$POST_FILE" | sed 's/^original_issue: *//' || echo "")
+          
+          # Generate ID from filename
+          ID=$(echo "${{ steps.move_draft.outputs.filename }}" | sed 's/\.md$//' | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
+          
+          # Calculate scheduled date (next weekday)
+          TODAY=$(date +%u)
+          if [ $TODAY -ge 5 ]; then
+            # If Friday or later, schedule for Monday
+            DAYS_TO_ADD=$((8 - $TODAY))
+          else
+            # Schedule for tomorrow
+            DAYS_TO_ADD=1
+          fi
+          SCHEDULED_DATE=$(date -d "+$DAYS_TO_ADD days" +%Y-%m-%d 2>/dev/null || date -v +${DAYS_TO_ADD}d +%Y-%m-%d)
+          
+          # Update schedule.json
+          if [ -f "content/schedule.json" ]; then
+            # Add new entry to existing schedule
+            jq --arg id "$ID" \
+               --arg file "$POST_FILE" \
+               --arg date "$SCHEDULED_DATE" \
+               --arg priority "$PRIORITY" \
+               --arg issue "$ORIGINAL_ISSUE" \
+               '.posts += [{
+                 "id": $id,
+                 "file": $file,
+                 "scheduled_date": $date,
+                 "priority": $priority,
+                 "original_issue": ($issue | tonumber? // null),
+                 "status": "scheduled"
+               }] | .last_updated = now | .posts |= sort_by(.scheduled_date)' \
+               content/schedule.json > content/schedule.json.tmp && mv content/schedule.json.tmp content/schedule.json
+          else
+            # Create new schedule.json
+            jq -n --arg id "$ID" \
+                  --arg file "$POST_FILE" \
+                  --arg date "$SCHEDULED_DATE" \
+                  --arg priority "$PRIORITY" \
+                  --arg issue "$ORIGINAL_ISSUE" \
+                  '{
+                    "posts": [{
+                      "id": $id,
+                      "file": $file,
+                      "scheduled_date": $date,
+                      "priority": $priority,
+                      "original_issue": ($issue | tonumber? // null),
+                      "status": "scheduled"
+                    }],
+                    "last_updated": now
+                  }' > content/schedule.json
+          fi
+          
+          # Commit the changes
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/schedule.json
+          git commit -m "Schedule post: ${{ steps.move_draft.outputs.filename }} for $SCHEDULED_DATE"
+          
+          echo "✅ Scheduled post for $SCHEDULED_DATE"
 
       - name: Push schedule update
         id: push_schedule
