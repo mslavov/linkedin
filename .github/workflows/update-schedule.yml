@@ -5,20 +5,10 @@ on:
     types: [closed]
     paths:
       - "content/drafts/**/*.md"
-  workflow_dispatch:
-    inputs:
-      pr_number:
-        description: 'PR number to process (e.g., 3)'
-        required: true
-        type: string
-      draft_filename:
-        description: 'Draft filename to schedule (optional, e.g., ai-eating-its-own-dogfood.md)'
-        required: false
-        type: string
 
 jobs:
   schedule-post:
-    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -43,36 +33,20 @@ jobs:
           echo "Drafts folder:"
           ls -la content/drafts/ || echo "No drafts folder"
           
-          # Determine PR number based on trigger type
-          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-            PR_NUMBER="${{ github.event.inputs.pr_number }}"
-            echo "Manual trigger for PR #$PR_NUMBER"
-          else
-            PR_NUMBER="${{ github.event.pull_request.number }}"
-            echo "Automatic trigger for PR #$PR_NUMBER"
+          # Method 1: Check what files were added/modified in the merge commit
+          echo "=== Checking merge commit ==="
+          MERGE_SHA=${{ github.event.pull_request.merge_commit_sha }}
+          echo "Merge commit SHA: $MERGE_SHA"
+          
+          # Get files from the merge commit
+          if [ -n "$MERGE_SHA" ]; then
+            DRAFT_FILE=$(git diff-tree --no-commit-id --name-only -r $MERGE_SHA | grep "content/drafts/.*\.md" | head -1)
           fi
           
-          # If manual trigger with specific filename
-          if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ -n "${{ github.event.inputs.draft_filename }}" ]; then
-            FILENAME="${{ github.event.inputs.draft_filename }}"
-            echo "Manual trigger with specific file: $FILENAME"
-            DRAFT_FILE="content/drafts/$FILENAME"
-          else
-            # Method 1: Check what files were added/modified in the merge commit
-            echo "=== Checking merge commit ==="
-            MERGE_SHA=${{ github.event.pull_request.merge_commit_sha }}
-            echo "Merge commit SHA: $MERGE_SHA"
-            
-            # Get files from the merge commit
-            if [ -n "$MERGE_SHA" ]; then
-              DRAFT_FILE=$(git diff-tree --no-commit-id --name-only -r $MERGE_SHA | grep "content/drafts/.*\.md" | head -1)
-            fi
-            
-            if [ -z "$DRAFT_FILE" ]; then
-              echo "No draft file in merge commit. Checking PR files via API..."
-              # Method 2: Get files from PR API (most reliable)
-              DRAFT_FILE=$(gh api /repos/${{ github.repository }}/pulls/$PR_NUMBER/files --jq '.[] | select(.filename | startswith("content/drafts/")) | select(.filename | endswith(".md")) | .filename' | head -1)
-            fi
+          if [ -z "$DRAFT_FILE" ]; then
+            echo "No draft file in merge commit. Checking PR files via API..."
+            # Method 2: Get files from PR API (most reliable)
+            DRAFT_FILE=$(gh api /repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files --jq '.[] | select(.filename | startswith("content/drafts/")) | select(.filename | endswith(".md")) | .filename' | head -1)
           fi
           
           if [ -z "$DRAFT_FILE" ]; then
@@ -87,7 +61,7 @@ jobs:
           
           if [ -z "$DRAFT_FILE" ]; then
             echo "ERROR: No draft file found in the PR or drafts folder"
-            echo "PR Number: $PR_NUMBER"
+            echo "PR Number: ${{ github.event.pull_request.number }}"
             exit 1
           fi
           
@@ -133,118 +107,15 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Update schedule with Claude
-        if: github.event_name != 'workflow_dispatch'
         uses: anthropics/claude-code-action@beta
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           model: "claude-opus-4-20250514"
           
           direct_prompt: |
-            You need to update the content/schedule.json file to add a new scheduled post.
-            
-            New post details:
-            - File: content/scheduled/${{ steps.move_draft.outputs.filename }}
-            - PR Number: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.pr_number || github.event.pull_request.number }}
-            - PR Title: ${{ github.event.pull_request.title || 'Manual trigger' }}
-            
-            Please:
-            1. Read the current content/schedule.json file
-            2. Read the new post file to understand its content and priority
-            3. Analyze the current schedule to find the optimal slot
-            4. Consider these scheduling rules:
-               - High priority posts get the next available slot
-               - Normal priority posts should be spaced at least 24 hours apart
-               - Low priority posts can be scheduled further out
-               - Avoid scheduling on weekends unless it's high priority
-            5. Add the new post to the schedule.json with a unique ID
-            6. Update the last_updated timestamp
-            7. Commit the updated schedule.json
-            
-            The new entry should include:
-            - id: Generate from the filename (e.g., "startup-lessons-2025")
-            - file: The full path to the file
-            - scheduled_date: The optimal date in YYYY-MM-DD format
-            - priority: Extract from the post's frontmatter
-            - original_issue: Extract from the post's frontmatter
-            - status: "scheduled"
+            /schedule-post content/scheduled/${{ steps.move_draft.outputs.filename }} ${{ github.event.pull_request.number }} "${{ github.event.pull_request.title }}"
           
           allowed_tools: "Read,Edit,Bash(git add *),Bash(git commit *)"
-
-      - name: Manual schedule update
-        if: github.event_name == 'workflow_dispatch'
-        run: |
-          echo "Manual trigger - updating schedule.json directly"
-          
-          # Read the post file to get metadata
-          POST_FILE="content/scheduled/${{ steps.move_draft.outputs.filename }}"
-          if [ ! -f "$POST_FILE" ]; then
-            echo "ERROR: Post file not found: $POST_FILE"
-            exit 1
-          fi
-          
-          # Extract metadata from frontmatter
-          TITLE=$(grep -m1 "^title:" "$POST_FILE" | sed 's/^title: *//')
-          PRIORITY=$(grep -m1 "^priority:" "$POST_FILE" | sed 's/^priority: *//' || echo "normal")
-          ORIGINAL_ISSUE=$(grep -m1 "^original_issue:" "$POST_FILE" | sed 's/^original_issue: *//' || echo "")
-          
-          # Generate ID from filename
-          ID=$(echo "${{ steps.move_draft.outputs.filename }}" | sed 's/\.md$//' | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
-          
-          # Calculate scheduled date (next weekday)
-          TODAY=$(date +%u)
-          if [ $TODAY -ge 5 ]; then
-            # If Friday or later, schedule for Monday
-            DAYS_TO_ADD=$((8 - $TODAY))
-          else
-            # Schedule for tomorrow
-            DAYS_TO_ADD=1
-          fi
-          SCHEDULED_DATE=$(date -d "+$DAYS_TO_ADD days" +%Y-%m-%d 2>/dev/null || date -v +${DAYS_TO_ADD}d +%Y-%m-%d)
-          
-          # Update schedule.json
-          if [ -f "content/schedule.json" ]; then
-            # Add new entry to existing schedule
-            jq --arg id "$ID" \
-               --arg file "$POST_FILE" \
-               --arg date "$SCHEDULED_DATE" \
-               --arg priority "$PRIORITY" \
-               --arg issue "$ORIGINAL_ISSUE" \
-               '.posts += [{
-                 "id": $id,
-                 "file": $file,
-                 "scheduled_date": $date,
-                 "priority": $priority,
-                 "original_issue": ($issue | tonumber? // null),
-                 "status": "scheduled"
-               }] | .last_updated = now | .posts |= sort_by(.scheduled_date)' \
-               content/schedule.json > content/schedule.json.tmp && mv content/schedule.json.tmp content/schedule.json
-          else
-            # Create new schedule.json
-            jq -n --arg id "$ID" \
-                  --arg file "$POST_FILE" \
-                  --arg date "$SCHEDULED_DATE" \
-                  --arg priority "$PRIORITY" \
-                  --arg issue "$ORIGINAL_ISSUE" \
-                  '{
-                    "posts": [{
-                      "id": $id,
-                      "file": $file,
-                      "scheduled_date": $date,
-                      "priority": $priority,
-                      "original_issue": ($issue | tonumber? // null),
-                      "status": "scheduled"
-                    }],
-                    "last_updated": now
-                  }' > content/schedule.json
-          fi
-          
-          # Commit the changes
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add content/schedule.json
-          git commit -m "Schedule post: ${{ steps.move_draft.outputs.filename }} for $SCHEDULED_DATE"
-          
-          echo "✅ Scheduled post for $SCHEDULED_DATE"
 
       - name: Push schedule update
         id: push_schedule
@@ -283,15 +154,11 @@ jobs:
       - name: Handle scheduling failure
         if: failure()
         run: |
-          PR_NUM="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.pr_number || github.event.pull_request.number }}"
-          PR_TITLE="${{ github.event.pull_request.title || 'Manual trigger' }}"
-          
           gh issue create \
-            --title "Failed to schedule post from PR #$PR_NUM" \
-            --body "The scheduling workflow failed for PR #$PR_NUM.
+            --title "Failed to schedule post from PR #${{ github.event.pull_request.number }}" \
+            --body "The scheduling workflow failed for PR #${{ github.event.pull_request.number }}.
             
-            **PR Title**: $PR_TITLE
-            **Trigger Type**: ${{ github.event_name }}
+            **PR Title**: ${{ github.event.pull_request.title }}
             **Error**: Check the [workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.
             
             Please manually update the schedule or re-run the workflow." \
