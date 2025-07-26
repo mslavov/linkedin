@@ -1,0 +1,50 @@
+name: Content Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - "content/drafts/**/*.md"
+
+jobs:
+  content-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: read
+      id-token: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Review LinkedIn Content
+        id: content-review
+        uses: anthropics/claude-code-action@beta
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          model: "claude-opus-4-20250514"
+          
+          direct_prompt: |
+            Please review this LinkedIn post draft and provide feedback on:
+            
+            1. **Tone Consistency**: Does it match the voice guidelines in content/config/tone.md?
+            2. **Narrative Flow**: How does it connect with recent posts in content/config/history.md?
+            3. **Best Practices**: Does it follow the guidelines in content/config/best-practices.md?
+            4. **Engagement Potential**: Is the hook strong? Will it encourage interaction?
+            5. **Length & Format**: Is it optimized for LinkedIn's algorithm?
+            6. **Call to Action**: Is there a clear next step for readers?
+            
+            Also check:
+            - Hashtag usage (3-5 relevant ones)
+            - Emoji usage (if appropriate for the brand)
+            - Paragraph spacing for readability
+            - Any time-sensitive content that affects scheduling
+            
+            Provide constructive feedback and specific suggestions for improvement.
+            If the post looks good, mention that it's ready for publishing.
+          
+          use_sticky_comment: true

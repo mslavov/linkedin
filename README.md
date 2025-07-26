@@ -1,382 +1,189 @@
-# Agent Documentation Template
+# LinkedIn Content Automation
 
-A comprehensive multi-agent development framework that enables parallel,
-AI-driven software development with specialized agent roles and file-based task
-management.
+An intelligent content automation system that transforms GitHub issues into story-connected LinkedIn posts using Claude AI, with a manual publishing workflow for full control.
 
 ## Overview
 
-This template transforms how teams work with AI agents by providing:
+This system automates the entire LinkedIn content creation pipeline except for the final publishing step:
 
-- **Specialized Agent Roles** - Architect, Planner, Developer, Tester, Docs, PM
-- **Parallel Task Execution** - Multiple agents work simultaneously
-- **File-Based Task Management** - Simple folder structure for task flow
-- **Continuous Documentation** - Docs stay synchronized with code
-- **PRD-Driven Development** - Start from requirements, not implementation
+- 🤖 **AI-Powered Generation**: Claude creates narrative-connected posts from GitHub issues
+- 📝 **PR-Based Review**: All content reviewed before scheduling
+- 📅 **Smart Scheduling**: Posts organized by date in a simple folder structure
+- 🎯 **Manual Publishing**: You maintain full control over what gets posted
+- 📖 **Story Continuity**: Each post builds on previous content narratives
+
+## Quick Start
+
+### 1. Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/linkedin-automation
+
+# Set up GitHub Secrets in your repository settings:
+# - CLAUDE_CODE_OAUTH_TOKEN (required for Claude AI)
+
+# Configure your voice and narrative
+# Edit content/config/tone.md - your writing style
+# Edit content/config/best-practices.md - LinkedIn strategies
+# Review content/config/history.md - your content journey (auto-maintained)
+
+# Create required folders (if not present)
+mkdir -p content/drafts content/scheduled content/published
+```
+
+### 2. Create Content
+
+1. **Create a GitHub Issue** with your post idea
+2. **Add label** `linkedin-post` or `idea`
+3. Claude automatically generates a draft and creates a PR
+4. **Review and merge** the PR to schedule the post
+
+### 3. Publish Posts
+
+```bash
+# In Claude, use the slash command:
+/post
+
+# Claude will show you today's scheduled post
+# Copy the content and post manually to LinkedIn
+# Reply 'posted' to mark as published
+```
+
+## Workflow
+
+```mermaid
+graph LR
+    A[GitHub Issue] -->|Auto| B[Claude Draft]
+    B -->|Auto| C[Pull Request]
+    C -->|Manual Review| D[Scheduled Post]
+    D -->|/post command| E[Manual Publishing]
+    E -->|Update| F[Published + History]
+```
+
+## File Structure
+
+```
+content/
+├── config/
+│   ├── tone.md           # Your voice and style guidelines
+│   ├── best-practices.md # LinkedIn best practices
+│   └── history.md        # Published posts summary (auto-updated)
+├── drafts/               # New drafts from PRs
+├── scheduled/            # Posts ready to publish
+└── published/            # Posts after publishing
+```
 
 ## Key Features
 
-- **Multi-Agent Orchestration**: Six specialized agents with distinct
-  responsibilities
-- **Folder-Based Tasks**: Simple `todo/` → `in-progress/` → `done/` workflow
-- **Dependency Management**: Automatic task sequencing and blocking
-- **Documentation-First**: PRDs drive development, docs update automatically
-- **Command Integration**: Slash commands for Claude, @ commands for Cursor
-- **Parallel Workstreams**: Frontend, backend, database, and infra tasks run
-  concurrently
-- **Token Optimized**: Minimal command files reference full documentation
-- **Organized Structure**: Agent operations in `.agents/`, documentation in `docs/`
+### 🎨 Voice Consistency
+- Configure your unique voice in `tone.md`
+- Claude maintains your style across all posts
+- Builds narrative connections between posts
+- Based on analysis of your historical content
 
-## Getting Started
+### 📊 Smart Organization
+- Posts automatically dated based on filename
+- Simple folder-based states (draft → scheduled → published)
+- No complex scheduling database needed
+- Git provides complete audit trail
 
-### For New Features
-1. **Copy this template** to your project repository
-2. **Read CLAUDE.md or AGENTS.md** depending on whether you're using Claude or Cursor
-3. **Create your first PRD** in `docs/product/[feature-name].md`
-4. **Run the Architect** to design the solution:
-   `/architect docs/product/[feature-name].md`
-5. **Generate tasks** with the Planner: `/planner [feature-name]`
-6. **Start development** with multiple agents: `/developer frontend`,
-   `/developer backend`
+### 🔄 Story Continuity
+- `history.md` tracks your complete content journey
+- 7+ years of post history analyzed and documented
+- Claude references past themes for coherent storytelling
+- Each post builds on your authentic narrative
 
-### For Existing Projects
-1. **Copy this template** to your project repository
-2. **Run the Setup Agent** to analyze and document your codebase:
-   `/setup`
-3. **Review generated documentation** in `docs/`
-4. **Continue with PRD-driven development** for new features
+### 🛡️ Full Control
+- Review every post before scheduling
+- Publish manually when you're ready
+- No automated posting to LinkedIn
+- No API credentials or ToS concerns
 
-## Multi-Agent Workflow
-
-### Development Workflow Diagram
-
-```mermaid
-graph TD
-    A[Product Requirements Document - PRD] --> B[Architect Agent]
-    B --> C{Technical Analysis}
-    
-    C --> D[System Design]
-    C --> E[Architecture Decisions]
-    C --> F[Technology Stack]
-    
-    D --> G[Task Breakdown]
-    E --> G
-    F --> G
-    
-    G --> H[Task Definition & Dependencies]
-    
-    H --> I[Task Assignment Engine]
-    
-    I --> J[Frontend Agent Tasks]
-    I --> K[Backend Agent Tasks]
-    I --> L[Database Agent Tasks]
-    I --> M[API Agent Tasks]
-    I --> N[Testing Agent Tasks]
-    
-    J --> O[Parallel Execution]
-    K --> O
-    L --> O
-    M --> O
-    N --> O
-    
-    O --> P[Integration & Merge]
-    P --> Q[Review & Quality Check]
-    Q --> R[Deployment Ready]
-    
-    style A fill:#f9f,stroke:#333,stroke-width:4px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style O fill:#bfb,stroke:#333,stroke-width:2px
-    style R fill:#fbf,stroke:#333,stroke-width:2px
-```
-
-### 1. Requirements (PRD)
-
-Create a Product Requirement Document in `docs/product/`:
-
-```markdown
-# PRD: User Authentication
-
-Define what to build, user stories, and success criteria...
-```
-
-### 2. Architecture Design
-
-```
-/architect docs/product/user-authentication.md
-```
-
-Creates technical design in `scratch/user-authentication-architecture.md`
-
-### 3. Task Planning
-
-```
-/planner user-authentication
-```
-
-Generates task files in `.agents/tasks/todo/`:
-
-- `frontend-login-form.md`
-- `backend-auth-api.md`
-- `database-user-schema.md`
-
-### 4. Parallel Development
-
-Multiple agents claim and implement tasks:
-
-```
-/developer frontend   # Works on UI tasks
-/developer backend    # Works on API tasks
-/developer database   # Works on schema tasks
-```
-
-### 5. Testing & Documentation
-
-```
-/tester         # Validates completed tasks
-/docs-agent     # Updates documentation
-```
-
-### 6. Progress Tracking
-
-```
-/pm status      # Get progress report
-/pm archive     # Archive old completed tasks
-```
-
-## Agent Commands
+## Commands
 
 ### Claude Slash Commands
 
-- `/setup` - Analyze codebase and generate documentation
-- `/architect [product-file]` - Design technical architecture
-- `/planner [feature]` - Create task breakdown
-- `/developer [workstream]` - Implement tasks
-- `/tester` - Test completed work
-- `/docs-agent` - Update documentation
-- `/pm [status|archive]` - Manage progress
+- `/post` - Get today's scheduled post for manual publishing
+- `/setup` - Initial project setup (if needed)
 
-Commands are defined in `.claude/commands/` as minimal stubs that reference full documentation.
+### Post States
 
-### Cursor @ Commands
+1. **Draft** → Created by Claude in `content/drafts/`
+2. **Scheduled** → Approved and moved to `content/scheduled/`
+3. **Published** → Manually posted and moved to `content/published/`
 
-- `@architect` - Architecture design prompt
-- `@planner` - Task planning prompt
-- `@developer` - Development prompt
-- `@tester` - Testing prompt
-- `@docs-agent` - Documentation prompt
-- `@pm` - Project management prompt
+## Daily Publishing Routine
 
-Commands are defined in `.cursor/rules/` as .mdc files that reference full documentation.
+1. **Morning**: Run `/post` in Claude
+2. **Copy**: Get the formatted post content
+3. **Post**: Manually publish to LinkedIn
+4. **Confirm**: Reply 'posted' to update the system
 
-## Project Structure
+## Configuration
 
-```
-project-root/
-├── docs/                    # All documentation
-│   ├── product/             # Product requirements
-│   ├── tech/                # Technical docs
-│   ├── guides/              # How-to guides
-│   ├── system-overview.md   # Architecture
-│   └── INDEX.md             # Navigation hub
-├── .agents/                 # Agent operations
-│   ├── definitions/         # Agent definitions
-│   ├── tasks/               # Task management
-│   │   ├── todo/            # Available tasks
-│   │   ├── in-progress/     # Active work
-│   │   ├── done/            # Completed tasks
-│   │   └── archive/         # Historical tasks
-│   ├── rules/               # Development rules
-│   └── templates/           # Document templates
-├── scratch/                 # Temporary notes
-│   └── archive/             # Old brainstorms
-├── .claude/                 # Claude configuration
-│   ├── commands/            # Minimal agent command stubs
-│   └── settings.json        # Claude settings
-├── .cursor/                 # Cursor configuration
-│   ├── rules/               # Agent rules (.mdc files)
-│   └── mcp.json             # MCP server config
-├── CLAUDE.md                # Claude usage instructions
-├── AGENTS.md                # Cursor usage instructions
-└── CHANGELOG.md             # Version history
-```
+### Voice Setup (`content/config/tone.md`)
+Define your writing style, preferred tone, and content approach. Currently configured with your authentic voice based on historical analysis.
 
-## Task Management System
+### Best Practices (`content/config/best-practices.md`)
+LinkedIn-specific guidelines for engagement and reach.
 
-### Task Flow
+### History Tracking (`content/config/history.md`)
+Comprehensive record of your LinkedIn journey:
+- 7+ years of posts analyzed
+- Key themes and narrative evolution documented
+- Automatically updated when posts are published
+- Helps Claude maintain story continuity
 
-```
-todo/ → in-progress/ → done/ → archive/
-```
-
-### Task File Format
-
+### Post Format
+Posts use frontmatter for metadata:
 ```yaml
 ---
-id: backend-user-auth
-workstream: backend
-dependencies: [database-user-schema]
-assigned_to: null
-created: 2025-01-20
+title: "Your Post Title"
+date: 2025-01-20
+tags: [startup, ai, automation]
+priority: normal  # high, normal, low
+original_issue: 42
 ---
 
-# Task Title
-
-## Subtasks
-- [ ] Implementation steps
-- [ ] Write tests
-- [ ] Update docs
-
-## Acceptance Criteria
-- Clear success conditions
+Your post content here...
 ```
 
-### Workstreams
+## Why Manual Publishing?
 
-- **frontend** - UI components and interactions
-- **backend** - APIs and business logic
-- **database** - Schema and migrations
-- **infra** - Deployment and configuration
+- **Security**: No LinkedIn credentials needed in the system
+- **Control**: Review context and timing before posting
+- **Compliance**: Avoids LinkedIn API restrictions
+- **Flexibility**: Post when it makes sense for your audience
 
-## Documentation Workflow
+## Recent Updates
 
-### Core Principles
+- **Comprehensive History**: 7 years of LinkedIn posts analyzed and documented
+- **Manual Workflow**: Full control over publishing, no API needed
+- **Enhanced Narrative**: Claude understands your complete professional journey
+- **Simplified Structure**: Folder-based states instead of complex scheduling
 
-1. **Documentation-First** - Changes must update docs
-2. **Single Source of Truth** - `docs/` is canonical
-3. **Continuous Sync** - Docs Agent maintains accuracy
-4. **Immutable Scratch** - Brainstorms are never edited
+## Troubleshooting
 
-### Documentation Structure
+### Post not showing in `/post`
+- Check filename date format: `YYYY-MM-DD-title.md`
+- Ensure file is in `content/scheduled/` folder
+- Verify date is today or earlier
 
-- `docs/product/` - Product requirements (PRDs)
-- `docs/tech/` - Technical documentation
-- `docs/guides/` - How-to guides
-- `docs/system-overview.md` - Architecture overview
-- `docs/INDEX.md` - Documentation navigation hub
-- `CHANGELOG.md` - Version history (root level)
+### Claude not maintaining story continuity
+- Check `content/config/history.md` has recent posts
+- Ensure history entries have clear summaries
+- Review tone.md reflects your current voice
 
-### Agent Operations Structure
-
-- `.agents/definitions/` - Full agent role definitions
-- `.agents/tasks/` - Task management system
-- `.agents/rules/` - Development rules (package manager, database, etc.)
-- `.agents/templates/` - Document templates
-
-## Example: Search Feature
-
-### Day 1: Planning
-
-```bash
-# Create PRD
-echo "# PRD: Product Search..." > docs/product/product-search.md
-
-# Design architecture
-/architect docs/product/product-search.md
-
-# Generate tasks
-/planner product-search
-```
-
-### Day 2-3: Development
-
-```bash
-# Parallel execution
-/developer frontend   # Terminal 1
-/developer backend    # Terminal 2
-/developer database   # Terminal 3
-```
-
-### Day 4: Validation
-
-```bash
-# Test and document
-/tester
-/docs-agent
-/pm status
-```
-
-## Best Practices
-
-### For Humans
-
-1. Write clear PRDs with specific requirements
-2. Review architecture before task generation
-3. Monitor task progress regularly
-4. Keep PRDs updated as requirements change
-
-### For Agents
-
-1. One task at a time
-2. Check dependencies first
-3. Update docs immediately
-4. Test before marking done
-
-## Integration
-
-### MCP Servers
-
-- **Context7** - Context management
-- **Browser Tools** - Web automation
-
-### CI/CD Hooks
-
-- Pre-commit documentation checks
-- Task status validation
-- Automated archival
-- Progress reporting
-
-## Quick Reference
-
-| Need            | Command                          | Creates                           |
-| --------------- | -------------------------------- | --------------------------------- |
-| Setup project   | `/setup`                         | Complete `docs/` structure        |
-| Design solution | `/architect docs/product/feature.md` | `scratch/feature-architecture.md` |
-| Create tasks    | `/planner feature`               | `.agents/tasks/todo/*.md`         |
-| Start coding    | `/developer backend`             | Moves task to `in-progress/`      |
-| Test feature    | `/tester`                        | Validates `done/` tasks           |
-| Update docs     | `/docs-agent`                    | Updates `docs/`                   |
-| Check progress  | `/pm status`                     | Progress report                   |
-
-## Migration from Simple Workflow
-
-If you're currently using the simple `progress.md` workflow:
-
-1. Create PRDs for active features
-2. Run architect on each PRD
-3. Use planner to generate tasks
-4. Continue with multi-agent workflow
-
-## Recent Optimizations
-
-This template has been optimized for:
-
-1. **Token Efficiency**: Agent command files reduced by ~80%
-2. **Clear Organization**: Agent operations separated from documentation
-3. **Modular Rules**: Individual rule files instead of monolithic RULES.md
-4. **Consistent Structure**: Both Claude and Cursor use the same agent definitions
-5. **Improved Navigation**: Simplified INDEX.md focused on documentation only
+### Workflow Issues
+- Verify CLAUDE_CODE_OAUTH_TOKEN is set correctly
+- Check GitHub Actions tab for workflow errors
+- Ensure PR has correct file path in `content/drafts/`
 
 ## Contributing
 
-To improve this template:
-
-1. Test agent interactions
-2. Keep commands simple
-3. Maintain clear separation of concerns
-4. Document new patterns
-5. Share successful workflows
+Feel free to submit issues and enhancement requests!
 
 ## License
 
-This template is provided as-is for use in your projects. Customize and adapt as
-needed.
-
----
-
-For detailed guides, see:
-
-- [Multi-Agent Workflow Guide](docs/guides/multi-agent-workflow.md)
-- [Agent Roles Reference](docs/guides/agent-roles.md)
-- [Task Management Guide](docs/guides/task-management.md)
-- [Example Workflow](docs/guides/example-workflow.md)
-- [Development Workflow](docs/guides/development-workflow.md)
+MIT License - see LICENSE file for details

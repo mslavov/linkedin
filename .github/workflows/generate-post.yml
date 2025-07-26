@@ -1,0 +1,62 @@
+name: Generate LinkedIn Post
+
+on:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  generate-post:
+    # Only run when issue has 'linkedin-post' or 'idea' label
+    if: |
+      (github.event.action == 'opened' && (contains(github.event.issue.labels.*.name, 'linkedin-post') || contains(github.event.issue.labels.*.name, 'idea'))) ||
+      (github.event.action == 'labeled' && (github.event.label.name == 'linkedin-post' || github.event.label.name == 'idea'))
+    
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate post content
+        id: generate
+        uses: anthropics/claude-code-action@beta
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          model: "claude-opus-4-20250514"
+          
+          direct_prompt: |
+            You are creating a LinkedIn post based on issue #${{ github.event.issue.number }}.
+            
+            Issue Title: ${{ github.event.issue.title }}
+            Issue Body: ${{ github.event.issue.body }}
+            
+            Please:
+            1. Read the context files in content/config/ (tone.md, best-practices.md, history.md)
+            2. Generate a LinkedIn post draft that maintains narrative continuity with recent posts
+            3. Create a new file in content/drafts/ with filename format: YYYY-MM-DD-brief-title.md
+            4. Include frontmatter with metadata (title, tags, priority, original_issue)
+            5. Write the post content following LinkedIn best practices
+            6. Create a new branch named 'post/issue-${{ github.event.issue.number }}'
+            7. Commit the draft and create a Pull Request
+            
+            The PR should:
+            - Reference the original issue (#${{ github.event.issue.number }})
+            - Include a brief explanation of narrative connections to previous posts
+            - Suggest optimal posting time based on content type
+          
+          allowed_tools: "Read,Write,Bash(git checkout -b *),Bash(git add *),Bash(git commit *),Bash(gh pr create *)"
+
+      - name: Link PR to Issue
+        if: success()
+        run: |
+          # Add comment to issue with link to PR
+          gh issue comment ${{ github.event.issue.number }} --body "🤖 Draft post has been generated! Review the PR to approve or request changes."
+        env:
+          GH_TOKEN: ${{ github.token }}

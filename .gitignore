@@ -1,1 +1,6 @@
 scratch/
+
+# LinkedIn automation
+**/*/.DS_Store
+.env
+.env.local

@@ -1,0 +1,90 @@
+name: Schedule Approved Post
+
+on:
+  pull_request:
+    types: [closed]
+    paths:
+      - "content/drafts/**/*.md"
+
+jobs:
+  schedule-post:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
+          fetch-depth: 0
+
+      - name: Move draft to scheduled
+        run: |
+          # Get the merged draft file
+          DRAFT_FILE=$(git diff --name-only HEAD~1 HEAD | grep "content/drafts/.*\.md" | head -1)
+          
+          if [ -z "$DRAFT_FILE" ]; then
+            echo "No draft file found in the merge"
+            exit 1
+          fi
+          
+          # Extract just the filename
+          FILENAME=$(basename "$DRAFT_FILE")
+          
+          # Move to scheduled folder
+          mv "$DRAFT_FILE" "content/scheduled/$FILENAME"
+          
+          # Commit the change
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Schedule post: $FILENAME"
+          git push
+          
+          echo "✅ Moved $FILENAME to scheduled folder"
+
+      - name: Extract issue number
+        id: extract_issue
+        run: |
+          # Try to extract from PR body
+          ISSUE_NUM=$(grep -oP '(?:Closes|Fixes|Resolves) #\K\d+' <<< "${{ github.event.pull_request.body }}" | head -1)
+          
+          # If not found in body, try PR title
+          if [ -z "$ISSUE_NUM" ]; then
+            ISSUE_NUM=$(grep -oP '#\K\d+' <<< "${{ github.event.pull_request.title }}" | head -1)
+          fi
+          
+          echo "issue_number=$ISSUE_NUM" >> $GITHUB_OUTPUT
+
+      - name: Update original issue
+        if: success() && steps.extract_issue.outputs.issue_number != ''
+        run: |
+          # Get the scheduled date from the latest commit message
+          SCHEDULED_INFO=$(git log -1 --pretty=%B | grep -oP 'Scheduled for \K[^\s]+' || echo "the next available slot")
+          
+          gh issue comment ${{ steps.extract_issue.outputs.issue_number }} \
+            --body "✅ Post has been approved and scheduled for publishing on $SCHEDULED_INFO!
+            
+            You can view the schedule at: [content/schedule.md](https://github.com/${{ github.repository }}/blob/main/content/schedule.md)"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Handle scheduling failure
+        if: failure()
+        run: |
+          gh issue create \
+            --title "Failed to schedule post from PR #${{ github.event.pull_request.number }}" \
+            --body "The scheduling workflow failed for PR #${{ github.event.pull_request.number }}.
+            
+            **PR Title**: ${{ github.event.pull_request.title }}
+            **Error**: Check the [workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.
+            
+            Please manually update the schedule or re-run the workflow." \
+            --label "bug" \
+            --label "automation"
+        env:
+          GH_TOKEN: ${{ github.token }}
