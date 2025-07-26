@@ -40,7 +40,7 @@ jobs:
             Please:
             1. Read the context files in content/config/ (tone.md, best-practices.md, history.md)
             2. Generate a LinkedIn post draft that maintains narrative continuity with recent posts
-            3. Create a new file in content/drafts/ with filename format: YYYY-MM-DD-brief-title.md
+            3. Create a new file in content/drafts/ with filename format: brief-descriptive-title.md (no date prefix)
             4. Include frontmatter with metadata (title, tags, priority, original_issue)
             5. Write the post content following LinkedIn best practices
             6. Create a new branch named 'post/issue-${{ github.event.issue.number }}'

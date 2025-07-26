@@ -23,6 +23,7 @@ jobs:
           fetch-depth: 0
 
       - name: Move draft to scheduled
+        id: move_draft
         run: |
           # Get the merged draft file
           DRAFT_FILE=$(git diff --name-only HEAD~1 HEAD | grep "content/drafts/.*\.md" | head -1)
@@ -38,14 +39,59 @@ jobs:
           # Move to scheduled folder
           mv "$DRAFT_FILE" "content/scheduled/$FILENAME"
           
-          # Commit the change
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Schedule post: $FILENAME"
-          git push
+          # Set outputs for Claude scheduling
+          echo "filename=$FILENAME" >> $GITHUB_OUTPUT
+          echo "filepath=content/scheduled/$FILENAME" >> $GITHUB_OUTPUT
           
           echo "✅ Moved $FILENAME to scheduled folder"
+
+      - name: Update schedule with Claude
+        uses: anthropics/claude-code-action@beta
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          model: "claude-opus-4-20250514"
+          
+          direct_prompt: |
+            You need to update the content/schedule.json file to add a new scheduled post.
+            
+            New post details:
+            - File: content/scheduled/${{ steps.move_draft.outputs.filename }}
+            - PR Number: ${{ github.event.pull_request.number }}
+            - PR Title: ${{ github.event.pull_request.title }}
+            
+            Please:
+            1. Read the current content/schedule.json file
+            2. Read the new post file to understand its content and priority
+            3. Analyze the current schedule to find the optimal slot
+            4. Consider these scheduling rules:
+               - High priority posts get the next available slot
+               - Normal priority posts should be spaced at least 24 hours apart
+               - Low priority posts can be scheduled further out
+               - Avoid scheduling on weekends unless it's high priority
+            5. Add the new post to the schedule.json with a unique ID
+            6. Update the last_updated timestamp
+            7. Commit the updated schedule.json
+            
+            The new entry should include:
+            - id: Generate from the filename (e.g., "startup-lessons-2025")
+            - file: The full path to the file
+            - scheduled_date: The optimal date in YYYY-MM-DD format
+            - priority: Extract from the post's frontmatter
+            - original_issue: Extract from the post's frontmatter
+            - status: "scheduled"
+          
+          allowed_tools: "Read,Edit,Bash(git add *),Bash(git commit *)"
+
+      - name: Push schedule update
+        id: push_schedule
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git push
+          
+          # Extract scheduled date from commit message
+          SCHEDULED_DATE=$(git log -1 --pretty=%B | grep -oP 'scheduled for \K\d{4}-\d{2}-\d{2}' || echo "the next available slot")
+          echo "scheduled_date=$SCHEDULED_DATE" >> $GITHUB_OUTPUT
 
       - name: Extract issue number
         id: extract_issue
@@ -63,13 +109,10 @@ jobs:
       - name: Update original issue
         if: success() && steps.extract_issue.outputs.issue_number != ''
         run: |
-          # Get the scheduled date from the latest commit message
-          SCHEDULED_INFO=$(git log -1 --pretty=%B | grep -oP 'Scheduled for \K[^\s]+' || echo "the next available slot")
-          
           gh issue comment ${{ steps.extract_issue.outputs.issue_number }} \
-            --body "✅ Post has been approved and scheduled for publishing on $SCHEDULED_INFO!
+            --body "✅ Post has been approved and scheduled for publishing on ${{ steps.push_schedule.outputs.scheduled_date }}!
             
-            You can view the schedule at: [content/schedule.md](https://github.com/${{ github.repository }}/blob/main/content/schedule.md)"
+            You can view the schedule at: [content/schedule.json](https://github.com/${{ github.repository }}/blob/main/content/schedule.json)"
         env:
           GH_TOKEN: ${{ github.token }}
 

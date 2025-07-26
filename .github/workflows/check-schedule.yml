@@ -1,0 +1,64 @@
+name: Check and Update Schedule
+
+on:
+  schedule:
+    # Run daily at 10 AM UTC
+    - cron: '0 10 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  check-schedule:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Check for missed posts and reschedule
+        uses: anthropics/claude-code-action@beta
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          model: "claude-opus-4-20250514"
+          
+          direct_prompt: |
+            Check the LinkedIn posting schedule and handle any missed posts.
+            
+            Today's date: $(date +%Y-%m-%d)
+            
+            Please:
+            1. Read content/schedule.json to see the current schedule
+            2. Check if yesterday's scheduled post (if any) exists in content/published/
+            3. If a post was missed (scheduled but not published):
+               - Reschedule ALL posts by shifting dates forward by one day
+               - Skip weekends when rescheduling unless the post is high priority
+               - Update the schedule.json file
+               - Create a commit with message "Reschedule posts: missed post on YYYY-MM-DD"
+            4. Also check for:
+               - Posts scheduled too far in the future (>30 days)
+               - Multiple posts scheduled on the same day
+               - Posts with missing files
+            5. If any issues are found, create a GitHub issue to notify about them
+            
+            Important: Only reschedule if there was actually a missed post. Don't reschedule unnecessarily.
+          
+          allowed_tools: "Read,LS,Edit,Bash(git add *),Bash(git commit *),Bash(git push),Bash(gh issue create *)"
+
+      - name: Report status
+        if: always()
+        run: |
+          echo "Schedule check completed at $(date)"
+          
+          # Check if any commits were made (indicating a reschedule)
+          if git log --oneline -1 | grep -q "Reschedule posts"; then
+            echo "⚠️ Posts were rescheduled due to a missed publication"
+          else
+            echo "✅ Schedule is up to date"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
