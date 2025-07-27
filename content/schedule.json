@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-01-27T18:00:00Z",
+  "last_updated": "2025-01-27T19:15:00Z",
   "posts": [
     {
       "id": "ai-eating-its-own-dogfood",
@@ -8,6 +8,14 @@
       "scheduled_date": "2025-01-28",
       "priority": "high",
       "original_issue": 2,
+      "status": "scheduled"
+    },
+    {
+      "id": "babysitting-claude-code",
+      "file": "content/scheduled/babysitting-claude-code.md",
+      "scheduled_date": "2025-01-29",
+      "priority": "normal",
+      "original_issue": 6,
       "status": "scheduled"
     }
   ]
