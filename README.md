@@ -112,6 +112,7 @@ content/
 ### Claude Slash Commands
 
 - `/post` - Get today's scheduled post for manual publishing
+- `/schedule-post` - Schedule approved posts from drafts folder
 - `/setup` - Initial project setup (if needed)
 
 ### Post States
