@@ -117,6 +117,12 @@ jobs:
           
           allowed_tools: "Read,Edit,Bash(git add *),Bash(git commit *)"
 
+      - name: Checkout main branch
+        run: |
+          echo "Ensuring we're on the main branch for pushing..."
+          git checkout main
+          echo "Successfully switched to main branch"
+
       - name: Push schedule update
         id: push_schedule
         run: |
