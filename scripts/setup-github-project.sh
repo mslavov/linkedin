@@ -20,46 +20,64 @@ if ! gh auth status &> /dev/null; then
     exit 1
 fi
 
+# Check for required scopes
+echo "🔐 Checking GitHub CLI permissions..."
+if ! gh auth status 2>&1 | grep -q "project"; then
+    echo "⚠️  Your GitHub token is missing required 'project' scope."
+    echo "   Please run: gh auth refresh -s project,read:project"
+    echo ""
+    echo "   After refreshing auth, run this script again."
+    exit 1
+fi
+
 # Get repository information
 REPO=$(gh repo view --json nameWithOwner -q .nameWithOwner)
+OWNER=$(echo $REPO | cut -d'/' -f1)
 echo "📦 Repository: $REPO"
+echo "👤 Owner: $OWNER"
 
 # Create the project
 echo "📋 Creating GitHub Project..."
-PROJECT_URL=$(gh project create --title "LinkedIn Content Pipeline" \
-  --body "Kanban board for managing LinkedIn post creation workflow from idea to publication" \
-  --format json | jq -r .url)
+PROJECT_OUTPUT=$(gh project create --owner "$OWNER" --title "LinkedIn Content Pipeline" --format json)
 
-if [ -z "$PROJECT_URL" ]; then
+if [ -z "$PROJECT_OUTPUT" ]; then
     echo "❌ Failed to create project"
     exit 1
 fi
 
+PROJECT_URL=$(echo "$PROJECT_OUTPUT" | jq -r .url)
+PROJECT_ID=$(echo "$PROJECT_OUTPUT" | jq -r .id)
+PROJECT_NUMBER=$(echo "$PROJECT_OUTPUT" | jq -r .number)
+
 echo "✅ Project created: $PROJECT_URL"
-PROJECT_NUMBER=$(echo $PROJECT_URL | grep -oE '[0-9]+$')
+echo "   Project Number: $PROJECT_NUMBER"
 
 # Create custom fields
 echo "🔧 Creating custom fields..."
 
 # Priority field
 gh project field-create $PROJECT_NUMBER \
+  --owner "$OWNER" \
   --name "Priority" \
   --data-type "SINGLE_SELECT" \
   --single-select-options "High,Normal,Low" || echo "Priority field might already exist"
 
 # Content Type field  
 gh project field-create $PROJECT_NUMBER \
+  --owner "$OWNER" \
   --name "Content Type" \
   --data-type "SINGLE_SELECT" \
   --single-select-options "Story,Tips,Announcement,Technical,Thought Leadership" || echo "Content Type field might already exist"
 
 # Scheduled Date field
 gh project field-create $PROJECT_NUMBER \
+  --owner "$OWNER" \
   --name "Scheduled Date" \
   --data-type "DATE" || echo "Scheduled Date field might already exist"
 
 # Engagement Score field
 gh project field-create $PROJECT_NUMBER \
+  --owner "$OWNER" \
   --name "Engagement Score" \
   --data-type "NUMBER" || echo "Engagement Score field might already exist"
 
@@ -95,6 +113,7 @@ gh api graphql -f query='
 
 # Create workflow for auto-adding issues
 echo "📝 Creating auto-add workflow..."
+mkdir -p .github/workflows
 cat > .github/workflows/add-to-project.yml << 'EOF'
 name: Add LinkedIn Issues to Project
 
@@ -129,13 +148,29 @@ echo "
 📋 Project URL: $PROJECT_URL
 
 Next steps:
-1. Visit the project URL to configure board columns
-2. Add existing linkedin-post issues to the project manually
-3. New issues with 'linkedin-post' or 'idea' labels will be added automatically
-4. Customize automation rules in the project settings
+1. Visit the project URL to configure board columns:
+   - 📝 Ideas (new issues)
+   - 🚧 In Progress (PR created)
+   - 👀 Review (PR open)
+   - 📅 Scheduled (PR merged)
+   - ✅ Published (manually posted)
+   - 📊 Archive (closed with metrics)
 
-To add all existing issues to the project:
-gh issue list --label linkedin-post --json number --jq '.[].number' | while read issue; do
-  gh project item-add $PROJECT_NUMBER --owner $(echo $REPO | cut -d'/' -f1) --url https://github.com/$REPO/issues/\$issue
-done
+2. Add existing linkedin-post issues to the project:
+   gh issue list --label linkedin-post --json number --jq '.[].number' | while read issue; do
+     gh project item-add $PROJECT_NUMBER --owner $OWNER --url https://github.com/$REPO/issues/\$issue
+   done
+
+3. Configure project automation in the UI:
+   - Auto-move cards based on issue/PR status
+   - Archive completed items after 30 days
+
+4. The add-to-project.yml workflow will automatically add new issues
+
+---
+
+If you encountered permission errors, please run:
+gh auth refresh -s project,read:project
+
+Then run this script again.
 "
