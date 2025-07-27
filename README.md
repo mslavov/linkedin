@@ -11,6 +11,7 @@ This system automates the entire LinkedIn content creation pipeline except for t
 - 📅 **Smart Scheduling**: Posts organized by date in a simple folder structure
 - 🎯 **Manual Publishing**: You maintain full control over what gets posted
 - 📖 **Story Continuity**: Each post builds on previous content narratives
+- 📊 **Visual Pipeline**: GitHub Project board tracks content from idea to published
 
 ## Quick Start
 
@@ -30,6 +31,10 @@ git clone https://github.com/yourusername/linkedin-automation
 
 # Create required folders (if not present)
 mkdir -p content/drafts content/scheduled content/published
+
+# Optional: Set up GitHub Project for visual pipeline tracking
+./scripts/setup-github-project.sh
+# Note: Requires gh auth refresh -s project,read:project
 
 # IMPORTANT: Workflow Restriction
 # The generate-post workflow currently only runs for issues created by 'mslavov'
@@ -61,12 +66,25 @@ mkdir -p content/drafts content/scheduled content/published
 
 ```mermaid
 graph LR
-    A[GitHub Issue] -->|Auto| B[Claude Draft]
-    B -->|Auto| C[Pull Request]
-    C -->|Manual Review| D[Scheduled Post]
-    D -->|/post command| E[Manual Publishing]
-    E -->|Update| F[Published + History]
+    A[GitHub Issue] -->|Label| B[🤖 Generating]
+    B -->|Auto| C[Claude Draft]
+    C -->|Auto| D[Pull Request]
+    D -->|Status: Review| E[Manual Edits]
+    E -->|Merge| F[📅 Scheduled]
+    F -->|/post| G[Manual Publishing]
+    G -->|Status: Published| H[✅ Complete]
+    
+    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style F fill:#9f9,stroke:#333,stroke-width:2px
+    style H fill:#99f,stroke:#333,stroke-width:2px
 ```
+
+### GitHub Project Integration
+
+The system includes optional GitHub Project integration for visual pipeline management:
+- **Automated Status Updates**: Issues move through columns automatically
+- **Real-time Tracking**: See where each piece of content is in the pipeline
+- **Kanban Board**: Visual representation of your content workflow
 
 ## File Structure
 
@@ -107,6 +125,33 @@ content/
 - No automated posting to LinkedIn
 - No API credentials or ToS concerns
 
+## GitHub Project Management (Optional)
+
+### Setup
+```bash
+# First, authenticate with required permissions
+gh auth refresh -s project,read:project
+
+# Run the setup script
+./scripts/setup-github-project.sh
+```
+
+### Features
+- **Visual Pipeline**: Kanban board showing all content stages
+- **Automatic Movement**: Issues move between columns based on actions
+- **Custom Fields**: Track priority, content type, and engagement metrics
+- **No Manual Updates**: Status changes happen automatically via workflows
+
+### Project Board Columns
+1. **📝 Ideas** - New issues without labels
+2. **🤖 Generating** - Workflow is creating content
+3. **👀 Review** - PR is open for manual edits
+4. **📅 Scheduled** - PR merged, awaiting publication
+5. **✅ Published** - Manually posted to LinkedIn
+6. **📊 Archive** - Closed with metrics
+
+For detailed setup instructions, see `docs/github-project-setup.md`.
+
 ## Commands
 
 ### Claude Slash Commands
@@ -117,9 +162,12 @@ content/
 
 ### Post States
 
-1. **Draft** → Created by Claude in `content/drafts/`
-2. **Scheduled** → Approved and moved to `content/scheduled/`
-3. **Published** → Manually posted and moved to `content/published/`
+1. **Ideas** → Unlabeled issues (brainstorming)
+2. **Generating** → Workflow creating content (minutes)
+3. **Review** → PR open for edits in `content/drafts/`
+4. **Scheduled** → PR merged, moved to `content/scheduled/`
+5. **Published** → Manually posted, moved to `content/published/`
+6. **Archive** → Issue closed with engagement metrics
 
 ## Daily Publishing Routine
 
@@ -166,13 +214,13 @@ Your post content here...
 
 ## Recent Updates
 
+- **GitHub Project Integration**: Visual kanban board for content pipeline
+- **Automated Status Tracking**: Issues move through project columns automatically
+- **Issue Lifecycle Management**: Complete tracking from idea to published
 - **Schedule Management**: New `schedule.json` file for tracking scheduled posts
-- **Simplified Workflows**: Removed automated error handling for cleaner operations
-- **Manual Scheduling**: Schedule posts via slash command for better control
 - **Comprehensive History**: 7 years of LinkedIn posts analyzed and documented
 - **Manual Workflow**: Full control over publishing, no API needed
 - **Enhanced Narrative**: Claude understands your complete professional journey
-- **Simplified Structure**: Folder-based states instead of complex scheduling
 
 ## Troubleshooting
 

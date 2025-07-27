@@ -97,6 +97,18 @@ An intelligent LinkedIn content automation system that transforms GitHub issues 
 - **No Complex Logic**: Just folder-based states
 - **Clear Workflow**: draft → scheduled → published
 
+### 5. Project Board Automation
+
+**Locations**: 
+- `.github/workflows/generate-post.yml` - Updates to Generating/Review
+- `.github/workflows/pr-merged-to-scheduled.yml` - Updates to Scheduled
+- `.github/workflows/close-published-issue.yml` - Updates to Published
+
+- **Real-time Status**: Project board reflects actual workflow state
+- **Automated Movement**: No manual card management needed
+- **GraphQL Integration**: Direct API updates for reliability
+- **Visual Pipeline**: Kanban board shows content at each stage
+
 ---
 
 ## Data Flow
@@ -158,6 +170,9 @@ Your post content here...
 - **File-Based Workflow**: Simple draft → scheduled → published folder structure
 - **Manual Publishing**: `/post` command for daily publishing routine
 - **History Tracking**: Automatic updates to maintain narrative continuity
+- **GitHub Project Integration**: Visual kanban board with automated status updates
+- **Complete Issue Lifecycle**: Tracks content from idea through publication
+- **Automated Status Management**: Workflows update project board in real-time
 
 ### 🎯 Design Decisions
 

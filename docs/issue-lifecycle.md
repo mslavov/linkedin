@@ -98,20 +98,36 @@ Add these fields to track additional metadata:
 
 ## Workflow Automations
 
-### Issue Auto-Close Workflow
+### Status Update Automations
 
-Located in `.github/workflows/close-published-issue.yml`, this workflow:
-- Triggers when content is published via `/post` command
-- Adds publication confirmation to the issue
-- Closes the issue with completion status
-- Updates project card status
+The system includes several workflows that automatically update project status:
 
-### Project Automation
+#### 1. **Generate Post Workflow** (`.github/workflows/generate-post.yml`)
+- Sets status to "🤖 Generating" when issue is labeled
+- Sets status to "👀 Review" after PR is created
+- Uses GraphQL API for real-time updates
 
-The `.github/workflows/add-to-project.yml` workflow:
-- Automatically adds new issues to the project
-- Assigns to appropriate column based on labels
-- Updates card status as issue progresses
+#### 2. **PR Merge Workflow** (`.github/workflows/pr-merged-to-scheduled.yml`)
+- Triggers when PR is merged to main
+- Sets status to "📅 Scheduled"
+- Adds comment to issue confirming scheduling
+
+#### 3. **Close Published Issue** (`.github/workflows/close-published-issue.yml`)
+- Triggered by `/post` command after publishing
+- Sets status to "✅ Published" 
+- Closes issue with publication confirmation
+- Supports optional engagement metrics
+
+#### 4. **Add to Project** (`.github/workflows/add-to-project.yml`)
+- Automatically adds issues with 'linkedin-post' label to project
+- Initial status set to "📝 Ideas" by project automation
+
+### Project Automation Settings
+
+Configure these in your GitHub Project settings:
+- **Item added to project** → Set Status to "📝 Ideas"
+- **Item closed** → Set Status to "📊 Archive"
+- **Auto-archive** → After 30 days in Archive
 
 ---
 
