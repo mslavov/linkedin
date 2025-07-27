@@ -86,7 +86,7 @@ jobs:
             3. Create a new file in content/drafts/ with filename format: brief-descriptive-title.md (no date prefix)
             4. Include frontmatter with metadata (title, tags, priority, original_issue)
             5. Write the post content following LinkedIn best practices
-            6. Create a new branch named 'post/issue-${{ github.event.issue.number }}'
+            6. Create a new branch named 'claude/issue-${{ github.event.issue.number }}'
             7. Commit the draft with message: "Add LinkedIn post draft from issue #${{ github.event.issue.number }}"
             8. Push the branch to origin
             9. Create a Pull Request using EXACTLY this command:
@@ -103,7 +103,7 @@ jobs:
           sleep 5
           
           # Check if PR was created for the branch
-          PR_URL=$(gh pr list --head "post/issue-${{ github.event.issue.number }}" --json url --jq '.[0].url' || echo "")
+          PR_URL=$(gh pr list --head "claude/issue-${{ github.event.issue.number }}" --json url --jq '.[0].url' || echo "")
           
           if [ -z "$PR_URL" ]; then
             echo "PR was not created by Claude. Creating it now..."
@@ -123,9 +123,9 @@ jobs:
               - LinkedIn best practices
               
               Closes #${{ github.event.issue.number }}" \
-              --head "post/issue-${{ github.event.issue.number }}"
+              --head "claude/issue-${{ github.event.issue.number }}"
             
-            PR_URL=$(gh pr list --head "post/issue-${{ github.event.issue.number }}" --json url --jq '.[0].url')
+            PR_URL=$(gh pr list --head "claude/issue-${{ github.event.issue.number }}" --json url --jq '.[0].url')
           fi
           
           echo "PR_URL=$PR_URL" >> $GITHUB_ENV

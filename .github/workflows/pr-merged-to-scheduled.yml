@@ -8,7 +8,7 @@ on:
 
 jobs:
   update-to-scheduled:
-    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'post/issue-')
+    if: github.event.pull_request.merged == true && (startsWith(github.event.pull_request.head.ref, 'post/issue-') || startsWith(github.event.pull_request.head.ref, 'claude/issue-'))
     runs-on: ubuntu-latest
     permissions:
       issues: read
@@ -19,7 +19,8 @@ jobs:
         id: extract
         run: |
           BRANCH="${{ github.event.pull_request.head.ref }}"
-          ISSUE_NUMBER=$(echo $BRANCH | sed 's/post\/issue-//')
+          # Handle both post/issue-* and claude/issue-* patterns
+          ISSUE_NUMBER=$(echo $BRANCH | sed -E 's/(post|claude)\/issue-//')
           echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
           echo "Extracted issue number: $ISSUE_NUMBER"
 
