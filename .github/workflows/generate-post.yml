@@ -22,6 +22,51 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Update project status to Generating
+        run: |
+          # Get the project item ID for this issue
+          ITEM_ID=$(gh api graphql -f query='
+            query($issue: Int!, $owner: String!, $repo: String!) {
+              repository(owner: $owner, name: $repo) {
+                issue(number: $issue) {
+                  projectItems(first: 10) {
+                    nodes {
+                      id
+                      project {
+                        number
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ' -F issue=${{ github.event.issue.number }} -F owner="${{ github.repository_owner }}" -F repo="${{ github.event.repository.name }}" --jq '.data.repository.issue.projectItems.nodes[] | select(.project.number == 3) | .id')
+          
+          if [ -n "$ITEM_ID" ]; then
+            echo "Found project item: $ITEM_ID"
+            # Update status to Generating
+            gh api graphql -f query='
+              mutation($itemId: ID!, $statusId: String!) {
+                updateProjectV2ItemFieldValue(
+                  input: {
+                    projectId: "PVT_kwHOACRKHs4A-6uX"
+                    itemId: $itemId
+                    fieldId: "PVTSSF_lAHOACRKHs4A-6uXzgyLTcw"
+                    value: { singleSelectOptionId: $statusId }
+                  }
+                ) {
+                  projectV2Item {
+                    id
+                  }
+                }
+              }
+            ' -f itemId="$ITEM_ID" -f statusId="71fa3682"
+          else
+            echo "Issue not found in project"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Generate post content
         id: generate
         uses: anthropics/claude-code-action@beta
@@ -95,6 +140,50 @@ jobs:
             gh issue comment ${{ github.event.issue.number }} --body "🤖 Draft post has been generated! Review the PR: $PR_URL"
           else
             gh issue comment ${{ github.event.issue.number }} --body "🤖 Draft post has been generated but PR creation failed. Please check the workflow logs."
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Update project status to Review
+        if: success() && env.PR_URL != ''
+        run: |
+          # Get the project item ID for this issue
+          ITEM_ID=$(gh api graphql -f query='
+            query($issue: Int!, $owner: String!, $repo: String!) {
+              repository(owner: $owner, name: $repo) {
+                issue(number: $issue) {
+                  projectItems(first: 10) {
+                    nodes {
+                      id
+                      project {
+                        number
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ' -F issue=${{ github.event.issue.number }} -F owner="${{ github.repository_owner }}" -F repo="${{ github.event.repository.name }}" --jq '.data.repository.issue.projectItems.nodes[] | select(.project.number == 3) | .id')
+          
+          if [ -n "$ITEM_ID" ]; then
+            echo "Updating project item to Review status"
+            # Update status to Review
+            gh api graphql -f query='
+              mutation($itemId: ID!, $statusId: String!) {
+                updateProjectV2ItemFieldValue(
+                  input: {
+                    projectId: "PVT_kwHOACRKHs4A-6uX"
+                    itemId: $itemId
+                    fieldId: "PVTSSF_lAHOACRKHs4A-6uXzgyLTcw"
+                    value: { singleSelectOptionId: $statusId }
+                  }
+                ) {
+                  projectV2Item {
+                    id
+                  }
+                }
+              }
+            ' -f itemId="$ITEM_ID" -f statusId="47fc9ee4"
           fi
         env:
           GH_TOKEN: ${{ github.token }}

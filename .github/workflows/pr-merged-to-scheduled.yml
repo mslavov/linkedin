@@ -1,0 +1,78 @@
+name: Update Project Status on PR Merge
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  update-to-scheduled:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'post/issue-')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: read
+      contents: read
+    
+    steps:
+      - name: Extract issue number from branch name
+        id: extract
+        run: |
+          BRANCH="${{ github.event.pull_request.head.ref }}"
+          ISSUE_NUMBER=$(echo $BRANCH | sed 's/post\/issue-//')
+          echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
+          echo "Extracted issue number: $ISSUE_NUMBER"
+
+      - name: Update project status to Scheduled
+        run: |
+          # Get the project item ID for this issue
+          ITEM_ID=$(gh api graphql -f query='
+            query($issue: Int!, $owner: String!, $repo: String!) {
+              repository(owner: $owner, name: $repo) {
+                issue(number: $issue) {
+                  projectItems(first: 10) {
+                    nodes {
+                      id
+                      project {
+                        number
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ' -F issue=${{ steps.extract.outputs.issue_number }} -F owner="${{ github.repository_owner }}" -F repo="${{ github.event.repository.name }}" --jq '.data.repository.issue.projectItems.nodes[] | select(.project.number == 3) | .id')
+          
+          if [ -n "$ITEM_ID" ]; then
+            echo "Updating project item to Scheduled status"
+            # Update status to Scheduled
+            gh api graphql -f query='
+              mutation($itemId: ID!, $statusId: String!) {
+                updateProjectV2ItemFieldValue(
+                  input: {
+                    projectId: "PVT_kwHOACRKHs4A-6uX"
+                    itemId: $itemId
+                    fieldId: "PVTSSF_lAHOACRKHs4A-6uXzgyLTcw"
+                    value: { singleSelectOptionId: $statusId }
+                  }
+                ) {
+                  projectV2Item {
+                    id
+                  }
+                }
+              }
+            ' -f itemId="$ITEM_ID" -f statusId="f218c6ef"
+            
+            echo "✅ Project status updated to Scheduled"
+          else
+            echo "Issue not found in project"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Add comment to issue
+        run: |
+          gh issue comment ${{ steps.extract.outputs.issue_number }} \
+            --body "📅 Post has been scheduled! The PR has been merged and the content is now in the scheduled queue."
+        env:
+          GH_TOKEN: ${{ github.token }}

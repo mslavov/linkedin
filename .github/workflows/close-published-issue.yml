@@ -28,6 +28,51 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Update project status to Published
+        run: |
+          # Get the project item ID for this issue
+          ITEM_ID=$(gh api graphql -f query='
+            query($issue: Int!, $owner: String!, $repo: String!) {
+              repository(owner: $owner, name: $repo) {
+                issue(number: $issue) {
+                  projectItems(first: 10) {
+                    nodes {
+                      id
+                      project {
+                        number
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ' -F issue=${{ inputs.issue_number }} -F owner="${{ github.repository_owner }}" -F repo="${{ github.event.repository.name }}" --jq '.data.repository.issue.projectItems.nodes[] | select(.project.number == 3) | .id')
+          
+          if [ -n "$ITEM_ID" ]; then
+            echo "Updating project item to Published status"
+            # Update status to Published
+            gh api graphql -f query='
+              mutation($itemId: ID!, $statusId: String!) {
+                updateProjectV2ItemFieldValue(
+                  input: {
+                    projectId: "PVT_kwHOACRKHs4A-6uX"
+                    itemId: $itemId
+                    fieldId: "PVTSSF_lAHOACRKHs4A-6uXzgyLTcw"
+                    value: { singleSelectOptionId: $statusId }
+                  }
+                ) {
+                  projectV2Item {
+                    id
+                  }
+                }
+              }
+            ' -f itemId="$ITEM_ID" -f statusId="eb4dcd9a"
+          else
+            echo "Issue not found in project"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Close issue with publication confirmation
         run: |
           COMMENT_BODY="🎉 Post has been successfully published to LinkedIn!
