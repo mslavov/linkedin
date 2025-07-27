@@ -1,5 +1,14 @@
 {
   "version": "1.0",
-  "last_updated": "2025-01-26T10:00:00Z",
-  "posts": []
+  "last_updated": "2025-01-27T18:00:00Z",
+  "posts": [
+    {
+      "id": "ai-eating-its-own-dogfood",
+      "file": "content/scheduled/ai-eating-its-own-dogfood.md",
+      "scheduled_date": "2025-01-28",
+      "priority": "high",
+      "original_issue": 2,
+      "status": "scheduled"
+    }
+  ]
 }
