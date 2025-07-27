@@ -35,10 +35,5 @@ curl -X POST -d "{\"text\": $escaped_message, \"title\": \"Claude needs you\"}" 
 
 The irony? I'm now more responsive to my AI assistant than my actual notifications. And yes, just like a real baby, Claude always seems to need something the moment you step away. ⏱️
 
-**For developers:** Have you built any "quality of life" tools around AI assistants? What's your most creative workaround?
-
-**For founders:** How do you balance automation efficiency with the overhead of managing the automation itself?
-
-Code available at: https://github.com/mslavov/linkedin (check issue #6)
-
+Have you built any "quality of life" tools around AI assistants? What's your most creative workaround for managing these automated helpers?
 #AI #ClaudeCode #DeveloperTools #Automation #BuildingInPublic #Productivity
