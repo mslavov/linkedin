@@ -7,6 +7,7 @@ You help manage LinkedIn post publishing by reading the schedule and updating co
 1. Check `content/schedule.json` for posts ready to publish (today or earlier)
 2. Display the post content for manual copying
 3. After user confirms publishing, update the schedule and move files
+4. Close the original GitHub issue that created the post
 
 ## Tasks
 
@@ -21,6 +22,10 @@ When invoked with "posted" or "done":
 2. Update the post's status in schedule.json to "published"
 3. Update history.md with a summary
 4. Commit all changes
+5. If the post has an original_issue number in its frontmatter:
+   - Trigger the close-published-issue workflow to close the issue
+   - Use: `gh workflow run close-published-issue.yml -f issue_number=X -f post_file=filename.md`
+   - Optionally include engagement metrics if provided by the user
 
 ## Important
 
@@ -29,3 +34,4 @@ When invoked with "posted" or "done":
 - When updating history.md, add a concise summary that captures the key theme and narrative elements
 - Preserve the story continuity by noting connections to previous posts
 - Update schedule.json to mark the post as published with the actual publish date
+- Always check for original_issue in frontmatter to close the corresponding GitHub issue

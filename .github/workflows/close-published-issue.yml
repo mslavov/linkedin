@@ -1,0 +1,65 @@
+name: Close Published Issue
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number to close after publishing'
+        required: true
+        type: string
+      post_file:
+        description: 'Published post filename'
+        required: true
+        type: string
+      engagement_metrics:
+        description: 'Optional engagement metrics (likes, comments, shares)'
+        required: false
+        type: string
+        default: ''
+
+jobs:
+  close-issue:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Close issue with publication confirmation
+        run: |
+          COMMENT_BODY="🎉 Post has been successfully published to LinkedIn!
+          
+          **Published File**: \`${{ inputs.post_file }}\`
+          **Status**: ✅ Published
+          **Date**: $(date +'%Y-%m-%d %H:%M:%S UTC')
+          "
+          
+          # Add engagement metrics if provided
+          if [ -n "${{ inputs.engagement_metrics }}" ]; then
+            COMMENT_BODY="$COMMENT_BODY
+          
+          **Engagement Metrics**: ${{ inputs.engagement_metrics }}"
+          fi
+          
+          COMMENT_BODY="$COMMENT_BODY
+          
+          ---
+          This issue is now closed as the content has been successfully published."
+          
+          # Add comment to issue
+          gh issue comment ${{ inputs.issue_number }} --body "$COMMENT_BODY"
+          
+          # Close the issue
+          gh issue close ${{ inputs.issue_number }} --reason completed
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Update project card (if exists)
+        continue-on-error: true
+        run: |
+          # This step will update the project card status to "Published"
+          # when GitHub Projects are set up
+          echo "Project card update will be implemented when project is created"

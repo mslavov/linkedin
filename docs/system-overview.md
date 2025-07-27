@@ -86,6 +86,7 @@ An intelligent LinkedIn content automation system that transforms GitHub issues 
 - **Manual Control**: Copy and paste to LinkedIn manually
 - **Status Tracking**: Mark posts as published after posting
 - **History Updates**: Automatically updates history.md for continuity
+- **Issue Closing**: Automatically closes original issue after publishing
 
 ### 4. Schedule Management
 

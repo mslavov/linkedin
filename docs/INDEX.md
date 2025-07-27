@@ -22,6 +22,7 @@ A Claude-powered system that transforms GitHub issues into story-connected Linke
 ## 🔧 Technical
 - [`tech/api-reference.md`](tech/api-reference.md) - GitHub Actions workflows and Claude integration
 - [`tech/storage-reference.md`](tech/storage-reference.md) - Folder-based workflow and file organization
+- [`issue-lifecycle.md`](issue-lifecycle.md) - Issue lifecycle management and GitHub Projects setup
 
 ## 🎆 Getting Started
 
