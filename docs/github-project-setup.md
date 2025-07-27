@@ -40,12 +40,12 @@ If you prefer to set up the project manually or the script fails:
 ### 2. Configure Columns
 
 Create these columns in order:
-- 📝 Ideas
-- 🚧 In Progress
-- 👀 Review
-- 📅 Scheduled
-- ✅ Published
-- 📊 Archive
+- 📝 Ideas (unlabeled issues)
+- 🤖 Generating (workflow running)
+- 👀 Review (PR open for edits)
+- 📅 Scheduled (PR merged)
+- ✅ Published (posted to LinkedIn)
+- 📊 Archive (closed with metrics)
 
 ### 3. Add Custom Fields
 
@@ -94,10 +94,10 @@ Replace `YOUR_PROJECT_URL_HERE` with your actual project URL.
 In the project settings, set up these automations:
 
 1. **When issues are opened** → Move to "Ideas"
-2. **When PRs are opened** → Move to "In Progress"
-3. **When PRs have activity** → Move to "Review"
-4. **When PRs are merged** → Move to "Scheduled"
-5. **When issues are closed** → Move to "Published"
+2. **When 'linkedin-post' label added** → Move to "Generating"
+3. **When PR is created (linked to issue)** → Move to "Review"
+4. **When PR is merged** → Move to "Scheduled"
+5. **When issue is closed** → Move to "Published"
 
 ### 6. Add Existing Issues
 

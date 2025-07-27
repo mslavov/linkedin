@@ -89,11 +89,11 @@ echo "📊 Creating project views..."
 # The default view is already a board view, we'll update it
 # Note: GitHub CLI doesn't support creating/modifying views directly yet
 echo "ℹ️  Please manually configure the board columns in the GitHub UI:"
-echo "   1. 📝 Ideas (new issues)"
-echo "   2. 🚧 In Progress (PR created)"
-echo "   3. 👀 Review (PR open)"
+echo "   1. 📝 Ideas (unlabeled issues)"
+echo "   2. 🤖 Generating (workflow running)"
+echo "   3. 👀 Review (PR open for edits)"
 echo "   4. 📅 Scheduled (PR merged)"
-echo "   5. ✅ Published (manually posted)"
+echo "   5. ✅ Published (posted to LinkedIn)"
 echo "   6. 📊 Archive (closed with metrics)"
 
 # Link project to repository
@@ -149,11 +149,11 @@ echo "
 
 Next steps:
 1. Visit the project URL to configure board columns:
-   - 📝 Ideas (new issues)
-   - 🚧 In Progress (PR created)
-   - 👀 Review (PR open)
+   - 📝 Ideas (unlabeled issues)
+   - 🤖 Generating (workflow running)
+   - 👀 Review (PR open for edits)
    - 📅 Scheduled (PR merged)
-   - ✅ Published (manually posted)
+   - ✅ Published (posted to LinkedIn)
    - 📊 Archive (closed with metrics)
 
 2. Add existing linkedin-post issues to the project:

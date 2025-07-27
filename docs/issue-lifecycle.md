@@ -15,18 +15,19 @@ The LinkedIn content automation system follows a structured lifecycle for each p
 - Include any context, key points, or narrative connections
 - Issue is automatically added to the GitHub Project board (if configured)
 
-### 2. **Content Generation** (PR Created)
+### 2. **Content Generation** (Workflow Running)
 - GitHub Action triggers on label addition
-- Claude generates a draft maintaining voice and narrative continuity
-- PR is created with the draft content
+- Project card moves to "Generating"
+- Claude reads context files and generates draft
+- PR is created automatically with the draft content
 - Issue is linked to the PR with "Closes #X" syntax
-- Project card moves to "In Progress"
+- Project card moves to "Review" when PR is created
 
-### 3. **Review & Refinement** (PR Review)
+### 3. **Review & Refinement** (PR Open)
 - Manual review of the generated content
 - Edit directly in the PR for improvements
 - Claude provides automated feedback on tone and best practices
-- Project card in "Review" column
+- Project card stays in "Review" until PR is merged
 
 ### 4. **Scheduling** (PR Merged)
 - Approved content is merged to main branch
@@ -70,16 +71,19 @@ A GitHub Project provides visual workflow management through a kanban board, off
    - Go to your repository → Projects → New Project
    - Choose "Board" layout
    - Create these columns:
-     - 📝 Ideas
-     - 🚧 In Progress  
-     - 👀 Review
-     - 📅 Scheduled
-     - ✅ Published
-     - 📊 Archive
+     - 📝 Ideas (issues without label)
+     - 🤖 Generating (workflow running)
+     - 👀 Review (PR open for edits)
+     - 📅 Scheduled (PR merged)
+     - ✅ Published (posted to LinkedIn)
+     - 📊 Archive (closed with metrics)
 
 3. **Configure Automation**:
-   - Auto-add issues with `linkedin-post` label
-   - Move cards based on PR status
+   - Auto-add issues to "Ideas" when created
+   - Move to "Generating" when `linkedin-post` label added
+   - Move to "Review" when PR is created (linked to issue)
+   - Move to "Scheduled" when PR is merged
+   - Move to "Published" when issue is closed
    - Archive completed items after 30 days
 
 ### Custom Fields
