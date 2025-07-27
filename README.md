@@ -30,6 +30,13 @@ git clone https://github.com/yourusername/linkedin-automation
 
 # Create required folders (if not present)
 mkdir -p content/drafts content/scheduled content/published
+
+# IMPORTANT: Workflow Restriction
+# The generate-post workflow currently only runs for issues created by 'mslavov'
+# To use this with your own account, update the workflow condition in
+# .github/workflows/generate-post.yml line 13:
+# Change: github.event.issue.user.login == 'mslavov'
+# To: github.event.issue.user.login == 'yourusername'
 ```
 
 ### 2. Create Content
@@ -158,6 +165,9 @@ Your post content here...
 
 ## Recent Updates
 
+- **Schedule Management**: New `schedule.json` file for tracking scheduled posts
+- **Simplified Workflows**: Removed automated error handling for cleaner operations
+- **Manual Scheduling**: Schedule posts via slash command for better control
 - **Comprehensive History**: 7 years of LinkedIn posts analyzed and documented
 - **Manual Workflow**: Full control over publishing, no API needed
 - **Enhanced Narrative**: Claude understands your complete professional journey
