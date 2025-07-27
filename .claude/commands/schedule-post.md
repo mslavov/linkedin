@@ -2,19 +2,12 @@
 
 You need to update the content/schedule.json file to add a new scheduled post.
 
-## Usage
-When calling this command, provide:
-1. The file path (required) - e.g., `content/scheduled/my-post.md`
-2. PR number (optional) - e.g., `3`
-3. PR title (optional) - e.g., `"Add LinkedIn post about AI"`
+<post_file> #$ARGUMENTS </post_file>
 
 ## Task
 
-Given the post file: {{ARG1:content/scheduled/filename.md}}
-PR Number: {{ARG2:N/A}}
-PR Title: {{ARG3:Manual scheduling}}
-
 Please:
+
 1. Read the current content/schedule.json file
 2. Read the new post file to understand its content and priority
 3. Analyze the current schedule to find the optimal slot
@@ -27,10 +20,13 @@ Please:
    - Afternoon posts should be scheduled for 2 PM
 5. Add the new post to the schedule.json with a unique ID
 6. Update the last_updated timestamp
-7. Commit the updated schedule.json
+7. Move the post md file to from draft to scheduled folders
+8. Commit the updated schedule.json
 
 The new entry should include:
-- id: Generate from the filename (e.g., "ai-eating-its-own-dogfood" from "ai-eating-its-own-dogfood.md")
+
+- id: Generate from the filename (e.g., "ai-eating-its-own-dogfood" from
+  "ai-eating-its-own-dogfood.md")
 - file: The full path to the file
 - scheduled_date: The optimal date in YYYY-MM-DD format
 - priority: Extract from the post's frontmatter
@@ -38,8 +34,10 @@ The new entry should include:
 - status: "scheduled"
 
 ## Important Notes
+
 - Ensure the schedule.json remains valid JSON
 - Sort posts by scheduled_date
 - Use ISO 8601 format for timestamps
-- If the file doesn't exist in the specified location, check both drafts and scheduled folders
+- If the file doesn't exist in the specified location, check both drafts and
+  scheduled folders
 - Commit message should be: "Schedule post: [filename] for [date]"

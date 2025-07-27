@@ -6,8 +6,8 @@ on:
 
 jobs:
   generate-post:
-    # Only run when 'linkedin-post' or 'idea' label is added
-    if: github.event.label.name == 'linkedin-post' || github.event.label.name == 'idea'
+    # Only run when 'linkedin-post' or 'idea' label is added by mslavov
+    if: github.event.issue.user.login == 'mslavov' && (github.event.label.name == 'linkedin-post' || github.event.label.name == 'idea')
     
     runs-on: ubuntu-latest
     permissions:
