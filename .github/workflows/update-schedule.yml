@@ -115,7 +115,7 @@ jobs:
           direct_prompt: |
             /schedule-post content/scheduled/${{ steps.move_draft.outputs.filename }} ${{ github.event.pull_request.number }} "${{ github.event.pull_request.title }}"
           
-          allowed_tools: "Read,Edit,Bash(git add *),Bash(git commit *)"
+          allowed_tools: "Read,Edit,MultiEdit,LS,Bash(git add *),Bash(git commit *),Bash(git config *),Bash(git push *)"
 
       - name: Checkout main branch
         run: |
@@ -128,11 +128,19 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git push
           
-          # Extract scheduled date from commit message
-          SCHEDULED_DATE=$(git log -1 --pretty=%B | grep -oP 'scheduled for \K\d{4}-\d{2}-\d{2}' || echo "the next available slot")
-          echo "scheduled_date=$SCHEDULED_DATE" >> $GITHUB_OUTPUT
+          # Check if there are any changes to push
+          if git diff --cached --quiet && git diff --quiet; then
+            echo "No changes to push"
+            echo "scheduled_date=none" >> $GITHUB_OUTPUT
+          else
+            # Push to main branch
+            git push origin main
+            
+            # Extract scheduled date from commit message
+            SCHEDULED_DATE=$(git log -1 --pretty=%B | grep -oP 'scheduled for \K\d{4}-\d{2}-\d{2}' || echo "the next available slot")
+            echo "scheduled_date=$SCHEDULED_DATE" >> $GITHUB_OUTPUT
+          fi
 
       - name: Extract issue number
         id: extract_issue

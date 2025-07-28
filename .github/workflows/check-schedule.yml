@@ -12,6 +12,7 @@ jobs:
     permissions:
       contents: write
       issues: write
+      id-token: write
     
     steps:
       - name: Checkout repository
@@ -47,7 +48,7 @@ jobs:
             
             Important: Only reschedule if there was actually a missed post. Don't reschedule unnecessarily.
           
-          allowed_tools: "Read,LS,Edit,Bash(git add *),Bash(git commit *),Bash(git push),Bash(gh issue create *)"
+          allowed_tools: "Read,LS,Edit,MultiEdit,Bash(git add *),Bash(git commit *),Bash(git config *),Bash(git push *),Bash(gh issue create *)"
 
       - name: Report status
         if: always()

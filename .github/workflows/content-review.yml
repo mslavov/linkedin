@@ -48,3 +48,4 @@ jobs:
             If the post looks good, mention that it's ready for publishing.
           
           use_sticky_comment: true
+          allowed_tools: "Read,LS"
