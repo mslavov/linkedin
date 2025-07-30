@@ -6,49 +6,30 @@ original_issue: 6
 posting_time: "morning"
 ---
 
-Remember my post about automating LinkedIn posts with AI? Well, plot twist – turns out AI assistants need babysitting too. 👶
+Remember my post about automating LinkedIn posts with AI? Plot twist – AI assistants need babysitting too. 👶
 
-Here's what nobody tells you about Claude Code: it's brilliant, but it's also like leaving a toddler alone with your codebase. You walk away for a coffee, come back, and it's sitting there asking "Can I delete this folder? Can I run this command? Pretty please?"
+Claude Code is brilliant, but it's like leaving a toddler with your codebase. Walk away for coffee, come back, and it's sitting there: "Can I delete this folder? Pretty please?"
 
-After missing several permission prompts (and finding Claude patiently waiting for hours), I realized I needed a notification system. So I built what any reasonable developer would build – a baby monitor for my AI assistant. 🍼
+After finding Claude waiting patiently for hours (multiple times), I built what any reasonable developer would – a baby monitor for my AI assistant. 🍼
 
-The damage from missed prompts? In one week:
-• 7 stalled workflows (average wait time: 2.5 hours)
+**The damage from missed prompts:**
+• 7 stalled workflows (2.5-hour average wait)
 • 3 timeout failures requiring complete reruns
-• 14 times I had to drop everything to check on Claude
-• 1 very patient AI wondering if I'd abandoned it
+• 14 emergency Claude check-ins
 
-**The solution was hilariously simple:**
-1. Claude Code has hooks for events (like notifications)
-2. I wrote a bash script that parses these events
-3. Connected it to Pushcut for iOS push notifications
-4. Now my phone buzzes whenever Claude needs attention
+**The hilariously simple fix:**
+Claude Code has event hooks → Bash script → Pushcut → iOS notifications. Now my phone buzzes whenever Claude needs attention.
 
-Here's the actual script for my fellow Claude parents:
-
-```bash
-#!/bin/bash
-json_input=$(cat)
-message=$(echo "$json_input" | jq -r '.message // "No message"')
-cwd=$(echo "$json_input" | jq -r '.cwd // ""')
-dir_name=$(basename "$cwd")
-escaped_message=$(echo "$message" | jq -Rs .)
-
-curl -X POST -d "{\"text\": $escaped_message, \"title\": \"Claude needs you\"}" \
-     -H "Content-Type: application/json" \
-     https://api.pushcut.io/<YOUR_SECRET>/notifications/Claude%20needs%20you
-```
-
-**Impact after implementation:**
-• Response time to Claude: 2.5 hours → 3 minutes
-• Successful automation runs: 73% → 96%
-• Weekly interruptions: 14 → 2
-• Peace of mind: priceless
+**Results after one week:**
+• Response time: 2.5 hours → 3 minutes
+• Success rate: 73% → 96%
 • Setup time: 15 minutes (ROI in 2 days)
 
-The irony? I'm now more responsive to my AI assistant than my actual notifications. And yes, just like a real baby, Claude always seems to need something the moment you step away. ⏱️
+The irony? I'm now more responsive to my AI than actual notifications. Just like a real baby, Claude always needs something the moment you step away. ⏱️
 
-Fun fact: This baby monitor has now sent me 47 notifications this month. That's 47 times Claude would have been sitting there, politely waiting while I was blissfully unaware. At an average of 5 minutes per intervention, that's nearly 4 hours saved.
+This month: 47 notifications = 47 times Claude would've been waiting = 4 hours saved.
 
-Have you built any "quality of life" tools around AI assistants? What's your most creative workaround for managing these automated helpers?
+Script on GitHub: https://gist.github.com/mslavov/1ba6bd8060e47e2a587891cf5e57be0e
+
+Have you built any "quality of life" tools around AI assistants? What's your most creative workaround?
 #AI #ClaudeCode #DeveloperTools #Automation #BuildingInPublic #Productivity
