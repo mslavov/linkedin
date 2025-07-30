@@ -181,7 +181,8 @@ with:
 
 Files automatically loaded by Claude:
 - `content/config/tone.md` - Voice guidelines
-- `content/config/best-practices.md` - Content strategies  
+- `content/config/best-practices.md` - Content strategies
+- `content/config/memory.md` - Personal facts and schedule
 - `content/config/history.md` - Recent posts
 
 #### Response Handling

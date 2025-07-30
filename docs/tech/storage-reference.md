@@ -16,6 +16,7 @@ content/
 ├── config/           # System configuration
 │   ├── tone.md       # Voice and style settings
 │   ├── best-practices.md # Content guidelines
+│   ├── memory.md      # Personal facts and schedule
 │   └── history.md    # Published post archive
 ├── drafts/           # New content from PRs
 │   └── YYYY-MM-DD-*.md # Individual draft files
@@ -155,6 +156,37 @@ YYYY-MM-DD-descriptive-title.md
 
 ## Hashtag Strategy
 - {Strategy}
+```
+
+#### memory.md Schema
+
+**Location**: `content/config/memory.md`  
+**Purpose**: Personal facts and preferences for accurate content
+
+```markdown
+# Personal Memory Bank
+
+## Schedule & Habits
+- **Work Schedule**: {Work hours}
+- **Sleep Schedule**: {Sleep times}
+- **Work Style**: {Preferences}
+
+## Professional Background
+- **Current Role**: {Position}
+- **Industry Experience**: {Background}
+- **Technical Expertise**: {Skills}
+
+## Communication Preferences
+- **Response Time**: {Patterns}
+- **Meeting Preferences**: {Times}
+
+## Personal Interests
+- **Hobbies**: {Activities}
+- **Learning Focus**: {Topics}
+
+## Values & Beliefs
+- **Work Philosophy**: {Approach}
+- **Technology Views**: {Perspective}
 ```
 
 #### history.md Schema

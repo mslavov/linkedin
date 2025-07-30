@@ -181,6 +181,13 @@ For detailed setup instructions, see `docs/github-project-setup.md`.
 ### Voice Setup (`content/config/tone.md`)
 Define your writing style, preferred tone, and content approach. Currently configured with your authentic voice based on historical analysis.
 
+### Personal Memory (`content/config/memory.md`)
+Personal facts for accurate content generation:
+- Work schedule and habits (early riser, early sleeper)
+- Professional background details
+- Personal interests and values
+- Communication preferences
+
 ### Best Practices (`content/config/best-practices.md`)
 LinkedIn-specific guidelines for engagement and reach.
 

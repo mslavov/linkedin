@@ -81,7 +81,7 @@ jobs:
             Issue Body: ${{ github.event.issue.body }}
             
             Please follow these steps EXACTLY:
-            1. Read the context files in content/config/ (tone.md, best-practices.md, history.md)
+            1. Read the context files in content/config/ (tone.md, best-practices.md, memory.md, history.md)
             2. Generate a LinkedIn post draft that maintains narrative continuity with recent posts
             3. Create a new file in content/drafts/ with filename format: brief-descriptive-title.md (no date prefix)
             4. Include frontmatter with metadata (title, tags, priority, original_issue)

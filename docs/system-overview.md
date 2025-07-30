@@ -65,7 +65,7 @@ An intelligent LinkedIn content automation system that transforms GitHub issues 
 **Location**: `.github/workflows/generate-post.yml`
 
 - **Issue Trigger**: Activates on issues with 'linkedin-post' or 'idea' labels
-- **Context Loading**: Reads tone guidelines, best practices, and post history
+- **Context Loading**: Reads tone guidelines, best practices, memory, and post history
 - **Claude Integration**: Uses Claude Code Action for narrative-aware generation
 - **PR Creation**: Automatically creates branch and pull request with draft
 
@@ -117,7 +117,7 @@ An intelligent LinkedIn content automation system that transforms GitHub issues 
 
 1. **Issue Creation**: User creates GitHub issue with post idea and optional labels
 2. **Workflow Trigger**: GitHub Action detects 'linkedin-post' or 'idea' label
-3. **Context Gathering**: Claude reads tone.md, best-practices.md, and history.md
+3. **Context Gathering**: Claude reads tone.md, best-practices.md, memory.md, and history.md
 4. **Draft Generation**: Claude creates narrative-connected post maintaining voice
 5. **PR Creation**: Draft saved to content/drafts/ and PR opened for review
 6. **Review & Approval**: Manual review with edits, then merge to main
@@ -263,6 +263,7 @@ linkedin/
 │   ├── config/           # Configuration files
 │   │   ├── tone.md       # Voice guidelines
 │   │   ├── best-practices.md # Content strategies
+│   │   ├── memory.md      # Personal facts and schedule
 │   │   └── history.md    # Published post history
 │   ├── drafts/           # Draft posts pending review
 │   └── schedule.md       # Publishing schedule
@@ -297,6 +298,7 @@ git clone https://github.com/yourusername/linkedin-automation
 # 3. Configure your voice and style
 # Edit content/config/tone.md with your authentic voice
 # Edit content/config/best-practices.md with your content strategies
+# Edit content/config/memory.md with your personal facts and schedule
 # Review content/config/history.md to understand narrative continuity
 
 # 4. Enable GitHub Actions

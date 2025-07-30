@@ -29,7 +29,7 @@ This is a LinkedIn content automation system that uses Claude to generate story-
 - **Manual Publishing**: Use `/post` command for daily publishing
 
 ### Claude Integration
-- **Context Loading**: Always load tone.md, best-practices.md, and history.md
+- **Context Loading**: Always load tone.md, best-practices.md, memory.md, and history.md
 - **Narrative Continuity**: Reference previous posts for story threading
 - **Voice Consistency**: Maintain voice guidelines from config files
 - **Token Efficiency**: Minimize context usage, batch operations

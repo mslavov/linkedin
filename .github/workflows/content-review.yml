@@ -34,6 +34,7 @@ jobs:
             1. **Tone Consistency**: Does it match the voice guidelines in content/config/tone.md?
             2. **Narrative Flow**: How does it connect with recent posts in content/config/history.md?
             3. **Best Practices**: Does it follow the guidelines in content/config/best-practices.md?
+            3a. **Personal Accuracy**: Does it align with personal facts in content/config/memory.md?
             4. **Engagement Potential**: Is the hook strong? Will it encourage interaction?
             5. **Length & Format**: Is it optimized for LinkedIn's algorithm?
             6. **Call to Action**: Is there a clear next step for readers?

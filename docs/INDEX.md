@@ -27,7 +27,7 @@ A Claude-powered system that transforms GitHub issues into story-connected Linke
 ## 🎆 Getting Started
 
 1. **Setup Repository**: Fork/clone and configure CLAUDE_CODE_OAUTH_TOKEN
-2. **Configure Voice**: Edit `content/config/tone.md` and review `history.md`
+2. **Configure Voice**: Edit `content/config/tone.md`, `memory.md`, and review `history.md`
 3. **Create Content**: Open GitHub issue with `linkedin-post` or `idea` label
 4. **Publish Manually**: Use `/post` command to get content and post to LinkedIn
 
@@ -37,7 +37,7 @@ A Claude-powered system that transforms GitHub issues into story-connected Linke
 linkedin/
 ├── .github/workflows/     # Automation workflows
 ├── content/              # All content files
-│   ├── config/          # Voice and guidelines
+│   ├── config/          # Voice, memory, and guidelines
 │   ├── drafts/          # Pending posts
 │   └── schedule.md      # Publishing queue
 ├── docs/                # This documentation
@@ -54,6 +54,7 @@ linkedin/
 | Publish Post | Use `/post` command | Manual copy/paste |
 | Check Queue | `ls content/scheduled/` | - |
 | Update Voice | `content/config/tone.md` | - |
+| Update Memory | `content/config/memory.md` | - |
 | View History | `content/config/history.md` | - |
 | Debug Workflow | `tech/api-reference.md` | Check Actions tab |
 
