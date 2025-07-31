@@ -90,7 +90,7 @@ jobs:
             7. Commit the draft with message: "Add LinkedIn post draft from issue #${{ github.event.issue.number }}"
             8. Push the branch to origin
             9. Create a Pull Request using EXACTLY this command:
-               gh pr create --title "Add LinkedIn post: [brief title]" --body "Generated LinkedIn post from issue #${{ github.event.issue.number }}\n\nThis PR adds a draft post that:\n- [Brief summary]\n- Maintains narrative continuity with [reference]\n- Suggested posting time: [time]\n\nCloses #${{ github.event.issue.number }}"
+               gh pr create --title "Add LinkedIn post: ${{ github.event.issue.title }}" --body "Generated LinkedIn post from issue #${{ github.event.issue.number }}\n\nThis PR adds a draft post that:\n- [Brief summary]\n- Maintains narrative continuity with [reference]\n- Suggested posting time: [time]\n\nCloses #${{ github.event.issue.number }}"
             
             IMPORTANT: You MUST use the 'gh pr create' command shown above. Do NOT use any MCP tools for creating the PR.
           
