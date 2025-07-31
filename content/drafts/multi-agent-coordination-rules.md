@@ -10,9 +10,10 @@ After automating LinkedIn posts and building a baby monitor for Claude, I hit a 
 
 Picture this: 3 AI coding assistants on the same repo, each following different rules. It's like having three chefs in your kitchen, each cooking from different recipes. Chaos.
 
-**The mess I walked into yesterday:**
-• Claude Code: Following old rules from CLAUDE.md
-• Cursor: Using its own .cursorrules
+**Why I needed this:**
+I wanted to test different AI agents on the same codebase – see which one works best for different tasks. But without shared rules?
+• Claude Code: Following its own CLAUDE.md
+• Cursor: Using .cursorrules
 • Codeium: Doing... whatever Codeium does
 
 Same PR, three different formatting styles. My git diff looked like a battlefield.
@@ -22,9 +23,10 @@ One folder. Multiple files. Same rules everywhere.
 
 ```
 /ai-rules/
-  ├── CLAUDE.md
-  ├── .cursor/rules/CURSOR.md
-  └── AGENTS.md
+  ├── package-manager.md
+  ├── code-style.md
+  ├── testing-approach.md
+  └── project-context.md
 ```
 
 Now they all read from the same playbook:
@@ -32,13 +34,13 @@ Now they all read from the same playbook:
 • Project context: Shared understanding
 • Naming conventions: No more getUser vs fetchUser debates
 
-**The twist?** Each agent's file has the EXACT same content. Yes, I'm duplicating files. No, I don't care. It works.
+**The beauty?** Minimal duplication. Each agent's config just points to these shared rules. Once set up, it rarely changes – only when you switch your AI workflow.
 
-First PR after implementation: All three agents produced compatible code. Zero conflicts. It's like they finally learned to play nice. 🚀
+Now I can switch between agents as I feel like it. Testing Claude for complex refactoring? Done. Trying Cursor for quick edits? Easy. All three agents produce compatible code. Zero conflicts. 🚀
 
 The real lesson? Sometimes the dumbest solution is the smartest. I spent hours researching "AI agent orchestration frameworks" when all I needed was... copy-paste.
 
-Time saved this week: 2 hours of merge conflict resolution.
+The real win? Freedom to choose the right tool for each task without worrying about consistency.
 
 Have you managed multiple AI agents on the same codebase? What's your coordination strategy?
 
