@@ -94,7 +94,8 @@ jobs:
             
             IMPORTANT: You MUST use the 'gh pr create' command shown above. Do NOT use any MCP tools for creating the PR.
           
-          allowed_tools: "Read,Write,Bash(git checkout -b *),Bash(git add *),Bash(git commit *),Bash(git push *),Bash(gh pr create *)"
+          allowed_tools: |
+            Bash(gh pr create:*)
 
       - name: Verify PR Creation
         if: success()
