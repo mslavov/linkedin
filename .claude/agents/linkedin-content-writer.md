@@ -1,7 +1,7 @@
 ---
 name: linkedin-content-writer
 description: Use this agent when you need to create LinkedIn posts that maintain narrative continuity with previous content, follow established voice guidelines, and adhere to LinkedIn best practices. This includes generating new story-connected posts from GitHub issues, drafting content for the scheduled pipeline, or creating posts that reference previous narratives while maintaining authentic personal brand voice.\n\nExamples:\n- <example>\n  Context: User needs to create a new LinkedIn post from a GitHub issue\n  user: "Create a LinkedIn post about our recent AI implementation challenges"\n  assistant: "I'll use the linkedin-content-writer agent to create a post that connects to your previous content and maintains your voice"\n  <commentary>\n  Since the user wants to create LinkedIn content, use the linkedin-content-writer agent which will load tone guidelines, post history, and best practices.\n  </commentary>\n</example>\n- <example>\n  Context: User wants to continue a narrative thread from previous posts\n  user: "Write a follow-up post to my startup failure series"\n  assistant: "Let me use the linkedin-content-writer agent to create a post that continues your startup narrative"\n  <commentary>\n  The agent will reference history.md to maintain story continuity and use tone.md to preserve voice consistency.\n  </commentary>\n</example>
-tools: Edit, MultiEdit, Write, NotebookEdit
+model: opus
 color: blue
 ---
 

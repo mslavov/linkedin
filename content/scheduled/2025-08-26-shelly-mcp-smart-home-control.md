@@ -10,7 +10,7 @@ You know that moment when you're deep into a morning coding session at 5 AM and 
 
 Yeah, me too. So naturally, I did what any reasonable developer would do – I built a way to ask Claude to do it instead. 💡
 
-After my adventures with babysitting Claude Code (see previous post), I realized: if I'm already chatting with AI all day, why not let it control my smart home too? Enter **Shelly MCP** – because apparently, I can't help but make everything more complicated than it needs to be.
+After all these Claude Code adventures this week, I realized: if I'm already chatting with AI all day, why not let it control my smart home too? Enter **Shelly MCP** – because apparently, I can't help but make everything more complicated than it needs to be.
 
 **The journey went something like this:**
 1. Me: "Siri, turn on the office lights"
