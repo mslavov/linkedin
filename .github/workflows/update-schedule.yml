@@ -106,40 +106,51 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
+      - name: Configure git for commits
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Update schedule with Claude
         uses: anthropics/claude-code-action@beta
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           model: "claude-opus-4-20250514"
+          mode: "agent"
+          base_branch: "main"
           
           direct_prompt: |
-            /schedule-post content/scheduled/${{ steps.move_draft.outputs.filename }} ${{ github.event.pull_request.number }} "${{ github.event.pull_request.title }}"
+            /schedule-post ${{ steps.move_draft.outputs.filepath }}
           
-          allowed_tools: "Read,Edit,MultiEdit,LS,Bash(git add *),Bash(git commit *),Bash(git config *),Bash(git push *)"
+          allowed_tools: "Read,Edit,MultiEdit,LS,Bash(git add *),Bash(git commit *),Bash(git push *)"
 
-      - name: Checkout main branch
+      - name: Verify schedule was updated
+        id: verify_schedule
         run: |
-          echo "Ensuring we're on the main branch for pushing..."
-          git checkout main
-          echo "Successfully switched to main branch"
+          echo "Checking if schedule.json was updated..."
+          if git diff --name-only HEAD~1 | grep -q "schedule.json"; then
+            echo "✅ Schedule.json was updated"
+            echo "schedule_updated=true" >> $GITHUB_OUTPUT
+          else
+            echo "⚠️ Schedule.json was not updated by Claude"
+            echo "schedule_updated=false" >> $GITHUB_OUTPUT
+          fi
 
-      - name: Push schedule update
+      - name: Extract scheduled date
         id: push_schedule
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Check if there are any changes to push
-          if git diff --cached --quiet && git diff --quiet; then
-            echo "No changes to push"
-            echo "scheduled_date=none" >> $GITHUB_OUTPUT
-          else
-            # Push to main branch
-            git push origin main
+          # Extract scheduled date from schedule.json if it was updated
+          if [ "${{ steps.verify_schedule.outputs.schedule_updated }}" == "true" ]; then
+            # Get the filename without path
+            FILENAME="${{ steps.move_draft.outputs.filename }}"
+            # Extract ID from filename (remove date prefix and .md suffix)
+            POST_ID=$(echo "$FILENAME" | sed 's/^[0-9-]*-//' | sed 's/\.md$//')
             
-            # Extract scheduled date from commit message
-            SCHEDULED_DATE=$(git log -1 --pretty=%B | grep -oP 'scheduled for \K\d{4}-\d{2}-\d{2}' || echo "the next available slot")
+            # Find the scheduled date from schedule.json
+            SCHEDULED_DATE=$(jq -r --arg id "$POST_ID" '.posts[] | select(.id == $id) | .scheduled_date' content/schedule.json || echo "the next available slot")
             echo "scheduled_date=$SCHEDULED_DATE" >> $GITHUB_OUTPUT
+          else
+            echo "scheduled_date=not scheduled" >> $GITHUB_OUTPUT
           fi
 
       - name: Extract issue number
