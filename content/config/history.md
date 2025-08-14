@@ -150,4 +150,15 @@ Based on this history, future posts should:
 
 ---
 
+## Recently Published Posts
+
+### August 14, 2025 - Building a Baby Monitor for Claude Code
+**Summary**: Created iOS notifications for Claude Code prompts after finding it waiting patiently for hours multiple times. Simple hook → bash → Pushcut setup reduced response time from 2.5 hours to 3 minutes.
+**Key Theme**: Practical AI tooling, solving real workflow problems
+**Style**: Humorous (baby/toddler metaphor), concrete metrics, open source sharing
+**Narrative**: AI assistants as productive but needy tools requiring human oversight
+**Hashtags**: #AI #ClaudeCode #DeveloperTools #Automation #BuildingInPublic #Productivity
+
+---
+
 *This history provides context for maintaining authentic, story-connected LinkedIn content that builds on Milko's genuine professional journey.*

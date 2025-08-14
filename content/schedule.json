@@ -1,22 +1,66 @@
 {
   "version": "1.0",
-  "last_updated": "2025-01-27T19:15:00Z",
+  "last_updated": "2025-08-11T14:00:00Z",
   "posts": [
     {
+      "id": "babysitting-claude-code",
+      "file": "content/published/2025-08-14-babysitting-claude-code.md",
+      "scheduled_date": "2025-08-14",
+      "published_date": "2025-08-14",
+      "priority": "normal",
+      "original_issue": 6,
+      "status": "published"
+    },
+    {
+      "id": "claude-code-workflow-discovery",
+      "file": "content/scheduled/2025-08-19-claude-code-workflow-discovery.md",
+      "scheduled_date": "2025-08-19",
+      "priority": "normal",
+      "original_issue": null,
+      "status": "scheduled"
+    },
+    {
+      "id": "shelly-mcp-smart-home-control",
+      "file": "content/scheduled/2025-08-26-shelly-mcp-smart-home-control.md",
+      "scheduled_date": "2025-08-26",
+      "priority": "normal",
+      "original_issue": 8,
+      "status": "scheduled"
+    },
+    {
+      "id": "ai-engineer-paris-whos-coming",
+      "file": "content/drafts/2025-09-05-ai-engineer-paris-whos-coming.md",
+      "scheduled_date": "2025-09-05",
+      "priority": "normal",
+      "original_issue": null,
+      "status": "draft",
+      "notes": "Update when agenda releases"
+    },
+    {
       "id": "ai-eating-its-own-dogfood",
-      "file": "content/scheduled/ai-eating-its-own-dogfood.md",
-      "scheduled_date": "2025-01-28",
+      "file": "content/scheduled/2025-09-09-ai-eating-its-own-dogfood.md",
+      "scheduled_date": "2025-09-09",
       "priority": "high",
       "original_issue": 2,
       "status": "scheduled"
     },
     {
-      "id": "babysitting-claude-code",
-      "file": "content/scheduled/babysitting-claude-code.md",
-      "scheduled_date": "2025-01-29",
+      "id": "power-of-pressing-pause",
+      "file": "content/drafts/2025-09-16-power-of-pressing-pause.md",
+      "scheduled_date": "2025-09-16",
       "priority": "normal",
-      "original_issue": 6,
-      "status": "scheduled"
+      "original_issue": null,
+      "status": "draft",
+      "notes": "Optional - post during recharge week"
+    },
+    {
+      "id": "building-bugzy-in-public",
+      "file": "content/scheduled/2025-09-25-building-bugzy-in-public.md",
+      "scheduled_date": "2025-09-25",
+      "priority": "high",
+      "original_issue": null,
+      "status": "scheduled",
+      "notes": "Big announcement after AI Engineer Paris"
     }
   ]
 }
