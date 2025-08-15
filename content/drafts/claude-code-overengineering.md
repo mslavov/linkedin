@@ -5,7 +5,7 @@ priority: 8
 original_issue: 20
 ---
 
-Remember my baby monitor for Claude Code? Well, today I discovered my AI assistant has developed what I call "Senior Engineer Syndrome" – that irresistible urge to turn a simple refactoring into a complete architectural overhaul.
+Today I discovered my AI assistant has developed what I call "Senior Engineer Syndrome" – that irresistible urge to turn a simple refactoring into a complete architectural overhaul.
 
 The symptoms appeared after a routine refactoring request:
 • 4,400 lines added 📈
