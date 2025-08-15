@@ -158,6 +158,7 @@ What's the one lesson you wish you'd learned earlier?
 * **Narrative Flow:** Follow through on the hook, use logical structure, keep paragraphs tight, and use line breaks for rhythm.  
 * **Consistency:** Maintain a sustainable cadence (3‑5 posts a week is common) and stick to your themes and voice.
 * **Next Post Teasers:** When referencing upcoming content, keep it vague (e.g., "Coming up next..." or "In a future post..."). Avoid specific timing commitments like "tomorrow" or exact dates - this maintains flexibility in your content schedule and prevents disappointing readers if plans change.
+* **Avoid Explicit References to Previous Posts:** Don't start posts with "Remember my previous post about..." or make direct references to specific earlier posts. Each post should stand on its own without requiring readers to have seen your previous content. This ensures new followers aren't excluded and maintains accessibility.
 
 ---
 
