@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-08-14T18:30:00Z",
+  "last_updated": "2025-08-19T14:00:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -17,6 +17,14 @@
       "scheduled_date": "2025-08-19",
       "priority": "normal",
       "original_issue": null,
+      "status": "scheduled"
+    },
+    {
+      "id": "claude-code-overengineering",
+      "file": "content/scheduled/2025-08-20-claude-code-overengineering.md",
+      "scheduled_date": "2025-08-20",
+      "priority": "high",
+      "original_issue": 20,
       "status": "scheduled"
     },
     {
