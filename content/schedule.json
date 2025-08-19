@@ -13,11 +13,12 @@
     },
     {
       "id": "claude-code-workflow-discovery",
-      "file": "content/scheduled/2025-08-19-claude-code-workflow-discovery.md",
+      "file": "content/published/2025-08-19-claude-code-workflow-discovery.md",
       "scheduled_date": "2025-08-19",
+      "published_date": "2025-08-19",
       "priority": "normal",
       "original_issue": null,
-      "status": "scheduled"
+      "status": "published"
     },
     {
       "id": "claude-code-overengineering",
