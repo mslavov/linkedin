@@ -22,11 +22,12 @@
     },
     {
       "id": "shelly-mcp-smart-home-control",
-      "file": "content/scheduled/2025-08-20-shelly-mcp-smart-home-control.md",
+      "file": "content/published/2025-08-20-shelly-mcp-smart-home-control.md",
       "scheduled_date": "2025-08-20",
+      "published_date": "2025-08-20",
       "priority": "normal",
       "original_issue": 8,
-      "status": "scheduled",
+      "status": "published",
       "notes": "Swapped with overengineering post for topic variety"
     },
     {

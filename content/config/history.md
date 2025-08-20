@@ -166,6 +166,14 @@ Based on this history, future posts should:
 **Narrative**: Learning to work WITH AI tools rather than forcing old patterns
 **Hashtags**: #AIAssistedDevelopment #ClaudeCode #DeveloperProductivity #CodingWorkflow #BuildingWithAI
 
+### August 20, 2025 - When 'Hey Siri, Turn On The Lights' Just Isn't Nerdy Enough
+**Summary**: Built Shelly MCP to control smart home devices through Claude instead of Siri, because typing commands to an AI during 5 AM coding sessions seemed more efficient than voice commands. Open-sourced the over-engineered solution that bridges MCP protocol with Shelly Cloud API.
+**Key Theme**: Developer humor, practical over-engineering, smart home automation
+**Style**: Self-deprecating humor ("normal people don't code at 5 AM"), playful about complexity
+**Narrative**: Natural progression from Claude Code tools to expanding AI's reach into physical environment
+**Engagement Hook**: "What's the most unnecessarily complex solution you've built for a simple problem?"
+**Hashtags**: #AI #SmartHome #OpenSource #DeveloperTools #BuildingInPublic #HomeAutomation #MCP
+
 ---
 
 *This history provides context for maintaining authentic, story-connected LinkedIn content that builds on Milko's genuine professional journey.*
