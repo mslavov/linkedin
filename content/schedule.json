@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-08-19T14:00:00Z",
+  "last_updated": "2025-08-20T10:00:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -21,54 +21,56 @@
       "status": "published"
     },
     {
-      "id": "claude-code-overengineering",
-      "file": "content/scheduled/2025-08-20-claude-code-overengineering.md",
-      "scheduled_date": "2025-08-20",
-      "priority": "high",
-      "original_issue": 20,
-      "status": "scheduled"
-    },
-    {
       "id": "shelly-mcp-smart-home-control",
-      "file": "content/scheduled/2025-08-26-shelly-mcp-smart-home-control.md",
-      "scheduled_date": "2025-08-26",
+      "file": "content/scheduled/2025-08-20-shelly-mcp-smart-home-control.md",
+      "scheduled_date": "2025-08-20",
       "priority": "normal",
       "original_issue": 8,
-      "status": "scheduled"
+      "status": "scheduled",
+      "notes": "Swapped with overengineering post for topic variety"
+    },
+    {
+      "id": "claude-code-overengineering",
+      "file": "content/scheduled/2025-08-23-claude-code-overengineering.md",
+      "scheduled_date": "2025-08-23",
+      "priority": "high",
+      "original_issue": 20,
+      "status": "scheduled",
+      "notes": "Moved from Aug 20 to avoid Claude fatigue"
     },
     {
       "id": "interactive-code-reviews",
-      "file": "content/scheduled/2025-09-02-interactive-code-reviews.md",
-      "scheduled_date": "2025-09-02",
+      "file": "content/scheduled/2025-08-27-interactive-code-reviews.md",
+      "scheduled_date": "2025-08-27",
       "priority": "normal",
       "original_issue": 18,
       "status": "scheduled"
     },
     {
-      "id": "ai-engineer-paris-whos-coming",
-      "file": "content/drafts/2025-09-05-ai-engineer-paris-whos-coming.md",
-      "scheduled_date": "2025-09-05",
-      "priority": "normal",
-      "original_issue": null,
-      "status": "draft",
-      "notes": "Update when agenda releases"
-    },
-    {
       "id": "ai-eating-its-own-dogfood",
-      "file": "content/scheduled/2025-09-09-ai-eating-its-own-dogfood.md",
-      "scheduled_date": "2025-09-09",
+      "file": "content/scheduled/2025-09-03-ai-eating-its-own-dogfood.md",
+      "scheduled_date": "2025-09-03",
       "priority": "high",
       "original_issue": 2,
       "status": "scheduled"
     },
     {
-      "id": "power-of-pressing-pause",
-      "file": "content/drafts/2025-09-16-power-of-pressing-pause.md",
-      "scheduled_date": "2025-09-16",
+      "id": "ai-engineer-paris-whos-coming",
+      "file": "content/drafts/2025-09-06-ai-engineer-paris-whos-coming.md",
+      "scheduled_date": "2025-09-06",
       "priority": "normal",
       "original_issue": null,
       "status": "draft",
-      "notes": "Optional - post during recharge week"
+      "notes": "Update when agenda releases - timely for event"
+    },
+    {
+      "id": "power-of-pressing-pause",
+      "file": "content/drafts/2025-09-10-power-of-pressing-pause.md",
+      "scheduled_date": "2025-09-10",
+      "priority": "normal",
+      "original_issue": null,
+      "status": "draft",
+      "notes": "Moved earlier for better spacing"
     },
     {
       "id": "building-bugzy-in-public",
