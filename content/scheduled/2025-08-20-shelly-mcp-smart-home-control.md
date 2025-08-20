@@ -6,7 +6,7 @@ original_issue: 8
 posting_time: "morning"
 ---
 
-You know that moment when you're deep into a morning coding session at 5 AM and you need to turn on the lights, but you're too focused to move AND too annoyed with Siri's "I'm sorry, I didn't quite get that"? 
+You know that moment when you're deep into a morning coding session at 5 AM (you probably don't, as normal people don't code at 5 AM 😅) and you need to turn on the lights, but you're too focused to move AND too annoyed with Siri's "I'm sorry, I didn't quite get that"? 
 
 Yeah, me too. So naturally, I did what any reasonable developer would do – I built a way to ask Claude to do it instead. 💡
 
