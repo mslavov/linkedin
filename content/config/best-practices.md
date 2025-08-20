@@ -52,7 +52,24 @@ Top LinkedIn posts by founders don't just broadcast updates; they **spark conver
 
 ### 6. Consistent Presence and Smart Frequency
 
-Top LinkedIn founders are **consistent** in showing up, but not in a spammy way. Establish a **posting cadence you can sustain** (e.g., 2‑3 posts per week) and stick to your **content pillars** so followers know what value they’ll get.
+Top LinkedIn founders are **consistent** in showing up, but not in a spammy way. Establish a **posting cadence you can sustain** (e.g., 2‑3 posts per week) and stick to your **content pillars** so followers know what value they'll get.
+
+### 7. Topic Variety to Prevent Fatigue
+
+**Critical for maintaining engagement**: Avoid posting about the same topic or theme consecutively. Your audience will experience topic fatigue if they see similar narratives back-to-back (e.g., multiple "I discovered X about tool Y" posts in a row).
+
+**Best practices for topic rotation:**
+* **Mix content types**: Alternate between discovery stories, practical tutorials, announcements, and thought leadership
+* **Vary emotional tones**: Switch between reflective, humorous, educational, and celebratory posts
+* **Different audiences**: Rotate between posts that appeal primarily to customers vs. fellow founders
+* **Space similar themes**: Wait at least 3-4 posts before returning to a similar narrative structure
+* **Check recent history**: Always review your last 2-3 posts before publishing to ensure variety
+
+**Red flags to avoid:**
+* Same tool/product featured in consecutive posts
+* Similar story structures ("I discovered...", "I learned...", "I realized...")
+* Identical emotional journey patterns
+* Repetitive problem-solution frameworks
 
 ---
 

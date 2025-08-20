@@ -10,18 +10,23 @@ Please:
 
 1. Read the current content/schedule.json file
 2. Read the new post file to understand its content and priority
-3. Analyze the current schedule to find the optimal slot
-4. Consider these scheduling rules:
+3. Review recent published and scheduled posts to ensure topic variety
+4. Analyze the current schedule to find the optimal slot
+5. Consider these scheduling rules:
    - High priority posts get the next available slot
    - Normal priority posts should be spaced at least 24 hours apart
    - Low priority posts can be scheduled further out
    - Avoid scheduling on weekends unless it's high priority
    - Morning posts (specified in frontmatter) should be scheduled for 9 AM
    - Afternoon posts should be scheduled for 2 PM
-5. Add the new post to the schedule.json with a unique ID
-6. Update the last_updated timestamp
-7. Move the post md file to from draft to scheduled folders
-8. Commit the updated schedule.json
+   - **Topic variety**: Check the last 2-3 scheduled/published posts to avoid similar themes
+   - **Narrative diversity**: Don't schedule similar story structures consecutively (e.g., "discovery" posts)
+   - **Tool/product rotation**: Space out posts about the same tool or product by at least 3-4 posts
+   - **Emotional tone variety**: Alternate between reflective, humorous, educational, and celebratory content
+6. Add the new post to the schedule.json with a unique ID
+7. Update the last_updated timestamp
+8. Move the post md file from draft to scheduled folders
+9. Commit the updated schedule.json
 
 The new entry should include:
 
@@ -41,3 +46,4 @@ The new entry should include:
 - If the file doesn't exist in the specified location, check both drafts and
   scheduled folders
 - Commit message should be: "Schedule post: [filename] for [date]"
+- Always verify topic variety to maintain audience engagement
