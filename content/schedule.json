@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-08-20T10:00:00Z",
+  "last_updated": "2025-08-21T14:30:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -31,21 +31,39 @@
       "notes": "Swapped with overengineering post for topic variety"
     },
     {
-      "id": "claude-code-overengineering",
-      "file": "content/scheduled/2025-08-23-claude-code-overengineering.md",
-      "scheduled_date": "2025-08-23",
+      "id": "ai-personal-finance-mcp-kinance",
+      "file": "content/scheduled/2025-08-22-ai-personal-finance-mcp-kinance.md",
+      "scheduled_date": "2025-08-22",
       "priority": "high",
-      "original_issue": 20,
+      "original_issue": 26,
       "status": "scheduled",
-      "notes": "Moved from Aug 20 to avoid Claude fatigue"
+      "notes": "High priority - product launch"
     },
     {
       "id": "interactive-code-reviews",
-      "file": "content/scheduled/2025-08-27-interactive-code-reviews.md",
-      "scheduled_date": "2025-08-27",
+      "file": "content/scheduled/2025-08-23-interactive-code-reviews.md",
+      "scheduled_date": "2025-08-23",
       "priority": "normal",
       "original_issue": 18,
+      "status": "scheduled",
+      "notes": "Swapped with overengineering post"
+    },
+    {
+      "id": "ai-agents-vs-automation-tools",
+      "file": "content/scheduled/2025-08-26-ai-agents-vs-automation-tools.md",
+      "scheduled_date": "2025-08-26",
+      "priority": "high",
+      "original_issue": 22,
       "status": "scheduled"
+    },
+    {
+      "id": "claude-code-overengineering",
+      "file": "content/scheduled/2025-08-27-claude-code-overengineering.md",
+      "scheduled_date": "2025-08-27",
+      "priority": "high",
+      "original_issue": 20,
+      "status": "scheduled",
+      "notes": "Swapped with code reviews post"
     },
     {
       "id": "ai-eating-its-own-dogfood",
@@ -57,21 +75,21 @@
     },
     {
       "id": "ai-engineer-paris-whos-coming",
-      "file": "content/drafts/2025-09-06-ai-engineer-paris-whos-coming.md",
+      "file": "content/scheduled/2025-09-06-ai-engineer-paris-whos-coming.md",
       "scheduled_date": "2025-09-06",
       "priority": "normal",
       "original_issue": null,
-      "status": "draft",
+      "status": "scheduled",
       "notes": "Update when agenda releases - timely for event"
     },
     {
       "id": "power-of-pressing-pause",
-      "file": "content/drafts/2025-09-10-power-of-pressing-pause.md",
+      "file": "content/scheduled/2025-09-10-power-of-pressing-pause.md",
       "scheduled_date": "2025-09-10",
       "priority": "normal",
       "original_issue": null,
-      "status": "draft",
-      "notes": "Moved earlier for better spacing"
+      "status": "scheduled",
+      "notes": "Transition post before Bugzy announcement"
     },
     {
       "id": "building-bugzy-in-public",
