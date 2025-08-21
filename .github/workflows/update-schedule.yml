@@ -112,16 +112,12 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Update schedule with Claude
-        uses: anthropics/claude-code-action@beta
+        uses: anthropics/claude-code-base-action@beta
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          model: "claude-opus-4-20250514"
-          mode: "agent"
-          base_branch: "main"
-          
-          direct_prompt: |
+          prompt: |
             /schedule-post ${{ steps.move_draft.outputs.filepath }}
-          
+          experimental_slash_commands_dir: ".claude/commands"
           allowed_tools: "Read,Edit,MultiEdit,LS,Bash(git add *),Bash(git commit *),Bash(git push *)"
 
       - name: Verify schedule was updated
