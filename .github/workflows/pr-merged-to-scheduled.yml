@@ -20,11 +20,21 @@ jobs:
         run: |
           BRANCH="${{ github.event.pull_request.head.ref }}"
           # Handle both post/issue-* and claude/issue-* patterns
-          ISSUE_NUMBER=$(echo $BRANCH | sed -E 's/(post|claude)\/issue-//')
+          # Extract just the number after 'issue-' and before any other hyphen
+          ISSUE_NUMBER=$(echo $BRANCH | sed -E 's/(post|claude)\/issue-([0-9]+).*/\2/')
+          
+          # Validate that we got a number
+          if ! [[ "$ISSUE_NUMBER" =~ ^[0-9]+$ ]]; then
+            echo "ERROR: Could not extract valid issue number from branch: $BRANCH"
+            echo "issue_number=" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+          
           echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
-          echo "Extracted issue number: $ISSUE_NUMBER"
+          echo "Extracted issue number: $ISSUE_NUMBER from branch: $BRANCH"
 
       - name: Update project status to Scheduled
+        if: steps.extract.outputs.issue_number != ''
         run: |
           # Get the project item ID for this issue
           ITEM_ID=$(gh api graphql -f query='
@@ -72,6 +82,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Add comment to issue
+        if: steps.extract.outputs.issue_number != ''
         run: |
           gh issue comment ${{ steps.extract.outputs.issue_number }} \
             --body "📅 Post has been scheduled! The PR has been merged and the content is now in the scheduled queue."

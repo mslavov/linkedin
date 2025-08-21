@@ -69,12 +69,11 @@ jobs:
 
       - name: Generate post content
         id: generate
-        uses: anthropics/claude-code-action@beta
+        uses: anthropics/claude-code-base-action@beta
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          model: "claude-opus-4-20250514"
           
-          direct_prompt: |
+          prompt: |
             You are creating a LinkedIn post based on issue #${{ github.event.issue.number }}.
             
             Issue Title: ${{ github.event.issue.title }}
@@ -104,14 +103,23 @@ jobs:
           sleep 5
           
           # Check if PR was created for the branch
-          PR_URL=$(gh pr list --head "claude/issue-${{ github.event.issue.number }}" --json url --jq '.[0].url' || echo "")
+          # First try to find any branch starting with our pattern
+          BRANCH_NAME=$(git branch -r | grep -E "origin/claude/issue-${{ github.event.issue.number }}($|-)" | head -1 | sed 's/.*origin\///')
+          
+          if [ -z "$BRANCH_NAME" ]; then
+            # Fallback to expected branch name
+            BRANCH_NAME="claude/issue-${{ github.event.issue.number }}"
+          fi
+          
+          echo "Looking for PR with branch: $BRANCH_NAME"
+          PR_URL=$(gh pr list --head "$BRANCH_NAME" --json url --jq '.[0].url' || echo "")
           
           if [ -z "$PR_URL" ]; then
             echo "PR was not created by Claude. Creating it now..."
             # Get the latest commit message
             COMMIT_MSG=$(git log -1 --pretty=%B)
             
-            # Create the PR
+            # Create the PR using the actual branch name
             gh pr create \
               --title "Add LinkedIn post from issue #${{ github.event.issue.number }}" \
               --body "Generated LinkedIn post from issue #${{ github.event.issue.number }}
@@ -124,9 +132,9 @@ jobs:
               - LinkedIn best practices
               
               Closes #${{ github.event.issue.number }}" \
-              --head "claude/issue-${{ github.event.issue.number }}"
+              --head "$BRANCH_NAME"
             
-            PR_URL=$(gh pr list --head "claude/issue-${{ github.event.issue.number }}" --json url --jq '.[0].url')
+            PR_URL=$(gh pr list --head "$BRANCH_NAME" --json url --jq '.[0].url')
           fi
           
           echo "PR_URL=$PR_URL" >> $GITHUB_ENV
