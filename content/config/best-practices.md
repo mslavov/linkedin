@@ -75,6 +75,23 @@ Top LinkedIn founders are **consistent** in showing up, but not in a spammy way.
 
 ## Writing Best Practices: Authentic, Clear, and Engaging
 
+### LinkedIn Text Formatting Requirements
+
+**Critical**: LinkedIn does NOT support markdown formatting. Posts must be plain text with these considerations:
+
+* **No markdown syntax**: Remove all markdown formatting (**, *, ###, etc.) before posting
+* **No titles**: LinkedIn posts don't have a separate title field - the first line serves as your hook
+* **Plain text only**: Bold, italics, headers must be removed or replaced with plain text
+* **Line breaks**: Use double line breaks to create paragraph separation
+* **Emojis work**: You can use emojis for visual emphasis instead of formatting
+* **Links are clickable**: URLs automatically become clickable (no need for markdown link syntax)
+* **Hashtags**: Place at the end of the post for discoverability
+
+**Storage vs. Publishing Format:**
+* **In repository**: Keep markdown formatting for better readability and organization
+* **When publishing**: Convert to plain text, removing all markdown syntax
+* **Title in frontmatter**: Used only for internal organization, not published to LinkedIn
+
 ### Keep It Real (Authenticity > Perfection)
 
 Authenticity is your superpower. Write like a human, not a press release. Use your own colloquialisms, admit mistakes, and keep some "weirdness" in your prose so it doesn't sound like generic AI copy.

@@ -85,6 +85,11 @@ jobs:
             3. Create a new file in content/drafts/ with filename format: brief-descriptive-title.md (no date prefix)
             4. Include frontmatter with metadata (title, tags, priority, original_issue)
             5. Write the post content following LinkedIn best practices
+               IMPORTANT: Store with markdown formatting for readability, but remember LinkedIn requires plain text when publishing:
+               - No markdown syntax in the actual LinkedIn post (no **, *, ###)
+               - First line serves as the hook (no separate title field)
+               - Use line breaks for paragraph separation
+               - Hashtags at the end
             6. Create a new branch named 'claude/issue-${{ github.event.issue.number }}'
             7. Commit the draft with message: "Add LinkedIn post draft from issue #${{ github.event.issue.number }}"
             8. Push the branch to origin
