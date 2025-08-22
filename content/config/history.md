@@ -174,6 +174,14 @@ Based on this history, future posts should:
 **Engagement Hook**: "What's the most unnecessarily complex solution you've built for a simple problem?"
 **Hashtags**: #AI #SmartHome #OpenSource #DeveloperTools #BuildingInPublic #HomeAutomation #MCP
 
+### August 22, 2025 - A Weekend Detour: When Your Old Code Meets New AI
+**Summary**: Rebuilt a 6-year-old personal finance SaaS over a weekend using MCP and Open Banking, replacing static dashboards with conversational AI. Quick personal hack turned into Kinance.eu - questioning if people want AI reading their bank statements.
+**Key Theme**: AI-first interfaces, practical problem-solving, accidental product discovery
+**Style**: Conversational, honest about unexpected detours, skeptical of own creation
+**Narrative**: Continuation of building practical AI tools, weekend hacking mentality
+**Engagement Hook**: "Would you trust an AI with read-only access to your financial data?"
+**Hashtags**: #AI #PersonalFinance #MCP #OpenBanking #BuildingInPublic #StartupIdeas
+
 ---
 
 *This history provides context for maintaining authentic, story-connected LinkedIn content that builds on Milko's genuine professional journey.*

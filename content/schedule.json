@@ -32,11 +32,12 @@
     },
     {
       "id": "ai-personal-finance-mcp-kinance",
-      "file": "content/scheduled/2025-08-22-ai-personal-finance-mcp-kinance.md",
+      "file": "content/published/2025-08-22-ai-personal-finance-mcp-kinance.md",
       "scheduled_date": "2025-08-22",
+      "published_date": "2025-08-22",
       "priority": "high",
       "original_issue": 26,
-      "status": "scheduled",
+      "status": "published",
       "notes": "High priority - product launch"
     },
     {
