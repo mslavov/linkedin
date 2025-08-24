@@ -72,6 +72,7 @@ jobs:
         uses: anthropics/claude-code-base-action@beta
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          model: "claude-opus-4-20250514"
           
           prompt: |
             You are creating a LinkedIn post based on issue #${{ github.event.issue.number }}.
@@ -79,24 +80,67 @@ jobs:
             Issue Title: ${{ github.event.issue.title }}
             Issue Body: ${{ github.event.issue.body }}
             
-            Please follow these steps EXACTLY:
-            1. Read the context files in content/config/ (tone.md, best-practices.md, memory.md, history.md)
-            2. Generate a LinkedIn post draft that maintains narrative continuity with recent posts
-            3. Create a new file in content/drafts/ with filename format: brief-descriptive-title.md (no date prefix)
-            4. Include frontmatter with metadata (title, tags, priority, original_issue)
-            5. Write the post content following LinkedIn best practices
-               IMPORTANT: Store with markdown formatting for readability, but remember LinkedIn requires plain text when publishing:
-               - No markdown syntax in the actual LinkedIn post (no **, *, ###)
-               - First line serves as the hook (no separate title field)
-               - Use line breaks for paragraph separation
-               - Hashtags at the end
-            6. Create a new branch named 'claude/issue-${{ github.event.issue.number }}'
-            7. Commit the draft with message: "Add LinkedIn post draft from issue #${{ github.event.issue.number }}"
-            8. Push the branch to origin
-            9. Create a Pull Request using EXACTLY this command:
-               gh pr create --title "Add LinkedIn post: ${{ github.event.issue.title }}" --body "Generated LinkedIn post from issue #${{ github.event.issue.number }}\n\nThis PR adds a draft post that:\n- [Brief summary]\n- Maintains narrative continuity with [reference]\n- Suggested posting time: [time]\n\nCloses #${{ github.event.issue.number }}"
+            CRITICAL: Follow these steps IN ORDER and VERIFY each step completes:
             
-            IMPORTANT: You MUST use the 'gh pr create' command shown above. Do NOT use any MCP tools for creating the PR.
+            1. First, read ALL context files:
+               - Read content/config/tone.md
+               - Read content/config/best-practices.md  
+               - Read content/config/memory.md
+               - Read content/config/history.md
+            
+            2. Analyze the issue content and generate a LinkedIn post that:
+               - Maintains narrative continuity with recent posts in history.md
+               - Follows the voice guidelines from tone.md
+               - Implements best practices from best-practices.md
+               - Avoids topic fatigue (check last 3 posts for variety)
+            
+            3. Create the draft file:
+               - Use Write tool to create a NEW file in content/drafts/
+               - Filename: descriptive-slug.md (e.g., "ai-agent-building.md")
+               - NO date prefix in filename
+            
+            4. File content structure (MUST include valid YAML frontmatter):
+               ```
+               ---
+               title: "Engaging Title Here"
+               tags: ["tag1", "tag2", "tag3"]
+               priority: 1
+               original_issue: ${{ github.event.issue.number }}
+               ---
+               
+               [Post content with markdown for storage]
+               [Remember: LinkedIn needs plain text when publishing]
+               ```
+            
+            5. Git operations (execute these commands IN ORDER):
+               - Run: git checkout -b claude/issue-${{ github.event.issue.number }}
+               - Run: git add content/drafts/*.md
+               - Run: git commit -m "Add LinkedIn post draft from issue #${{ github.event.issue.number }}"
+               - Run: git push -u origin claude/issue-${{ github.event.issue.number }}
+            
+            6. Create Pull Request:
+               - Use this EXACT command:
+               gh pr create \
+                 --title "Add LinkedIn post: ${{ github.event.issue.title }}" \
+                 --body "Generated LinkedIn post from issue #${{ github.event.issue.number }}
+               
+               This PR adds a draft post that:
+               - Maintains narrative continuity
+               - Follows brand voice guidelines
+               - Ready for review and scheduling
+               
+               Closes #${{ github.event.issue.number }}"
+            
+            VERIFICATION CHECKLIST:
+            ✓ Context files were read
+            ✓ Draft file was created with Write tool
+            ✓ File has valid frontmatter
+            ✓ Branch was created and checked out
+            ✓ Changes were added and committed
+            ✓ Branch was pushed to origin
+            ✓ PR was created with gh command
+            
+            If ANY step fails, STOP and report the error.
           
           allowed_tools: |
             Bash(gh pr create:*)
