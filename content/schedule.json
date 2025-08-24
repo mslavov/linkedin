@@ -42,11 +42,12 @@
     },
     {
       "id": "interactive-code-reviews",
-      "file": "content/scheduled/2025-08-23-interactive-code-reviews.md",
+      "file": "content/published/2025-08-23-interactive-code-reviews.md",
       "scheduled_date": "2025-08-23",
+      "published_date": "2025-08-24",
       "priority": "normal",
       "original_issue": 18,
-      "status": "scheduled",
+      "status": "published",
       "notes": "Swapped with overengineering post"
     },
     {

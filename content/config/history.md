@@ -182,6 +182,14 @@ Based on this history, future posts should:
 **Engagement Hook**: "Would you trust an AI with read-only access to your financial data?"
 **Hashtags**: #AI #PersonalFinance #MCP #OpenBanking #BuildingInPublic #StartupIdeas
 
+### August 24, 2025 - Remember the Code Review Meeting? I Just Reinvented It with AI
+**Summary**: Built an interactive code review slash command for Claude Code after realizing AI-generated code was making me a stranger to my own codebase. Three-hour deep review sessions revealed over-engineered abstractions and hidden edge cases. Advocates for intentional deceleration despite AI velocity.
+**Key Theme**: Code ownership, AI transparency, development process evolution
+**Style**: Reflective, honest about toxic patterns, practical solution-focused
+**Narrative**: Evolution from baby monitor tool to deeper AI-developer relationship challenges
+**Engagement Hook**: "What's your approach to reviewing AI-generated code? Still doing quick scans and hoping for the best?"
+**Hashtags**: #AI #ClaudeCode #Cursor #CodeReview #DeveloperTools #BuildingInPublic #SoftwareEngineering
+
 ---
 
 *This history provides context for maintaining authentic, story-connected LinkedIn content that builds on Milko's genuine professional journey.*
