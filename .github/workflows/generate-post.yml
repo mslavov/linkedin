@@ -73,7 +73,6 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           model: "claude-opus-4-20250514"
-          mode: agent
           
           direct_prompt: |
             You are creating a LinkedIn post based on issue #${{ github.event.issue.number }}.
@@ -114,10 +113,10 @@ jobs:
                ```
             
             5. Git operations (execute these commands IN ORDER):
-               - Run: git checkout -b claude/issue-${{ github.event.issue.number }}
+               - Run: git checkout -b post/issue-${{ github.event.issue.number }}
                - Run: git add content/drafts/*.md
                - Run: git commit -m "Add LinkedIn post draft from issue #${{ github.event.issue.number }}"
-               - Run: git push -u origin claude/issue-${{ github.event.issue.number }}
+               - Run: git push -u origin post/issue-${{ github.event.issue.number }}
             
             6. Create Pull Request:
                - Use this EXACT command:
@@ -143,8 +142,7 @@ jobs:
             
             If ANY step fails, STOP and report the error.
           
-          allowed_tools: |
-            Bash(gh pr create:*)
+          allowed_tools: "Read,Write,Bash(git checkout -b *),Bash(git add *),Bash(git commit *),Bash(git push *),Bash(gh pr create *)"
 
       - name: Verify PR Creation
         if: success()
@@ -154,11 +152,11 @@ jobs:
           
           # Check if PR was created for the branch
           # First try to find any branch starting with our pattern
-          BRANCH_NAME=$(git branch -r | grep -E "origin/claude/issue-${{ github.event.issue.number }}($|-)" | head -1 | sed 's/.*origin\///')
+          BRANCH_NAME=$(git branch -r | grep -E "origin/post/issue-${{ github.event.issue.number }}($|-)" | head -1 | sed 's/.*origin\///')
           
           if [ -z "$BRANCH_NAME" ]; then
             # Fallback to expected branch name
-            BRANCH_NAME="claude/issue-${{ github.event.issue.number }}"
+            BRANCH_NAME="post/issue-${{ github.event.issue.number }}"
           fi
           
           echo "Looking for PR with branch: $BRANCH_NAME"
