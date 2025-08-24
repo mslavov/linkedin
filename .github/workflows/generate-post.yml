@@ -69,12 +69,13 @@ jobs:
 
       - name: Generate post content
         id: generate
-        uses: anthropics/claude-code-base-action@beta
+        uses: anthropics/claude-code-action@beta
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           model: "claude-opus-4-20250514"
+          mode: agent
           
-          prompt: |
+          direct_prompt: |
             You are creating a LinkedIn post based on issue #${{ github.event.issue.number }}.
             
             Issue Title: ${{ github.event.issue.title }}
