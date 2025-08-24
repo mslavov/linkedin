@@ -142,7 +142,7 @@ jobs:
             
             If ANY step fails, STOP and report the error.
           
-          allowed_tools: "Read,Write,Bash(git checkout -b *),Bash(git add *),Bash(git commit *),Bash(git push *),Bash(gh pr create *)"
+          allowed_tools: "Read,Write,Bash(git checkout*),Bash(git add*),Bash(git commit*),Bash(git push*),Bash(gh pr create*)"
 
       - name: Verify PR Creation
         if: success()
