@@ -94,3 +94,5 @@ mv content/published/2024-*.md content/archive/2024/
 - Authentic voice: Conversational, honest about failures, skeptical of hype
 - Focus areas: AI practicality, team building, education
 - Avoid: Web3 hype (only posted when company-required)
+
+- do not change the models in the github workflows, I set the manually
