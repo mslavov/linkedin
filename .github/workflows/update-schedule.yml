@@ -76,8 +76,8 @@ jobs:
           # Check if file exists in drafts folder
           if [ -f "$DRAFT_FILE" ]; then
             echo "File exists in drafts, moving to scheduled..."
-            mv "$DRAFT_FILE" "content/scheduled/$FILENAME"
-            echo "Successfully moved file"
+            git mv "$DRAFT_FILE" "content/scheduled/$FILENAME"
+            echo "Successfully moved file using git mv"
           elif [ -f "content/scheduled/$FILENAME" ]; then
             echo "File already exists in scheduled folder (may have been moved in a previous run)"
           else
@@ -111,6 +111,16 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Commit file move
+        run: |
+          # Check if there are changes to commit (file was moved)
+          if git diff --cached --name-only | grep -q "content/"; then
+            git commit -m "Move post from drafts to scheduled: ${{ steps.move_draft.outputs.filename }}"
+            echo "✅ Committed file move"
+          else
+            echo "No file move to commit (file may already be in scheduled)"
+          fi
+
       - name: Update schedule with Claude
         uses: anthropics/claude-code-base-action@beta
         with:
@@ -118,13 +128,31 @@ jobs:
           prompt: |
             /schedule-post ${{ steps.move_draft.outputs.filepath }}
           experimental_slash_commands_dir: ".claude/commands"
-          allowed_tools: "Read,Edit,MultiEdit,LS,Bash(git add *),Bash(git commit *),Bash(git push *)"
+          allowed_tools: "Read,Edit,MultiEdit,LS,Bash(git add *),Bash(git commit *)"
+
+      - name: Push all changes
+        run: |
+          # Push both the file move and schedule update
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "There are uncommitted changes, staging them..."
+            git add -A
+            git commit -m "Update schedule.json with new post"
+          fi
+          
+          # Check if there are commits to push
+          if git diff origin/main --quiet; then
+            echo "No changes to push"
+          else
+            echo "Pushing changes to main branch..."
+            git push origin main
+            echo "✅ Changes pushed successfully"
+          fi
 
       - name: Verify schedule was updated
         id: verify_schedule
         run: |
           echo "Checking if schedule.json was updated..."
-          if git diff --name-only HEAD~1 | grep -q "schedule.json"; then
+          if git log --oneline -2 | grep -q "schedule.json"; then
             echo "✅ Schedule.json was updated"
             echo "schedule_updated=true" >> $GITHUB_OUTPUT
           else

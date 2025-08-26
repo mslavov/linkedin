@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-08-21T14:30:00Z",
+  "last_updated": "2025-08-26T17:35:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -66,6 +66,24 @@
       "original_issue": 20,
       "status": "scheduled",
       "notes": "Swapped with code reviews post"
+    },
+    {
+      "id": "building-ai-agents-on-giants",
+      "file": "content/scheduled/2025-08-28-building-ai-agents-on-giants.md",
+      "scheduled_date": "2025-08-28",
+      "priority": "high",
+      "original_issue": 29,
+      "status": "scheduled",
+      "notes": "High priority - building on Claude Code platform"
+    },
+    {
+      "id": "ai-native-ui-user-built-interfaces",
+      "file": "content/scheduled/2025-08-30-ai-native-ui-user-built-interfaces.md",
+      "scheduled_date": "2025-08-30",
+      "priority": "normal",
+      "original_issue": 23,
+      "status": "scheduled",
+      "notes": "User-built dashboards concept - good variety after Claude posts"
     },
     {
       "id": "ai-eating-its-own-dogfood",
