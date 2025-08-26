@@ -52,11 +52,12 @@
     },
     {
       "id": "ai-agents-vs-automation-tools",
-      "file": "content/scheduled/2025-08-26-ai-agents-vs-automation-tools.md",
+      "file": "content/published/2025-08-26-ai-agents-vs-automation-tools.md",
       "scheduled_date": "2025-08-26",
+      "published_date": "2025-08-26",
       "priority": "high",
       "original_issue": 22,
-      "status": "scheduled"
+      "status": "published"
     },
     {
       "id": "claude-code-overengineering",

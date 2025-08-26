@@ -148,6 +148,14 @@ Based on this history, future posts should:
 5. **Clean Energy Impact**: Technology solving real problems
 6. **Learning from Setbacks**: Lofty lessons applied to current role
 
+## Recent Posts
+
+### 2025-08-26: AI Agents vs Automation Tools
+- **Theme**: Challenging the need for traditional workflow builders when AI agents exist
+- **Narrative**: VMware team's rebellion against visual workflows culminating in AI agent adoption
+- **Key Insight**: People using n8n to build AI agents don't realize Claude Code with MCP already does this
+- **Engagement Hook**: Provocative comparison to assembly code obsolescence
+
 ---
 
 ## Recently Published Posts
