@@ -150,6 +150,12 @@ Based on this history, future posts should:
 
 ## Recent Posts
 
+### 2025-08-27: When Your AI Assistant Has a Case of 'Senior Engineer Syndrome'
+- **Theme**: Explored the tendency of AI assistants to overengineer solutions, comparing it to senior developer behavior and discussing whether to constrain upfront or allow exploration with cleanup
+- **Narrative**: Building on previous posts about AI-developer relationships, examining the philosophical question of AI constraints
+- **Key Insight**: AI assistants exhibit the same overengineering tendencies as senior developers, raising questions about optimal prompting strategies
+- **Engagement Hook**: Comparison to senior engineer syndrome and the eternal debate of constraints vs exploration
+
 ### 2025-08-26: AI Agents vs Automation Tools
 - **Theme**: Challenging the need for traditional workflow builders when AI agents exist
 - **Narrative**: VMware team's rebellion against visual workflows culminating in AI agent adoption

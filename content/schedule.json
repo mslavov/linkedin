@@ -61,11 +61,12 @@
     },
     {
       "id": "claude-code-overengineering",
-      "file": "content/scheduled/2025-08-27-claude-code-overengineering.md",
+      "file": "content/published/2025-08-27-claude-code-overengineering.md",
       "scheduled_date": "2025-08-27",
+      "published_date": "2025-08-27",
       "priority": "high",
       "original_issue": 20,
-      "status": "scheduled",
+      "status": "published",
       "notes": "Swapped with code reviews post"
     },
     {

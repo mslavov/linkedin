@@ -5,7 +5,7 @@ priority: 8
 original_issue: 20
 ---
 
-Today I discovered my AI assistant has developed what I call "Senior Engineer Syndrome" – that irresistible urge to turn a simple refactoring into a complete architectural overhaul.
+Recently discovered my AI assistant has developed what I call "Senior Engineer Syndrome" – that irresistible urge to turn a simple refactoring into a complete architectural overhaul.
 
 The symptoms appeared after a routine refactoring request:
 • 4,400 lines added 📈
@@ -23,7 +23,7 @@ This got me thinking: do we train Claude to be more disciplined upfront, or buil
 
 **Option 2: Self-Review Process**
 - Let it overengineer, then auto-cleanup
-- Carl's Stop hook approach
+- Here is an example from Carl on how set it up: https://github.com/carlrannaberg/claudekit?tab=readme-ov-file#hooks
 - More tokens, but potentially better quality
 
 After 20+ years in engineering, I've seen this pattern in humans too. Sometimes that overengineering instinct leads to brilliant insights. Other times it's just complexity theater.
