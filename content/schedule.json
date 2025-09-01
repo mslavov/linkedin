@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-08-26T17:35:00Z",
+  "last_updated": "2025-09-01T14:24:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -71,21 +71,12 @@
     },
     {
       "id": "building-ai-agents-on-giants",
-      "file": "content/scheduled/2025-08-28-building-ai-agents-on-giants.md",
-      "scheduled_date": "2025-08-28",
+      "file": "content/scheduled/2025-09-02-building-ai-agents-on-giants.md",
+      "scheduled_date": "2025-09-02",
       "priority": "high",
       "original_issue": 29,
       "status": "scheduled",
-      "notes": "High priority - building on Claude Code platform"
-    },
-    {
-      "id": "ai-native-ui-user-built-interfaces",
-      "file": "content/scheduled/2025-08-30-ai-native-ui-user-built-interfaces.md",
-      "scheduled_date": "2025-08-30",
-      "priority": "normal",
-      "original_issue": 23,
-      "status": "scheduled",
-      "notes": "User-built dashboards concept - good variety after Claude posts"
+      "notes": "Rescheduled from 8/28 - High priority - building on Claude Code platform"
     },
     {
       "id": "ai-eating-its-own-dogfood",
@@ -94,6 +85,15 @@
       "priority": "high",
       "original_issue": 2,
       "status": "scheduled"
+    },
+    {
+      "id": "ai-native-ui-user-built-interfaces",
+      "file": "content/scheduled/2025-09-04-ai-native-ui-user-built-interfaces.md",
+      "scheduled_date": "2025-09-04",
+      "priority": "normal",
+      "original_issue": 23,
+      "status": "scheduled",
+      "notes": "Rescheduled from 8/30 - User-built dashboards concept"
     },
     {
       "id": "ai-engineer-paris-whos-coming",
