@@ -13,17 +13,17 @@ Two months ago, the difference between Cursor and Claude Code was huge. So a mon
 
 Cursor indexes your codebase and you point it at files. Claude Code? It searches, reads, searches again - actively gathering context like a developer would. Self-directed context engineering.
 
-Then I watched [Dan from Every's podcast](https://youtu.be/crMrVozp_h8?si=0c2fruN3VTkdDDIE) about using Claude Code not just for coding but for writing, data analytics, everything.
+Then I watched Dan from Every's podcast https://youtu.be/crMrVozp_h8?si=0c2fruN3VTkdDDIE about using Claude Code not just for coding but for writing, data analytics, everything.
 
 Inspired, I started experimenting - using Claude Code for non-coding tasks myself. And that's when it hit me...
 
 Wait, can I just build my agent ON TOP of Claude Code? Is that... cheating?
 
 Well, turns out I'm not alone in this approach:
-- LangChain just released [Deep Agents](https://blog.langchain.com/deep-agents/) doing exactly this
-- The Claude Code PM [released an SDK](https://youtu.be/DAQJvGjlgVM) for this exact use case
+- LangChain just released Deep Agents: https://blog.langchain.com/deep-agents/ doing exactly this
+- Here Catherina Wu, the Claude Code PM, talked about the SDK: https://youtu.be/DAQJvGjlgVM
 
-So I did it - here's how to run Claude Code in a Cloud Run container on GCP: github.com/mslavov/cloudrun-claude-code
+So I did it - here's how to run Claude Code in a Cloud Run container on GCP: https://github.com/mslavov/cloudrun-claude-code
 
 Sometimes the best innovation isn't building from scratch. It's recognizing when someone else already solved the hard part and building the next layer.
 

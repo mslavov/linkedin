@@ -71,11 +71,12 @@
     },
     {
       "id": "building-ai-agents-on-giants",
-      "file": "content/scheduled/2025-09-02-building-ai-agents-on-giants.md",
+      "file": "content/published/2025-09-02-building-ai-agents-on-giants.md",
       "scheduled_date": "2025-09-02",
+      "published_date": "2025-09-03",
       "priority": "high",
       "original_issue": 29,
-      "status": "scheduled",
+      "status": "published",
       "notes": "Rescheduled from 8/28 - High priority - building on Claude Code platform"
     },
     {
