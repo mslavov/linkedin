@@ -81,11 +81,12 @@
     },
     {
       "id": "ai-eating-its-own-dogfood",
-      "file": "content/scheduled/2025-09-03-ai-eating-its-own-dogfood.md",
+      "file": "content/published/2025-09-03-ai-eating-its-own-dogfood.md",
       "scheduled_date": "2025-09-03",
+      "published_date": "2025-09-03",
       "priority": "high",
       "original_issue": 2,
-      "status": "scheduled"
+      "status": "published"
     },
     {
       "id": "ai-native-ui-user-built-interfaces",
