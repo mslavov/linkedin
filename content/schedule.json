@@ -90,11 +90,12 @@
     },
     {
       "id": "ai-native-ui-user-built-interfaces",
-      "file": "content/scheduled/2025-09-04-ai-native-ui-user-built-interfaces.md",
+      "file": "content/published/2025-09-04-ai-native-ui-user-built-interfaces.md",
       "scheduled_date": "2025-09-04",
+      "published_date": "2025-09-04",
       "priority": "normal",
       "original_issue": 23,
-      "status": "scheduled",
+      "status": "published",
       "notes": "Rescheduled from 8/30 - User-built dashboards concept"
     },
     {
