@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-09-01T14:24:00Z",
+  "last_updated": "2025-09-09T18:30:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -109,13 +109,13 @@
       "notes": "Update when agenda releases - timely for event"
     },
     {
-      "id": "power-of-pressing-pause",
-      "file": "content/scheduled/2025-09-10-power-of-pressing-pause.md",
+      "id": "claude-code-evals",
+      "file": "content/scheduled/2025-09-10-claude-code-evals.md",
       "scheduled_date": "2025-09-10",
-      "priority": "normal",
-      "original_issue": null,
+      "priority": "high",
+      "original_issue": 31,
       "status": "scheduled",
-      "notes": "Transition post before Bugzy announcement"
+      "notes": "Testing AI workflows - moved up after removing pause post"
     },
     {
       "id": "building-bugzy-in-public",
