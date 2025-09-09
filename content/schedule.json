@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-09-01T14:24:00Z",
+  "last_updated": "2025-09-09T18:30:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -116,6 +116,15 @@
       "original_issue": null,
       "status": "scheduled",
       "notes": "Transition post before Bugzy announcement"
+    },
+    {
+      "id": "claude-code-evals",
+      "file": "content/scheduled/2025-09-11-claude-code-evals.md",
+      "scheduled_date": "2025-09-11",
+      "priority": "high",
+      "original_issue": 31,
+      "status": "scheduled",
+      "notes": "Testing AI workflows - technical content between pause and Bugzy"
     },
     {
       "id": "building-bugzy-in-public",
