@@ -109,22 +109,13 @@
       "notes": "Update when agenda releases - timely for event"
     },
     {
-      "id": "power-of-pressing-pause",
-      "file": "content/scheduled/2025-09-10-power-of-pressing-pause.md",
-      "scheduled_date": "2025-09-10",
-      "priority": "normal",
-      "original_issue": null,
-      "status": "scheduled",
-      "notes": "Transition post before Bugzy announcement"
-    },
-    {
       "id": "claude-code-evals",
-      "file": "content/scheduled/2025-09-11-claude-code-evals.md",
-      "scheduled_date": "2025-09-11",
+      "file": "content/scheduled/2025-09-10-claude-code-evals.md",
+      "scheduled_date": "2025-09-10",
       "priority": "high",
       "original_issue": 31,
       "status": "scheduled",
-      "notes": "Testing AI workflows - technical content between pause and Bugzy"
+      "notes": "Testing AI workflows - moved up after removing pause post"
     },
     {
       "id": "building-bugzy-in-public",
