@@ -100,11 +100,12 @@
     },
     {
       "id": "ai-engineer-paris-whos-coming",
-      "file": "content/scheduled/2025-09-06-ai-engineer-paris-whos-coming.md",
+      "file": "content/published/2025-09-09-ai-engineer-paris-whos-coming.md",
       "scheduled_date": "2025-09-06",
+      "published_date": "2025-09-09",
       "priority": "normal",
       "original_issue": null,
-      "status": "scheduled",
+      "status": "published",
       "notes": "Update when agenda releases - timely for event"
     },
     {

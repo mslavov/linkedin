@@ -231,6 +231,15 @@ Based on this history, future posts should:
 **Technical Vision**: AI agents with structured data tools for charting libraries, emergent UI from actual workflows
 **Hashtags**: #AI #UserExperience #DataVisualization #BuildingInPublic #NoCode #DeveloperProductivity
 
+### September 9, 2025 - AI Engineer Paris: Who's Joining Me at Station F?
+**Summary**: Shared excitement about AI Engineer Paris conference with specific talks that focus on practical implementation over hype. Highlighted Pierre Burgy's "Vibe > Benchmarks" talk and Spotify's production-scale code migrations.
+**Key Theme**: Conference networking, practical AI implementation, skepticism of benchmarks
+**Style**: Pre-conference excitement mixed with healthy skepticism, specific callouts of interesting talks
+**Narrative**: Continuing theme of valuing real implementation over theoretical promises, connecting to Bugzy automation needs
+**Engagement Hook**: "Planning to attend? What talks are you targeting?"
+**Technical Focus**: Vibe benchmarks based on usage patterns, LLMs for continuous code migrations, MCP at GitHub scale
+**Hashtags**: #AIEngineer #Paris2025 #AI #TechConference #Networking #BuildingWithAI
+
 ---
 
 *This history provides context for maintaining authentic, story-connected LinkedIn content that builds on Milko's genuine professional journey.*
