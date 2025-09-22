@@ -166,6 +166,116 @@ Based on this history, future posts should:
 
 ## Recently Published Posts
 
+### September 16, 2025 - The next chapter: Building Bugzy.ai in public (with AI as my co-founder)
+**Summary**: Announced going full-time on Bugzy.ai and commitment to building in public with AI as primary collaborator. Shared three honest reasons for transparency approach and plan to use AI for everything from coding to marketing.
+**Key Theme**: Solo founder journey, building in public, AI-first business development
+**Style**: Vulnerable admission about loneliness, self-deprecating humor about tech influencer tendencies
+**Narrative**: Major career pivot from CTO to solo founder, continuation of AI experimentation theme
+**Engagement Hook**: "What's the one thing you'd want AI to handle in your business that it absolutely can't do well yet?"
+**Technical Focus**: Building business with AI workflows, 40% coding/40% sales/20% AI agent development split
+**Hashtags**: #build-in-public #ai-development #entrepreneurship #solo-founder #bugzy
+
+### September 12, 2025 - When You Can't Find What You Need, Build It: My Slack MCP Server Story
+**Summary**: Shared the story of building a simplified Slack MCP server - continuing the theme of developer pragmatism and open-source contribution. Connected to previous posts about overengineering and building focused tools.
+**Key Theme**: Developer pragmatism, forking over building from scratch, solving specific problems
+**Style**: Conversational storytelling with practical insights and self-deprecating humor about over-engineering
+**Narrative**: Connects to overengineering themes from previous posts while demonstrating building what you need vs. what exists
+**Engagement Hook**: "What's the smallest thing you've built that had the biggest impact on your workflow?"
+**Technical Focus**: Simplified Slack MCP server fork, TypeScript, stdio transport, Claude Desktop integration
+**Hashtags**: #OpenSource #DeveloperTools #MCP #SlackIntegration #BuildingInPublic #Engineering #ProblemSolving
+
+### September 10, 2025 - Are You Vibing or Actually Testing Your AI Coding Workflows?
+**Summary**: Testing AI coding workflows - challenges of evaluating probabilistic outputs, introduces claude-code-eval tool for testing Claude Code slash commands and sub-agents. Built wrapper on promptfoo specifically for custom development workflows without burning budget on evals.
+**Key Theme**: AI workflow evaluation, testing methodologies, development tool quality assurance
+**Style**: Direct questioning of industry practices, technical solution sharing, honest about own gaps
+**Narrative**: Continues the theme of building developer tools and reflecting on AI workflow effectiveness
+**Engagement Hook**: "What's your approach? Structured testing framework or just shipping and praying?"
+**Technical Focus**: claude-code-eval GitHub tool, promptfoo wrapper, chat history as test data source
+**Hashtags**: #AI #ClaudeCode #Testing #DeveloperTools #BuildingInPublic #Evaluation
+
+### September 9, 2025 - AI Engineer Paris: Who's Joining Me at Station F?
+**Summary**: Shared excitement about AI Engineer Paris conference with specific talks that focus on practical implementation over hype. Highlighted Pierre Burgy's "Vibe > Benchmarks" talk and Spotify's production-scale code migrations.
+**Key Theme**: Conference networking, practical AI implementation, skepticism of benchmarks
+**Style**: Pre-conference excitement mixed with healthy skepticism, specific callouts of interesting talks
+**Narrative**: Continuing theme of valuing real implementation over theoretical promises, connecting to Bugzy automation needs
+**Engagement Hook**: "Planning to attend? What talks are you targeting?"
+**Technical Focus**: Vibe benchmarks based on usage patterns, LLMs for continuous code migrations, MCP at GitHub scale
+**Hashtags**: #AIEngineer #Paris2025 #AI #TechConference #Networking #BuildingWithAI
+
+### September 4, 2025 - What If Users Could Build Their Own Dashboards?
+**Summary**: Proposed vision of user-built dashboards through conversational AI interfaces with tools like "create_chart", "add_widget", "save_view". Connected idea to personal finance MCP work and Claude Code discoveries about building incrementally based on actual needs rather than imagined requirements.
+**Key Theme**: AI-native interfaces, user empowerment, conversational UI design, dashboard evolution
+**Style**: Thought experiment framing, practical examples, technical approach explanation
+**Narrative**: Evolution from Claude Code tools to envisioning AI-first interfaces that replace traditional dashboard builders
+**Engagement Hook**: "Would you trust AI to build your dashboards? What if every interface was just a conversation away?"
+**Technical Vision**: AI agents with structured data tools for charting libraries, emergent UI from actual workflows
+**Hashtags**: #AI #UserExperience #DataVisualization #BuildingInPublic #NoCode #DeveloperProductivity
+
+### September 3, 2025 - The AI Slop Paradox: How I'm Using AI to Fight AI Slop
+**Summary**: Defended AI-generated content system against "AI slop" criticism by demonstrating how proper AI amplifies authentic voice rather than replacing it. Shared 2-week results: 90% time reduction (30min → 3min per post), 8 posts published, maintained voice consistency. Emphasized difference between AI assistance and AI replacement.
+**Key Theme**: AI authenticity, voice amplification, anti-slop positioning, meta-creation
+**Style**: Provocative paradox setup, metrics-driven defense, transparent about AI usage
+**Narrative**: Continuation of LinkedIn automation journey, addressing critics while proving value
+**Engagement Hook**: "What's your line between AI assistance and AI replacement? Where does amplification end and slop begin?"
+**Meta Context**: Post about AI content creation, created using the exact system it defends
+**Hashtags**: #AI #Automation #BuildingInPublic #GitHub #ClaudeCode #DeveloperTools #AISlop #Authenticity
+
+### September 2, 2025 - Is Building on Claude Code 'Cheating'? My Secret Startup Confession
+**Summary**: Revealed "stealth" startup struggles with AI agent context management, leading to pivotal decision to build on top of Claude Code platform. Compared approach to LangChain's Deep Agents and shared Cloud Run implementation. Questioned whether building on existing AI platforms is "cheating" or smart engineering.
+**Key Theme**: AI platform strategy, startup building, context engineering, standing on giants' shoulders
+**Style**: Vulnerable confession, practical solution sharing, philosophical questioning
+**Narrative**: Evolution from struggling with AI fundamentals to leveraging existing platforms for higher-level innovation
+**Engagement Hook**: "What's your take - is building on existing AI platforms 'cheating' or just smart engineering?"
+**Context Links**: Referenced Every's podcast, LangChain Deep Agents, Catherine Wu's SDK talk, shared open-source Cloud Run implementation
+**Hashtags**: #AI #StartupLife #ClaudeCode #BuildingInPublic #AIAgents #DeveloperTools
+
+### August 27, 2025 - When Your AI Assistant Has a Case of 'Senior Engineer Syndrome'
+**Summary**: Explored the tendency of AI assistants to overengineer solutions, comparing it to senior developer behavior and discussing whether to constrain upfront or allow exploration with cleanup
+**Key Theme**: AI workflow optimization, overengineering, developer psychology
+**Style**: Humorous comparison, philosophical questioning, practical trade-offs
+**Narrative**: Continuation of AI-developer relationship themes, examining optimal constraint strategies
+**Engagement Hook**: Comparison to senior engineer syndrome and the eternal debate of constraints vs exploration
+**Hashtags**: #AI #ClaudeCode #DeveloperTools #BuildingInPublic #SoftwareEngineering
+
+### August 26, 2025 - AI Agents vs Automation Tools
+**Summary**: Challenged the need for traditional workflow builders when AI agents exist. Shared VMware team's rebellion against visual workflows culminating in AI agent adoption.
+**Key Theme**: Workflow automation evolution, visual builders vs code, AI agent superiority
+**Style**: Provocative questioning, historical comparison, bold predictions
+**Narrative**: Drawing on VMware experience to predict workflow tool obsolescence
+**Engagement Hook**: Provocative comparison to assembly code obsolescence
+**Hashtags**: #AI #Automation #n8n #ClaudeCode #BuildingInPublic #WorkflowAutomation
+
+### August 24, 2025 - Remember the Code Review Meeting? I Just Reinvented It with AI
+**Summary**: Built an interactive code review slash command for Claude Code after realizing AI-generated code was making me a stranger to my own codebase. Three-hour deep review sessions revealed over-engineered abstractions and hidden edge cases. Advocates for intentional deceleration despite AI velocity.
+**Key Theme**: Code ownership, AI transparency, development process evolution
+**Style**: Reflective, honest about toxic patterns, practical solution-focused
+**Narrative**: Evolution from baby monitor tool to deeper AI-developer relationship challenges
+**Engagement Hook**: "What's your approach to reviewing AI-generated code? Still doing quick scans and hoping for the best?"
+**Hashtags**: #AI #ClaudeCode #Cursor #CodeReview #DeveloperTools #BuildingInPublic #SoftwareEngineering
+
+### August 22, 2025 - A Weekend Detour: When Your Old Code Meets New AI
+**Summary**: Rebuilt a 6-year-old personal finance SaaS over a weekend using MCP and Open Banking, replacing static dashboards with conversational AI. Quick personal hack turned into Kinance.eu - questioning if people want AI reading their bank statements.
+**Key Theme**: AI-first interfaces, practical problem-solving, accidental product discovery
+**Style**: Conversational, honest about unexpected detours, skeptical of own creation
+**Narrative**: Continuation of building practical AI tools, weekend hacking mentality
+**Engagement Hook**: "Would you trust an AI with read-only access to your financial data?"
+**Hashtags**: #AI #PersonalFinance #MCP #OpenBanking #BuildingInPublic #StartupIdeas
+
+### August 20, 2025 - When 'Hey Siri, Turn On The Lights' Just Isn't Nerdy Enough
+**Summary**: Built Shelly MCP to control smart home devices through Claude instead of Siri, because typing commands to an AI during 5 AM coding sessions seemed more efficient than voice commands. Open-sourced the over-engineered solution that bridges MCP protocol with Shelly Cloud API.
+**Key Theme**: Developer humor, practical over-engineering, smart home automation
+**Style**: Self-deprecating humor ("normal people don't code at 5 AM"), playful about complexity
+**Narrative**: Natural progression from Claude Code tools to expanding AI's reach into physical environment
+**Engagement Hook**: "What's the most unnecessarily complex solution you've built for a simple problem?"
+**Hashtags**: #AI #SmartHome #OpenSource #DeveloperTools #BuildingInPublic #HomeAutomation #MCP
+
+### August 19, 2025 - From Constant Disappointment to Workflow Discovery
+**Summary**: Discovered through Claude Code analyzing its own chat history that successful projects start small, not with comprehensive planning. Realized overplanning with powerful AI was counterproductive - same principles that make code maintainable apply to AI workflows.
+**Key Theme**: AI workflow optimization, meta-learning from tool usage patterns
+**Style**: Vulnerable admission of failures, practical insights, self-reflective
+**Narrative**: Learning to work WITH AI tools rather than forcing old patterns
+**Hashtags**: #AIAssistedDevelopment #ClaudeCode #DeveloperProductivity #CodingWorkflow #BuildingWithAI
+
 ### August 14, 2025 - Building a Baby Monitor for Claude Code
 **Summary**: Created iOS notifications for Claude Code prompts after finding it waiting patiently for hours multiple times. Simple hook → bash → Pushcut setup reduced response time from 2.5 hours to 3 minutes.
 **Key Theme**: Practical AI tooling, solving real workflow problems

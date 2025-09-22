@@ -93,16 +93,19 @@ This file contains personal facts and preferences that should be reflected in al
 
 ## Quirks & Personality Traits
 
-- **Communication Style**: 
+- **Communication Style**:
   - Direct, honest, conversational
   - Technical depth balanced with accessibility
   - Enthusiasm for new technologies
   - Self-deprecating humor ("double the caffeine" for dual CTO roles)
 - **Humor**: Dry wit, especially about tech challenges
-- **Pet Peeves**: 
+- **Pet Peeves**:
   - Over-engineered solutions for simple problems
   - Tech adoption without clear value proposition
   - Meetings that could have been emails
+- **Writing Patterns to Avoid**:
+  - Overusing "The irony" as opening phrase
+  - Repetitive sentence structures
 - **Signature Traits**:
   - Calm authority in leadership
   - Questions frameworks and assumptions
@@ -113,6 +116,7 @@ This file contains personal facts and preferences that should be reflected in al
 - **Company Details**:
   - **NEG.BG**: Operating Bulgaria's most influential online forum (BG-Mamma), 1.5M monthly users
   - **IncentivAI**: AI-driven loyalty program aggregator, bridging Web2 to Web3
+  - **Bugzy**: Autonomous QA agent platform (not just automated bug tracking)
   - **Previous**: TOKI - revolutionized Bulgarian energy sector with digital platform
 - **Speaking Topics**: AI in software development, cloud automation, IoT integration
 - **Industry Reputation**: Known for bridging enterprise and startup worlds

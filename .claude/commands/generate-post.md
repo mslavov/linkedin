@@ -1,16 +1,16 @@
 # Generate LinkedIn Post
 
-You create LinkedIn posts from GitHub issues while maintaining narrative continuity and brand voice consistency.
+You create LinkedIn posts from GitHub issues or local idea files while maintaining narrative continuity and brand voice consistency.
 
-<issue_number> #$ARGUMENTS </issue_number>
+<source> #$ARGUMENTS </source>
 
 ## Workflow
 
-Generate a LinkedIn post based on a GitHub issue, following the established voice guidelines and maintaining story continuity with previous posts.
+Generate a LinkedIn post based on a GitHub issue or local idea file, following the established voice guidelines and maintaining story continuity with previous posts.
 
 ## Tasks
 
-When invoked with an issue number (e.g., `/generate-post 31`):
+When invoked with an issue number (e.g., `/generate-post 31`) or an idea file name (e.g., `/generate-post ai-automation.md`):
 
 ### 1. Read Context Files
 First, read ALL context files to understand the brand voice and narrative history:
@@ -19,10 +19,17 @@ First, read ALL context files to understand the brand voice and narrative histor
 - Read `content/config/memory.md` - Key themes and narratives
 - Read `content/config/history.md` - Recent post summaries
 
-### 2. Fetch Issue Content
-Get the issue details from GitHub:
+### 2. Fetch Source Content
+Get the content from the specified source:
+
+**If numeric (GitHub issue):**
 - Use `gh issue view <issue_number>` to get title and body
 - Extract the core message and theme from the issue
+
+**If filename (local idea):**
+- Read `content/ideas/<filename>` to get the idea content
+- Extract the core message and theme from the idea file
+- Use the metadata from the idea's frontmatter
 
 ### 3. Generate Post Content
 Create a LinkedIn post that:
@@ -43,21 +50,23 @@ Create the draft file in `content/drafts/`:
   title: "Engaging Title Here"
   tags: ["tag1", "tag2", "tag3"]
   priority: 1
-  original_issue: <issue_number>
+  original_issue: <issue_number>  # if from GitHub
+  original_idea: <idea_filename>   # if from local idea
   ---
   ```
 - Write post content in markdown format (will be converted to plain text for LinkedIn)
 
-### 5. Create Pull Request
-Execute Git operations to create a PR:
+### 5. Next Steps (Context-Dependent)
+
+**If from GitHub issue:**
+- Create Pull Request:
 ```bash
 git checkout -b post/issue-<issue_number>
 git add content/drafts/*.md
 git commit -m "Add LinkedIn post draft from issue #<issue_number>"
 git push -u origin post/issue-<issue_number>
 ```
-
-Then create the PR:
+- Create the PR:
 ```bash
 gh pr create \
   --title "Add LinkedIn post: <issue_title>" \
@@ -70,12 +79,19 @@ This PR adds a draft post that:
 
 Closes #<issue_number>"
 ```
-
-### 6. Update Issue
-Add a comment to the original issue with the PR link:
+- Update Issue:
 ```bash
 gh issue comment <issue_number> --body "🤖 Draft post has been generated! Review the PR: <pr_url>"
 ```
+
+**If from local idea:**
+- Update the idea file status:
+  - Change `status: new` to `status: drafted`
+  - Add `draft_file: <draft_filename>`
+  - Add `drafted_date: YYYY-MM-DD`
+- Inform the user:
+  - Draft has been created at `content/drafts/<filename>`
+  - Ready for review and scheduling using `/schedule-post`
 
 ## Important Guidelines
 
@@ -116,10 +132,10 @@ If any step fails:
 
 ## Example Usage
 
+### From GitHub Issue:
 ```
 /generate-post 31
 ```
-
 This will:
 1. Load all context files
 2. Fetch issue #31 from GitHub
@@ -127,3 +143,15 @@ This will:
 4. Create draft file in content/drafts/
 5. Create a PR for review
 6. Link PR to the original issue
+
+### From Local Idea:
+```
+/generate-post ai-automation.md
+```
+This will:
+1. Load all context files
+2. Read idea from content/ideas/ai-automation.md
+3. Generate a narrative-connected post
+4. Create draft file in content/drafts/
+5. Update the idea file status
+6. Ready for local review and scheduling
