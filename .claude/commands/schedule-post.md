@@ -26,7 +26,10 @@ Please:
 6. Add the new post to the schedule.json with a unique ID
 7. Update the last_updated timestamp
 8. Move the post md file from draft to scheduled folders
-9. Commit the updated schedule.json
+9. If the post has an `original_idea` field in its frontmatter:
+   - Check if the corresponding idea file exists in content/ideas/
+   - If it exists, move it to content/ideas/archive/
+10. Commit all changes (schedule.json, moved post, and archived idea if applicable)
 
 The new entry should include:
 
@@ -36,6 +39,7 @@ The new entry should include:
 - scheduled_date: The optimal date in YYYY-MM-DD format
 - priority: Extract from the post's frontmatter
 - original_issue: Extract from the post's frontmatter (if present)
+- original_idea: Extract from the post's frontmatter (if present)
 - status: "scheduled"
 
 ## Important Notes
@@ -45,5 +49,6 @@ The new entry should include:
 - Use ISO 8601 format for timestamps
 - If the file doesn't exist in the specified location, check both drafts and
   scheduled folders
-- Commit message should be: "Schedule post: [filename] for [date]"
+- Commit message should be: "Schedule LinkedIn post: [title] for [date]"
+- If an idea was archived, mention it in the commit message
 - Always verify topic variety to maintain audience engagement
