@@ -149,11 +149,12 @@
     },
     {
       "id": "finding-bugzy-content-strategy",
-      "file": "content/scheduled/2025-09-23-finding-bugzy-content-strategy.md",
+      "file": "content/published/2025-09-23-finding-bugzy-content-strategy.md",
       "scheduled_date": "2025-09-23",
+      "published_date": "2025-09-23",
       "priority": "high",
       "original_idea": "building-in-public-strategy.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Follow-up to building Bugzy in public announcement - content strategy discussion"
     }
   ]
