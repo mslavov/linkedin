@@ -116,7 +116,7 @@ This file contains personal facts and preferences that should be reflected in al
 - **Company Details**:
   - **NEG.BG**: Operating Bulgaria's most influential online forum (BG-Mamma), 1.5M monthly users
   - **IncentivAI**: AI-driven loyalty program aggregator, bridging Web2 to Web3
-  - **Bugzy**: Autonomous QA agent platform (not just automated bug tracking)
+  - **Bugzy**: Autonomous QA agent platform (not just automated bug tracking) - Building in public since September 2024
   - **Previous**: TOKI - revolutionized Bulgarian energy sector with digital platform
 - **Speaking Topics**: AI in software development, cloud automation, IoT integration
 - **Industry Reputation**: Known for bridging enterprise and startup worlds
