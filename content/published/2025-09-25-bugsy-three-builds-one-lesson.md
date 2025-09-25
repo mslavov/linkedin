@@ -7,7 +7,7 @@ original_idea: bugsy-journey-public-building.md
 
 I built the same QA automation tool three times. Each rebuild taught me I was solving the wrong problem.
 
-It started on vacation when I saw someone automating browsers with AI agents. Manual QA seemed like the perfect use case—repetitive, rule-based, time-consuming. So I built a SaaS with fancy onboarding, GitHub integration, Linear tickets, the works.
+It started on vacation when I saw someone automating browsers with AI agents. Manual QA seemed like the perfect use case — repetitive, rule-based, time-consuming. So I built a SaaS with fancy onboarding, GitHub integration, Linear tickets, the works.
 
 Then I dropped it.
 

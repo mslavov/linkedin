@@ -350,6 +350,15 @@ Based on this history, future posts should:
 **Technical Focus**: Vibe benchmarks based on usage patterns, LLMs for continuous code migrations, MCP at GitHub scale
 **Hashtags**: #AIEngineer #Paris2025 #AI #TechConference #Networking #BuildingWithAI
 
+### September 25, 2025 - I Built the Same Product Three Times Before Solving the Right Problem
+**Summary**: Shared the journey of building Bugsy QA automation three times - from over-engineered SaaS to hallucination-prone browser automation to finally understanding context engineering was the real challenge. Now rebuilding on Claude Code, focusing on the core engine before any fancy features.
+**Key Theme**: Product iteration, solving wrong problems, context engineering, building on existing AI agents
+**Style**: Honest reflection on failure and learning, self-deprecating humor about "senior engineer syndrome"
+**Narrative**: Continues the Bugzy building-in-public story, validates the approach of layering QA intelligence on existing coding agents
+**Engagement Hook**: "What's the longest you've worked on solving the wrong problem before finding the right one?"
+**Technical Focus**: Context engineering over new frameworks, leveraging existing AI coding agents for QA purposes
+**Hashtags**: #AI #QualityAssurance #BuildingInPublic #ProductDevelopment #ClaudeCode #StartupLessons
+
 ---
 
 *This history provides context for maintaining authentic, story-connected LinkedIn content that builds on Milko's genuine professional journey.*
