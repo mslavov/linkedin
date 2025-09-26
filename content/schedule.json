@@ -150,11 +150,12 @@
     },
     {
       "id": "ai-engineer-conference-lessons",
-      "file": "content/scheduled/2025-09-26-ai-engineer-conference-lessons.md",
+      "file": "content/published/2025-09-26-ai-engineer-conference-lessons.md",
       "scheduled_date": "2025-09-26",
+      "published_date": "2025-09-26",
       "priority": "high",
       "original_idea": "ai-engineer-paris-lessons.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Friday post - conference takeaways and validation"
     },
     {
