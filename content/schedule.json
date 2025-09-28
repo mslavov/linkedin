@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-09-25T15:55:00Z",
+  "last_updated": "2025-09-28T18:30:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -203,6 +203,16 @@
       "original_idea": "building-in-public-strategy.md",
       "status": "published",
       "notes": "Follow-up to building Bugzy in public announcement - content strategy discussion"
+    },
+    {
+      "id": "ai-conference-api-overload",
+      "file": "content/published/2025-09-28-ai-conference-api-overload.md",
+      "scheduled_date": "2025-09-28",
+      "published_date": "2025-09-28",
+      "priority": "normal",
+      "original_idea": "bulgaria-ai-region-paradox.md",
+      "status": "published",
+      "notes": "Sunday fun post - API overload at AI Engineer Paris conference"
     }
   ]
 }

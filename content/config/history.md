@@ -368,6 +368,15 @@ Based on this history, future posts should:
 **Technical Focus**: Agent-swapping architectures (Zed's A2C), MCP infrastructure (Alpic), vibes-first development
 **Hashtags**: #AI #AIEngineer #BuildingInPublic #StartupLife #ConferenceInsights
 
+### September 28, 2025 - Plot Twist: The AI Conference Where You Can't Use AI
+**Summary**: Shared humorous yet frustrating experience of API overload errors at AI Engineer Paris - when hundreds of developers in one building overwhelm regional Claude endpoints. Highlighted the irony of not being able to use AI at an AI conference while Bulgaria's region worked fine.
+**Key Theme**: Infrastructure challenges, regional API differences, conference logistics humor
+**Style**: Humorous storytelling with genuine technical frustration, self-deprecating about bringing GPUs to conferences
+**Narrative**: Continues AI Engineer Paris conference stories with unexpected infrastructure reality check
+**Engagement Hook**: "What's the most ironic technical failure you've experienced? When has being in the 'wrong' place turned out to be exactly right?"
+**Technical Focus**: Regional API infrastructure, conference bandwidth planning, "tragedy of the commons" in tech events
+**Hashtags**: #AI #AIEngineer #ClaudeCode #TechConferences #Bulgaria #InfrastructureReality
+
 ---
 
 *This history provides context for maintaining authentic, story-connected LinkedIn content that builds on Milko's genuine professional journey.*
