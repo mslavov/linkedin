@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-09-28T18:30:00Z",
+  "last_updated": "2025-09-29T08:45:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -160,17 +160,18 @@
     },
     {
       "id": "ai-agent-orchestration-evolution",
-      "file": "content/scheduled/2025-09-29-ai-agent-orchestration-evolution.md",
+      "file": "content/published/2025-09-29-ai-agent-orchestration-evolution.md",
       "scheduled_date": "2025-09-29",
+      "published_date": "2025-09-29",
       "priority": "high",
       "original_idea": "business-as-code.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Monday post - from LinkedIn automation to running company on AI agents"
     },
     {
       "id": "placeholder-bugzy-product-update",
-      "file": "content/scheduled/2025-09-30-placeholder-bugzy-product-update.md",
-      "scheduled_date": "2025-09-30",
+      "file": "content/scheduled/2025-10-01-placeholder-bugzy-product-update.md",
+      "scheduled_date": "2025-10-01",
       "priority": "high",
       "original_idea": null,
       "status": "placeholder",
@@ -178,8 +179,8 @@
     },
     {
       "id": "placeholder-conference-deep-dive",
-      "file": "content/scheduled/2025-10-01-placeholder-conference-deep-dive.md",
-      "scheduled_date": "2025-10-01",
+      "file": "content/scheduled/2025-10-02-placeholder-conference-deep-dive.md",
+      "scheduled_date": "2025-10-02",
       "priority": "normal",
       "original_idea": "ai-engineer-paris-lessons.md",
       "status": "placeholder",
@@ -187,8 +188,8 @@
     },
     {
       "id": "placeholder-open-source-contribution",
-      "file": "content/scheduled/2025-10-02-placeholder-open-source-contribution.md",
-      "scheduled_date": "2025-10-02",
+      "file": "content/scheduled/2025-10-03-placeholder-open-source-contribution.md",
+      "scheduled_date": "2025-10-03",
       "priority": "normal",
       "original_idea": null,
       "status": "placeholder",
