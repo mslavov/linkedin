@@ -377,6 +377,15 @@ Based on this history, future posts should:
 **Technical Focus**: Regional API infrastructure, conference bandwidth planning, "tragedy of the commons" in tech events
 **Hashtags**: #AI #AIEngineer #ClaudeCode #TechConferences #Bulgaria #InfrastructureReality
 
+### October 1, 2025 - Building Infrastructure While Not Building the Product
+**Summary**: Revealed spending two weeks building AgentForge infrastructure instead of touching Bugzy's QA agent. Detailed the agent runner (stateless, isolated), nextjs-nango-plugin for 500+ integrations, and reusable components (team management, billing, VFS, logs). Explained strategy of delivering Bugzy manually while rebuilding as self-serve product.
+**Key Theme**: Infrastructure-first development, manual delivery as product research, accidental platform creation
+**Style**: Honest about the pivot, self-aware ("yes, I'm the QA agent right now"), practical philosophy
+**Narrative**: Major reveal of AgentForge platform, sets up tomorrow's deeper dive, continues building-in-public journey
+**Engagement Hook**: "What's the longest you've spent building infrastructure before shipping the actual feature?"
+**Technical Focus**: Stateless agent runner, integration platform, multi-tenant architecture, usage-based billing for AI agents
+**Hashtags**: #BuildingInPublic #AI #Infrastructure #StartupLife
+
 ---
 
 *This history provides context for maintaining authentic, story-connected LinkedIn content that builds on Milko's genuine professional journey.*
