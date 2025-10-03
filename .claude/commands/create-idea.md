@@ -8,6 +8,13 @@ You help create and manage LinkedIn post ideas in a structured format, storing t
 
 Create a new idea file for a LinkedIn post that can later be developed into a full post using the /generate-post command.
 
+**IMPORTANT**: Before creating an idea file, ALWAYS read the following config files for context:
+- `content/config/memory.md` - Personal facts, work philosophy, and 40:40:20 rule
+- `content/config/tone.md` - Voice and writing style guidelines
+- `content/config/best-practices.md` - LinkedIn posting best practices
+
+These files ensure ideas align with personal brand, current frameworks, and authentic voice.
+
 ## Tasks
 
 When invoked with an idea description (e.g., `/create-idea AI automation lessons learned`):

@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-01T08:00:00Z",
+  "last_updated": "2025-10-03T10:00:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -195,6 +195,15 @@
       "original_idea": null,
       "status": "placeholder",
       "notes": "Thursday - Open source/community contribution (to be written)"
+    },
+    {
+      "id": "failing-faster-founder-psychology",
+      "file": "content/scheduled/2025-10-03-failing-faster-founder-psychology.md",
+      "scheduled_date": "2025-10-03",
+      "priority": "high",
+      "original_idea": "failing-faster-40-40-20-rule.md",
+      "status": "scheduled",
+      "notes": "Friday - Non-technical founder reflection on avoiding customer development, contrasts with recent infrastructure posts"
     },
     {
       "id": "finding-bugzy-content-strategy",

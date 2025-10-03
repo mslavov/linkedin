@@ -75,11 +75,15 @@ This file contains personal facts and preferences that should be reflected in al
 
 ## Values & Beliefs
 
-- **Work Philosophy**: 
+- **Work Philosophy**:
   - High standards for software quality
   - Hands-on technical leadership
   - Continuous learning and experimentation
   - Results-driven with collaborative approach
+  - **40:40:20 Rule**: Personal time management framework for startup success
+    - 40% Build: Product development and engineering
+    - 40% Sell: Customer development, sales, and market validation
+    - 20% AI Ops: Build/improve AI automations to leverage AI for greater productivity
 - **Technology Views**: 
   - Practical implementation over hype
   - AI as a tool for real business transformation
