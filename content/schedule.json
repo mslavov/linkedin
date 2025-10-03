@@ -198,11 +198,12 @@
     },
     {
       "id": "failing-faster-founder-psychology",
-      "file": "content/scheduled/2025-10-03-failing-faster-founder-psychology.md",
+      "file": "content/published/2025-10-03-failing-faster-founder-psychology.md",
       "scheduled_date": "2025-10-03",
+      "published_date": "2025-10-03",
       "priority": "high",
       "original_idea": "failing-faster-40-40-20-rule.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Friday - Non-technical founder reflection on avoiding customer development, contrasts with recent infrastructure posts"
     },
     {
