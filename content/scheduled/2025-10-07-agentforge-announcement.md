@@ -1,5 +1,6 @@
 ---
 title: "AgentForge: The Platform I Built While Not Building Bugzy"
+date: 2025-10-07
 tags: ["agentforge", "platform-announcement", "building-in-public", "ai-orchestration", "developer-tools"]
 priority: 1
 original_idea: "agentforge-announcement"

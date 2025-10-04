@@ -179,22 +179,22 @@
       "notes": "Tuesday - Bugzy infrastructure and AgentForge reveal"
     },
     {
+      "id": "cloudrun-security-review",
+      "file": "content/scheduled/2025-10-06-cloudrun-security-review.md",
+      "scheduled_date": "2025-10-06",
+      "priority": "normal",
+      "original_idea": null,
+      "status": "scheduled",
+      "notes": "Monday - cloudrun-claude-code security hardening, requesting white-hat review"
+    },
+    {
       "id": "agentforge-announcement",
-      "file": "content/scheduled/2025-10-02-agentforge-announcement.md",
-      "scheduled_date": "2025-10-02",
+      "file": "content/scheduled/2025-10-07-agentforge-announcement.md",
+      "scheduled_date": "2025-10-07",
       "priority": "high",
       "original_idea": "agentforge-announcement",
       "status": "scheduled",
-      "notes": "Wednesday - Full AgentForge platform announcement"
-    },
-    {
-      "id": "placeholder-open-source-contribution",
-      "file": "content/scheduled/2025-10-02-placeholder-open-source-contribution.md",
-      "scheduled_date": "2025-10-02",
-      "priority": "normal",
-      "original_idea": null,
-      "status": "placeholder",
-      "notes": "Thursday - Open source/community contribution (to be written)"
+      "notes": "Tuesday - Full AgentForge platform announcement"
     },
     {
       "id": "failing-faster-founder-psychology",
