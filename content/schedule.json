@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-03T10:00:00Z",
+  "last_updated": "2025-10-04T10:00:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -205,6 +205,15 @@
       "original_idea": "failing-faster-40-40-20-rule.md",
       "status": "published",
       "notes": "Friday - Non-technical founder reflection on avoiding customer development, contrasts with recent infrastructure posts"
+    },
+    {
+      "id": "choosing-customers-moral-dilemma",
+      "file": "content/scheduled/2025-10-08-choosing-customers-moral-dilemma.md",
+      "scheduled_date": "2025-10-08",
+      "priority": "high",
+      "original_idea": "choosing-customers-moral-dilemma.md",
+      "status": "scheduled",
+      "notes": "Wednesday - Founder ethics/values, provides variety after technical posts"
     },
     {
       "id": "finding-bugzy-content-strategy",
