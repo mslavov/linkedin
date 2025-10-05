@@ -237,11 +237,12 @@
     },
     {
       "id": "three-prompts-71-downloads",
-      "file": "content/scheduled/2025-10-05-three-prompts-71-downloads.md",
+      "file": "content/published/2025-10-05-three-prompts-71-downloads.md",
       "scheduled_date": "2025-10-05",
+      "published_date": "2025-10-05",
       "priority": "high",
       "original_idea": "vercel-local-cron-package.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Sunday - Humorous rapid development story, posted fresh while downloads are happening"
     }
   ]
