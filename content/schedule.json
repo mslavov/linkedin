@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-04T10:00:00Z",
+  "last_updated": "2025-10-05T07:08:11Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -139,6 +139,16 @@
       "notes": "Big announcement - starting full-time work on Bugzy"
     },
     {
+      "id": "finding-bugzy-content-strategy",
+      "file": "content/published/2025-09-23-finding-bugzy-content-strategy.md",
+      "scheduled_date": "2025-09-23",
+      "published_date": "2025-09-23",
+      "priority": "high",
+      "original_idea": "building-in-public-strategy.md",
+      "status": "published",
+      "notes": "Follow-up to building Bugzy in public announcement - content strategy discussion"
+    },
+    {
       "id": "bugsy-three-builds-one-lesson",
       "file": "content/published/2025-09-25-bugsy-three-builds-one-lesson.md",
       "scheduled_date": "2025-09-25",
@@ -157,6 +167,16 @@
       "original_idea": "ai-engineer-paris-lessons.md",
       "status": "published",
       "notes": "Friday post - conference takeaways and validation"
+    },
+    {
+      "id": "ai-conference-api-overload",
+      "file": "content/published/2025-09-28-ai-conference-api-overload.md",
+      "scheduled_date": "2025-09-28",
+      "published_date": "2025-09-28",
+      "priority": "normal",
+      "original_idea": "bulgaria-ai-region-paradox.md",
+      "status": "published",
+      "notes": "Sunday fun post - API overload at AI Engineer Paris conference"
     },
     {
       "id": "ai-agent-orchestration-evolution",
@@ -179,6 +199,16 @@
       "notes": "Tuesday - Bugzy infrastructure and AgentForge reveal"
     },
     {
+      "id": "failing-faster-founder-psychology",
+      "file": "content/published/2025-10-03-failing-faster-founder-psychology.md",
+      "scheduled_date": "2025-10-03",
+      "published_date": "2025-10-03",
+      "priority": "high",
+      "original_idea": "failing-faster-40-40-20-rule.md",
+      "status": "published",
+      "notes": "Friday - Non-technical founder reflection on avoiding customer development, contrasts with recent infrastructure posts"
+    },
+    {
       "id": "cloudrun-security-review",
       "file": "content/scheduled/2025-10-06-cloudrun-security-review.md",
       "scheduled_date": "2025-10-06",
@@ -197,16 +227,6 @@
       "notes": "Tuesday - Full AgentForge platform announcement"
     },
     {
-      "id": "failing-faster-founder-psychology",
-      "file": "content/published/2025-10-03-failing-faster-founder-psychology.md",
-      "scheduled_date": "2025-10-03",
-      "published_date": "2025-10-03",
-      "priority": "high",
-      "original_idea": "failing-faster-40-40-20-rule.md",
-      "status": "published",
-      "notes": "Friday - Non-technical founder reflection on avoiding customer development, contrasts with recent infrastructure posts"
-    },
-    {
       "id": "choosing-customers-moral-dilemma",
       "file": "content/scheduled/2025-10-08-choosing-customers-moral-dilemma.md",
       "scheduled_date": "2025-10-08",
@@ -216,24 +236,13 @@
       "notes": "Wednesday - Founder ethics/values, provides variety after technical posts"
     },
     {
-      "id": "finding-bugzy-content-strategy",
-      "file": "content/published/2025-09-23-finding-bugzy-content-strategy.md",
-      "scheduled_date": "2025-09-23",
-      "published_date": "2025-09-23",
+      "id": "three-prompts-71-downloads",
+      "file": "content/scheduled/2025-10-05-three-prompts-71-downloads.md",
+      "scheduled_date": "2025-10-05",
       "priority": "high",
-      "original_idea": "building-in-public-strategy.md",
-      "status": "published",
-      "notes": "Follow-up to building Bugzy in public announcement - content strategy discussion"
-    },
-    {
-      "id": "ai-conference-api-overload",
-      "file": "content/published/2025-09-28-ai-conference-api-overload.md",
-      "scheduled_date": "2025-09-28",
-      "published_date": "2025-09-28",
-      "priority": "normal",
-      "original_idea": "bulgaria-ai-region-paradox.md",
-      "status": "published",
-      "notes": "Sunday fun post - API overload at AI Engineer Paris conference"
+      "original_idea": "vercel-local-cron-package.md",
+      "status": "scheduled",
+      "notes": "Sunday - Humorous rapid development story, posted fresh while downloads are happening"
     }
   ]
 }
