@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-05T07:08:11Z",
+  "last_updated": "2025-10-06T00:00:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -210,11 +210,12 @@
     },
     {
       "id": "cloudrun-security-review",
-      "file": "content/scheduled/2025-10-06-cloudrun-security-review.md",
+      "file": "content/published/2025-10-06-cloudrun-security-review.md",
       "scheduled_date": "2025-10-06",
+      "published_date": "2025-10-06",
       "priority": "normal",
       "original_idea": null,
-      "status": "scheduled",
+      "status": "published",
       "notes": "Monday - cloudrun-claude-code security hardening, requesting white-hat review"
     },
     {
