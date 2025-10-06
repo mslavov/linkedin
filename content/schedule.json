@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-06T00:00:00Z",
+  "last_updated": "2025-10-06T12:00:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -235,6 +235,15 @@
       "original_idea": "choosing-customers-moral-dilemma.md",
       "status": "scheduled",
       "notes": "Wednesday - Founder ethics/values, provides variety after technical posts"
+    },
+    {
+      "id": "warp-terminal-conversion",
+      "file": "content/scheduled/2025-10-09-warp-terminal-conversion.md",
+      "scheduled_date": "2025-10-09",
+      "priority": "normal",
+      "original_idea": "warp-terminal-ai-discovery.md",
+      "status": "scheduled",
+      "notes": "Thursday - Light developer tool discovery, humorous self-deprecation about missing AI feature"
     },
     {
       "id": "three-prompts-71-downloads",
