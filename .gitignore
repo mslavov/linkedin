@@ -4,3 +4,5 @@ scratch/
 **/*/.DS_Store
 .env
 .env.local
+
+.playwright-mcp

@@ -6,6 +6,14 @@
         "-y",
         "@upstash/context7-mcp@latest"
       ]
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "bunx",
+      "args": [
+        "@playwright/mcp"
+      ],
+      "env": {}
     }
   }
 }
