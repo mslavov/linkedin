@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-06T12:00:00Z",
+  "last_updated": "2025-10-08T12:00:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -219,15 +219,6 @@
       "notes": "Monday - cloudrun-claude-code security hardening, requesting white-hat review"
     },
     {
-      "id": "agentforge-announcement",
-      "file": "content/scheduled/2025-10-07-agentforge-announcement.md",
-      "scheduled_date": "2025-10-07",
-      "priority": "high",
-      "original_idea": "agentforge-announcement",
-      "status": "scheduled",
-      "notes": "Tuesday - Full AgentForge platform announcement"
-    },
-    {
       "id": "choosing-customers-moral-dilemma",
       "file": "content/scheduled/2025-10-08-choosing-customers-moral-dilemma.md",
       "scheduled_date": "2025-10-08",
@@ -237,13 +228,22 @@
       "notes": "Wednesday - Founder ethics/values, provides variety after technical posts"
     },
     {
-      "id": "warp-terminal-conversion",
-      "file": "content/scheduled/2025-10-09-warp-terminal-conversion.md",
+      "id": "two-days-selling-bugzy",
+      "file": "content/scheduled/2025-10-09-two-days-selling-bugzy.md",
       "scheduled_date": "2025-10-09",
+      "priority": "high",
+      "original_idea": "40-40-20-sales-reality-check.md",
+      "status": "scheduled",
+      "notes": "Thursday - Follow-up to Oct 3 failing faster post, shows actual sales action taken"
+    },
+    {
+      "id": "warp-terminal-conversion",
+      "file": "content/scheduled/2025-10-10-warp-terminal-conversion.md",
+      "scheduled_date": "2025-10-10",
       "priority": "normal",
       "original_idea": "warp-terminal-ai-discovery.md",
       "status": "scheduled",
-      "notes": "Thursday - Light developer tool discovery, humorous self-deprecation about missing AI feature"
+      "notes": "Friday - Light developer tool discovery, humorous self-deprecation about missing AI feature"
     },
     {
       "id": "three-prompts-71-downloads",
