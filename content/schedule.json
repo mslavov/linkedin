@@ -220,11 +220,12 @@
     },
     {
       "id": "choosing-customers-moral-dilemma",
-      "file": "content/scheduled/2025-10-08-choosing-customers-moral-dilemma.md",
+      "file": "content/published/2025-10-08-choosing-customers-moral-dilemma.md",
       "scheduled_date": "2025-10-08",
+      "published_date": "2025-10-08",
       "priority": "high",
       "original_idea": "choosing-customers-moral-dilemma.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Wednesday - Founder ethics/values, provides variety after technical posts"
     },
     {

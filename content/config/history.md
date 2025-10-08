@@ -413,6 +413,15 @@ Based on this history, future posts should:
 **Technical Focus**: Container security, credential isolation, localhost proxy pattern, restricted user permissions
 **Hashtags**: #Security #OpenSource #AI #CloudRun #BuildingInPublic #Infosec
 
+### October 8, 2025 - The Moral Dilemma of Choosing Business Customers
+**Summary**: Shared the conscious decision to turn down lucrative opportunities from betting companies while bootstrapping Bugzy. Reflects on choosing customers based on shared values over revenue maximization - healthcare platforms, developer tools, education tech instead of retention-optimization businesses. Questions whether values-first customer selection is naive or essential.
+**Key Theme**: Business ethics, customer selection, startup values, founder principles
+**Style**: Vulnerable about financial trade-offs, conversational internal dialogue, honest about uncertainty ("maybe in six months I'll regret this")
+**Narrative**: Provides variety after technical security post, reveals personal values driving business decisions
+**Engagement Hook**: "What's your take – does choosing customers based on shared values make sense, or am I just making it harder on myself?"
+**Key Insight**: Building relationships with value-aligned customers while having freedom to choose, rather than adding values retroactively
+**Hashtags**: #StartupJourney #BuildingInPublic #BusinessEthics #FounderDilemmas
+
 ---
 
 *This history provides context for maintaining authentic, story-connected LinkedIn content that builds on Milko's genuine professional journey.*
