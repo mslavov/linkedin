@@ -29,4 +29,4 @@ Next week: following up on those 8 warm intros. And maybe, finally, sending one 
 
 What's harder for you - doing the uncomfortable sales work, or admitting which parts you keep avoiding?
 
-#StartupJourney #BuildingInPublic #CustomerDevelopment #Sales #Bugzy
+#StartupJourney #BuildingInPublic #CustomerDevelopment #Sales

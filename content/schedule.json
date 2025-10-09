@@ -230,11 +230,12 @@
     },
     {
       "id": "two-days-selling-bugzy",
-      "file": "content/scheduled/2025-10-09-two-days-selling-bugzy.md",
+      "file": "content/published/2025-10-09-two-days-selling-bugzy.md",
       "scheduled_date": "2025-10-09",
+      "published_date": "2025-10-09",
       "priority": "high",
       "original_idea": "40-40-20-sales-reality-check.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Thursday - Follow-up to Oct 3 failing faster post, shows actual sales action taken"
     },
     {
