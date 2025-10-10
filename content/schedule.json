@@ -240,11 +240,12 @@
     },
     {
       "id": "warp-terminal-conversion",
-      "file": "content/scheduled/2025-10-10-warp-terminal-conversion.md",
+      "file": "content/published/2025-10-10-warp-terminal-conversion.md",
       "scheduled_date": "2025-10-10",
+      "published_date": "2025-10-10",
       "priority": "normal",
       "original_idea": "warp-terminal-ai-discovery.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Friday - Light developer tool discovery, humorous self-deprecation about missing AI feature"
     },
     {
