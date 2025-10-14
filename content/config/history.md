@@ -422,6 +422,33 @@ Based on this history, future posts should:
 **Key Insight**: Building relationships with value-aligned customers while having freedom to choose, rather than adding values retroactively
 **Hashtags**: #StartupJourney #BuildingInPublic #BusinessEthics #FounderDilemmas
 
+### October 9, 2025 - Two Days of Selling: What 40% Actually Looks Like
+**Summary**: Follow-up to the failing faster post with concrete sales action results. Spent two days on customer outreach after committing to the 40:40:20 rule. Shows accountability and actual implementation of the uncomfortable customer development work discussed earlier.
+**Key Theme**: Sales accountability, customer development action, founder discomfort, follow-through
+**Style**: Transparent about actions taken, concrete results shared
+**Narrative**: Direct follow-up demonstrating commitment to breaking the building-only pattern from October 3 post
+**Engagement Hook**: Results of actual sales effort after public commitment to customer conversations
+**Hashtags**: #BuildingInPublic #Sales #StartupJourney
+
+### October 10, 2025 - Warp Terminal: The AI Feature I Completely Missed
+**Summary**: Humorous discovery that Warp Terminal had AI features all along - switched from iTerm2 for pretty UI, completely missed the actual innovation. Self-deprecating story about being so focused on building AI tools that missed using AI in everyday workflow.
+**Key Theme**: Developer tool discovery, missing obvious features, workflow optimization, humorous self-deprecation
+**Style**: Light, funny, self-aware about tunnel vision
+**Narrative**: Provides variety after sales/ethics posts, returns to technical tooling but with humor
+**Engagement Hook**: Discovery of AI feature already in daily-used tool
+**Technical Focus**: Warp Terminal AI features, terminal productivity
+**Hashtags**: #DeveloperTools #AI #Productivity
+
+### October 14, 2025 - The 10x Developer Was Real. Now AI Makes It 100x
+**Summary**: Bold claim backed by concrete example: built mcp-tunnel from architectural discussion to published NPM package in one day. Argues that AI amplifies the judgment gap between exceptional developers and code writers - the 10x debate was always about system understanding, not typing speed. AI multiplies existing judgment rather than replacing it, widening the productivity gap instead of leveling the playing field.
+**Key Theme**: AI productivity amplification, 10x developer debate validation, skill shift to system design and quality validation
+**Style**: Provocative opening ("sounds arrogant"), proof-driven with concrete metrics, uncomfortable truth-telling about widening gaps
+**Narrative**: Technical achievement story (mcp-tunnel) used to explore broader implications of AI on developer productivity and team dynamics
+**Engagement Hook**: "How has AI changed your productivity? Are you seeing 2x, 10x, or something else entirely?"
+**Technical Focus**: mcp-tunnel package (secure tunnel for AI agents through firewalls), 1200-line design doc to production in hours
+**Key Insight**: Moving from coding to system design/quality validation, from implementation to orchestration - AI doesn't level the playing field, it amplifies judgment gaps
+**Hashtags**: #AI #Productivity #DeveloperTools #BuildingInPublic #OpenSource
+
 ---
 
 *This history provides context for maintaining authentic, story-connected LinkedIn content that builds on Milko's genuine professional journey.*

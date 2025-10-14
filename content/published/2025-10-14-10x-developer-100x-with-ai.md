@@ -13,7 +13,7 @@ Now with AI? I'm 100x-ing myself.
 
 And I have proof.
 
-Yesterday morning I started a conversation with Claude about designing a secure tunnel system. By afternoon, I had published an NPM package and Docker container for mcp-tunnel - a production-ready solution that lets AI agents communicate through firewalls.
+Last Friday morning I started a conversation with Claude about designing a secure tunnel system. By afternoon, I had published an NPM package and Docker container for mcp-tunnel - a production-ready solution that lets AI agents communicate through firewalls.
 
 Morning: architectural discussion
 Midday: 1200-line design document

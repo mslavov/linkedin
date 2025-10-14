@@ -260,11 +260,12 @@
     },
     {
       "id": "10x-developer-100x-with-ai",
-      "file": "content/scheduled/2025-10-14-10x-developer-100x-with-ai.md",
+      "file": "content/published/2025-10-14-10x-developer-100x-with-ai.md",
       "scheduled_date": "2025-10-14",
+      "published_date": "2025-10-14",
       "priority": "high",
       "original_idea": "mcp-tunnel-10x-ai-productivity.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Tuesday - Technical achievement with mcp-tunnel, AI productivity discussion"
     },
     {
