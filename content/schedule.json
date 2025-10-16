@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-13T10:00:00Z",
+  "last_updated": "2025-10-16T10:00:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -270,11 +270,12 @@
     },
     {
       "id": "bugzy-rebuild-foundation-payoff",
-      "file": "content/scheduled/2025-10-16-bugzy-rebuild-foundation-payoff.md",
+      "file": "content/published/2025-10-16-bugzy-rebuild-foundation-payoff.md",
       "scheduled_date": "2025-10-16",
+      "published_date": "2025-10-16",
       "priority": "high",
       "original_idea": "the-bugzy-rebuild.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Thursday - Product development story, foundation work payoff"
     },
     {
