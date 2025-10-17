@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-16T10:00:00Z",
+  "last_updated": "2025-10-17T10:00:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -277,15 +277,6 @@
       "original_idea": "the-bugzy-rebuild.md",
       "status": "published",
       "notes": "Thursday - Product development story, foundation work payoff"
-    },
-    {
-      "id": "market-pull-or-illusion",
-      "file": "content/scheduled/2025-10-18-market-pull-or-illusion.md",
-      "scheduled_date": "2025-10-18",
-      "priority": "high",
-      "original_idea": "market-pull-uncertainty.md",
-      "status": "scheduled",
-      "notes": "Friday - Founder psychology on sales validation, spaced from Oct 9 sales post"
     }
   ]
 }
