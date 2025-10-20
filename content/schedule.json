@@ -280,11 +280,12 @@
     },
     {
       "id": "hackathon-fact-checking-chrome-extension",
-      "file": "content/scheduled/2025-10-20-hackathon-fact-checking-chrome-extension.md",
+      "file": "content/published/2025-10-20-hackathon-fact-checking-chrome-extension.md",
       "scheduled_date": "2025-10-20",
+      "published_date": "2025-10-20",
       "priority": "high",
       "original_idea": "hackathon-fact-it-chrome-extension.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Monday - Hackathon story with team collaboration, Bulgaria tech community focus, provides variety after recent Bugzy posts. Perfect timing: weekend event posted Monday morning"
     }
   ]

@@ -459,6 +459,16 @@ Based on this history, future posts should:
 **Key Insight**: Sometimes "wasteful" foundation work enables rapid execution when clarity arrives - the challenge is distinguishing necessary foundation from procrastination
 **Hashtags**: #BuildingInPublic #StartupJourney #ProductDevelopment #AI #TechnicalLeadership
 
+### October 20, 2025 - Building a Fact-Checking Chrome Extension at a Hackathon with Claude Code
+**Summary**: Built Fact-It, a fact-checking Chrome extension, at a weekend hackathon with a team of five using Claude Code. Inspired by frustration trying to verify a claim in Mo Gawdat's post about a 2007 MIT study. Team came second in first round but didn't win - and that wasn't the goal. Focus on meeting talented Bulgaria tech community builders and validating that AI-assisted development enables small teams to punch above their weight. Extension is open source with multi-provider AI support.
+**Key Theme**: Hackathon experience, team collaboration with AI tools, Bulgaria tech community, redefining success beyond winning
+**Style**: Relatable problem hook (Mo Gawdat verification frustration), honest about not winning, community-focused celebration
+**Narrative**: Provides variety from recent solo Bugzy building posts - shifts to team collaboration, event participation, and community engagement
+**Engagement Hook**: "What's a problem you've encountered online that made you think 'someone should build this'?"
+**Technical Focus**: Chrome extension with multi-provider AI (OpenAI, Anthropic, Gemini), cross-platform compatibility, real-time fact-checking
+**Key Insight**: Hackathon value isn't about winning trophies - it's about connecting with talented builders and proving what's possible with the right team and AI tools
+**Hashtags**: #Hackathon #AI #OpenSource #BulgariaTech #BuildingInPublic #ChromeExtension
+
 ---
 
 *This history provides context for maintaining authentic, story-connected LinkedIn content that builds on Milko's genuine professional journey.*
