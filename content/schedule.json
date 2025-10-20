@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-17T10:00:00Z",
+  "last_updated": "2025-10-20T10:00:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -277,6 +277,15 @@
       "original_idea": "the-bugzy-rebuild.md",
       "status": "published",
       "notes": "Thursday - Product development story, foundation work payoff"
+    },
+    {
+      "id": "hackathon-fact-checking-chrome-extension",
+      "file": "content/scheduled/2025-10-20-hackathon-fact-checking-chrome-extension.md",
+      "scheduled_date": "2025-10-20",
+      "priority": "high",
+      "original_idea": "hackathon-fact-it-chrome-extension.md",
+      "status": "scheduled",
+      "notes": "Sunday - Hackathon story with team collaboration, Bulgaria tech community focus, provides variety after recent Bugzy posts"
     }
   ]
 }
