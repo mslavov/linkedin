@@ -96,4 +96,4 @@ mv content/published/2024-*.md content/archive/2024/
 - Avoid: Web3 hype (only posted when company-required)
 
 - do not change the models in the github workflows, I set the manually
-- When dealing with dates, always check the current date with the bash command.
+- When dealing with dates, always check the current date with the bash command: `date '+%a %m/%d/%Y'`
