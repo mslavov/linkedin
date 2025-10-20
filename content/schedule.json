@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-20T10:00:00Z",
+  "last_updated": "2025-10-20T05:32:49Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -287,6 +287,15 @@
       "original_idea": "hackathon-fact-it-chrome-extension.md",
       "status": "published",
       "notes": "Monday - Hackathon story with team collaboration, Bulgaria tech community focus, provides variety after recent Bugzy posts. Perfect timing: weekend event posted Monday morning"
+    },
+    {
+      "id": "monday-breaking-my-own-rules",
+      "file": "content/scheduled/2025-10-21-monday-breaking-my-own-rules.md",
+      "scheduled_date": "2025-10-21",
+      "priority": "high",
+      "original_idea": "startup-weekly-priorities-reality-check.md",
+      "status": "scheduled",
+      "notes": "Tuesday - Founder prioritization reality check, breaking the 40:40:20 framework. Provides variety after hackathon team story, returns to solo founder psychology. References established framework from Oct 3 post."
     }
   ]
 }
