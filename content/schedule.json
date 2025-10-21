@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-20T05:32:49Z",
+  "last_updated": "2025-10-21T01:44:14Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -290,11 +290,12 @@
     },
     {
       "id": "monday-breaking-my-own-rules",
-      "file": "content/scheduled/2025-10-21-monday-breaking-my-own-rules.md",
+      "file": "content/published/2025-10-21-monday-breaking-my-own-rules.md",
       "scheduled_date": "2025-10-21",
+      "published_date": "2025-10-21",
       "priority": "high",
       "original_idea": "startup-weekly-priorities-reality-check.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Tuesday - Founder prioritization reality check, breaking the 40:40:20 framework. Provides variety after hackathon team story, returns to solo founder psychology. References established framework from Oct 3 post."
     }
   ]
