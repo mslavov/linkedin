@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-21T01:44:14Z",
+  "last_updated": "2025-10-22T10:30:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -297,6 +297,15 @@
       "original_idea": "startup-weekly-priorities-reality-check.md",
       "status": "published",
       "notes": "Tuesday - Founder prioritization reality check, breaking the 40:40:20 framework. Provides variety after hackathon team story, returns to solo founder psychology. References established framework from Oct 3 post."
+    },
+    {
+      "id": "bugzy-observability-debugging",
+      "file": "content/scheduled/2025-10-22-bugzy-observability-debugging.md",
+      "scheduled_date": "2025-10-22",
+      "priority": 1,
+      "original_idea": "bugzy-slack-optimization-gdpr.md",
+      "status": "scheduled",
+      "notes": "Wednesday - Direct follow-up to Oct 21 'breaking rules' post, shows what focused work looks like. Technical debugging story with Haiku 4.5 testing insight. Part 1 of 3-part sprint series."
     }
   ]
 }
