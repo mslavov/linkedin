@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-22T10:30:00Z",
+  "last_updated": "2025-10-22T14:00:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -300,11 +300,12 @@
     },
     {
       "id": "bugzy-observability-debugging",
-      "file": "content/scheduled/2025-10-22-bugzy-observability-debugging.md",
+      "file": "content/published/2025-10-22-bugzy-observability-debugging.md",
       "scheduled_date": "2025-10-22",
+      "published_date": "2025-10-22",
       "priority": 1,
       "original_idea": "bugzy-slack-optimization-gdpr.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Wednesday - Direct follow-up to Oct 21 'breaking rules' post, shows what focused work looks like. Technical debugging story with Haiku 4.5 testing insight. Part 1 of 3-part sprint series."
     }
   ]

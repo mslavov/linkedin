@@ -469,6 +469,25 @@ Based on this history, future posts should:
 **Key Insight**: Hackathon value isn't about winning trophies - it's about connecting with talented builders and proving what's possible with the right team and AI tools
 **Hashtags**: #Hackathon #AI #OpenSource #BulgariaTech #BuildingInPublic #ChromeExtension
 
+### October 21, 2025 - Monday Morning: Breaking My Own Rules (Again)
+**Summary**: Announced breaking the 40:40:20 rule this week to focus 80% on making Bugzy's QA agent actually good. With 3 pilots running, 6 qualified leads, and 30 cold leads in pipeline, the real bottleneck is agent quality not lead generation. Making the deliberate choice to focus on core product excellence over following the framework religiously.
+**Key Theme**: Founder prioritization, framework flexibility, product-market fit reality, knowing when to break your own rules
+**Style**: Early morning (5:30 AM) reflection, honest reality check, transparent about active pilots and pipeline
+**Narrative**: Returns to solo founder psychology after hackathon team story, references established 40:40:20 framework from Oct 3 post, sets up week's content
+**Engagement Hook**: "What about you - do you stick to your productivity frameworks religiously, or do you break them when the situation calls for it?"
+**Key Insight**: Sometimes the best frameworks are the ones you're willing to abandon when reality demands it - bottleneck is agent quality, not leads
+**Hashtags**: #StartupLife #BuildingInPublic #Prioritization #Bugzy #FounderReality
+
+### October 22, 2025 - You Can't Fix an AI Agent You Can't See
+**Summary**: Direct follow-up showing what breaking the 40:40:20 rule looks like in practice. Built custom slash commands for agent log analysis, discovered instruction problems and environment variable handling mess. Tested with Haiku 4.5 which revealed gaps that Sonnet was compensating for - weaker model failures exposed product issues hidden by powerful models. Fixed env var handling (everything was treated as secret) and unclear instructions in two hours of focused debugging.
+**Key Theme**: AI agent observability, debugging with model experimentation, product infrastructure, focused work results
+**Style**: Technical story with specific details, self-deprecating about env var mistakes, counterintuitive Haiku insight
+**Narrative**: Part 1 of 3-part sprint series, delivers on yesterday's commitment to focus on agent quality, shows concrete Monday morning work
+**Engagement Hook**: "What debugging tools have you built for your AI agents? Or are you still flying blind?"
+**Technical Focus**: Custom slash commands for log analysis, Haiku 4.5 vs Sonnet testing, environment variable secret management, Playwright integration issues
+**Key Insight**: Weaker AI models can reveal product problems that stronger models hide through compensation - observability principle applies to AI agents same as any system
+**Hashtags**: #BuildingInPublic #AI #Debugging #Observability #AgentDevelopment
+
 ---
 
 *This history provides context for maintaining authentic, story-connected LinkedIn content that builds on Milko's genuine professional journey.*
