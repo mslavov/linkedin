@@ -310,11 +310,12 @@
     },
     {
       "id": "refactoring-rabbit-hole",
-      "file": "content/scheduled/2025-10-23-refactoring-rabbit-hole.md",
+      "file": "content/published/2025-10-23-refactoring-rabbit-hole.md",
       "scheduled_date": "2025-10-23",
+      "published_date": "2025-10-23",
       "priority": 1,
       "original_idea": "refactoring-rabbit-hole.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Thursday - Refactoring struggle story with internal dialogue. Provides emotional variety after technical debugging post. Shows AI-assisted development reality (12h vs 2 weeks). Vulnerable ending about uncertainty."
     }
   ]
