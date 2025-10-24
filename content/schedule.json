@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-23T22:00:00Z",
+  "last_updated": "2025-10-24T10:00:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -320,13 +320,14 @@
     },
     {
       "id": "bugzy-slack-conversation-ux",
-      "file": "content/scheduled/2025-10-24-bugzy-slack-conversation-ux.md",
+      "file": "content/published/2025-10-24-bugzy-slack-conversation-ux.md",
       "scheduled_date": "2025-10-24",
+      "published_date": "2025-10-24",
       "priority": 1,
       "original_idea": "bugzy-slack-optimization-gdpr.md",
       "series": "48-hour-sprint",
       "series_part": 2,
-      "status": "scheduled",
+      "status": "published",
       "notes": "Friday - Part 2 of sprint series. Two-tier architecture for Slack UX (mini-agent for casual, main agent for work). Practical problem-solving tone. Provides variety after yesterday's vulnerable refactoring story."
     },
     {
