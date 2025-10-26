@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-24T10:00:00Z",
+  "last_updated": "2025-10-26T18:00:00Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -341,6 +341,15 @@
       "series_part": 3,
       "status": "published",
       "notes": "Sunday - Part 3 of sprint series completes the arc. Meta angle: using AI to make AI compliant with GDPR. Perfect for weekend reflection. Completes observability → UX → compliance narrative."
+    },
+    {
+      "id": "being-the-mom-to-yourself",
+      "file": "content/scheduled/2025-10-27-being-the-mom-to-yourself.md",
+      "scheduled_date": "2025-10-27",
+      "priority": 1,
+      "original_idea": "being-the-mom-to-yourself.md",
+      "status": "scheduled",
+      "notes": "Monday - Follow-up to Oct 3 failing faster post. Friend calls out 3-custom-solutions vs product risk. Claude won't validate excuses. Failed to execute customer development advice despite knowing it. Perfect variety after technical 48-hour sprint series. Raw vulnerability about preaching vs practicing."
     }
   ]
 }
