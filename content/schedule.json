@@ -332,13 +332,14 @@
     },
     {
       "id": "bugzy-gdpr-ai-compliance",
-      "file": "content/scheduled/2025-10-26-bugzy-gdpr-ai-compliance.md",
+      "file": "content/published/2025-10-26-bugzy-gdpr-ai-compliance.md",
       "scheduled_date": "2025-10-26",
+      "published_date": "2025-10-26",
       "priority": 1,
       "original_idea": "bugzy-slack-optimization-gdpr.md",
       "series": "48-hour-sprint",
       "series_part": 3,
-      "status": "scheduled",
+      "status": "published",
       "notes": "Sunday - Part 3 of sprint series completes the arc. Meta angle: using AI to make AI compliant with GDPR. Perfect for weekend reflection. Completes observability → UX → compliance narrative."
     }
   ]
