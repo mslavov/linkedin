@@ -344,11 +344,12 @@
     },
     {
       "id": "being-the-mom-to-yourself",
-      "file": "content/scheduled/2025-10-27-being-the-mom-to-yourself.md",
+      "file": "content/published/2025-10-27-being-the-mom-to-yourself.md",
       "scheduled_date": "2025-10-27",
+      "published_date": "2025-10-27",
       "priority": 1,
       "original_idea": "being-the-mom-to-yourself.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Monday - Follow-up to Oct 3 failing faster post. Friend calls out 3-custom-solutions vs product risk. Claude won't validate excuses. Failed to execute customer development advice despite knowing it. Perfect variety after technical 48-hour sprint series. Raw vulnerability about preaching vs practicing."
     }
   ]
