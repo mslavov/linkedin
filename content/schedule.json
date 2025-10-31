@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-26T18:00:00Z",
+  "last_updated": "2025-10-31T03:26:59Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -351,6 +351,15 @@
       "original_idea": "being-the-mom-to-yourself.md",
       "status": "published",
       "notes": "Monday - Follow-up to Oct 3 failing faster post. Friend calls out 3-custom-solutions vs product risk. Claude won't validate excuses. Failed to execute customer development advice despite knowing it. Perfect variety after technical 48-hour sprint series. Raw vulnerability about preaching vs practicing."
+    },
+    {
+      "id": "solo-founder-vacation-paradox",
+      "file": "content/scheduled/2025-10-31-solo-founder-vacation-paradox.md",
+      "scheduled_date": "2025-10-31",
+      "priority": 1,
+      "original_idea": "solo-founder-vacation-reality.md",
+      "status": "scheduled",
+      "notes": "Friday - Work-life balance reality for solo founders. Provides variety after customer development psychology post. Real story of 3-day vacation with Option A vs B dilemma. Hotel lobby at 5 AM visual. Different founder psychology angle from Oct 27 Mom Test post."
     }
   ]
 }
