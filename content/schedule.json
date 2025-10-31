@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-31T03:36:08Z",
+  "last_updated": "2025-10-31T03:52:51Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -361,6 +361,15 @@
       "original_idea": "solo-founder-vacation-reality.md",
       "status": "published",
       "notes": "Friday - Work-life balance reality for solo founders. Provides variety after customer development psychology post. Real story of 3-day vacation with Option A vs B dilemma. Hotel lobby at 5 AM visual. Different founder psychology angle from Oct 27 Mom Test post."
+    },
+    {
+      "id": "bugzy-pivot-manual-to-automation",
+      "file": "content/scheduled/2025-11-02-bugzy-pivot-manual-to-automation.md",
+      "scheduled_date": "2025-11-02",
+      "priority": 1,
+      "original_idea": "bugzy-pivot-from-manual-to-automation-qa.md",
+      "status": "scheduled",
+      "notes": "Sunday - Product evolution based on cost calculation and customer feedback. Shows how 2 conversations plus economics drove natural improvement. Cost realization (LLM per step expensive) plus 'bridge the gap' insight. Perfect weekend reflection post. Different from Oct 31 vacation (work-life) - this is product/customer focus."
     }
   ]
 }
