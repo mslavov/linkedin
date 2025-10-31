@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-10-31T03:26:59Z",
+  "last_updated": "2025-10-31T03:36:08Z",
   "posts": [
     {
       "id": "babysitting-claude-code",
@@ -354,11 +354,12 @@
     },
     {
       "id": "solo-founder-vacation-paradox",
-      "file": "content/scheduled/2025-10-31-solo-founder-vacation-paradox.md",
+      "file": "content/published/2025-10-31-solo-founder-vacation-paradox.md",
       "scheduled_date": "2025-10-31",
+      "published_date": "2025-10-31",
       "priority": 1,
       "original_idea": "solo-founder-vacation-reality.md",
-      "status": "scheduled",
+      "status": "published",
       "notes": "Friday - Work-life balance reality for solo founders. Provides variety after customer development psychology post. Real story of 3-day vacation with Option A vs B dilemma. Hotel lobby at 5 AM visual. Different founder psychology angle from Oct 27 Mom Test post."
     }
   ]
